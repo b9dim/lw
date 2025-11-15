@@ -47,5 +47,6 @@ RUN php artisan storage:link || true
 EXPOSE 10000
 
 # استخدام sh -c لضمان معالجة متغيرات البيئة بشكل صحيح
-CMD sh -c "php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan serve --host=0.0.0.0 --port=\$PORT"
+# إزالة view:cache لأنه يسبب خطأ "View path not found"
+CMD sh -c "php artisan config:cache && php artisan route:cache && php artisan serve --host=0.0.0.0 --port=\$PORT"
 
