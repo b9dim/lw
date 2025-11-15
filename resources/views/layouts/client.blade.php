@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'لوحة العميل') - شركة مسفر محمد العرجاني</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @include('components.vite-assets', ['assets' => ['resources/css/app.css', 'resources/js/app.js']])
 </head>
 <body class="bg-gray-50">
     <!-- Header -->

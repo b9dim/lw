@@ -25,6 +25,11 @@
 - تحديد `outDir` بشكل واضح
 - تفعيل `emptyOutDir` لتنظيف المجلد قبل البناء
 
+### 3. إضافة Fallback لتحميل الأصول ✅
+- إنشاء Blade component `vite-assets.blade.php` لتحميل الأصول مع fallback
+- تحديث جميع layouts لاستخدام الـ component الجديد
+- إذا فشل Vite، سيتم تحميل الأصول مباشرة من `build/assets`
+
 ### 3. إعدادات Render المطلوبة
 
 #### أ) تعيين `APP_URL` في Render Dashboard:

@@ -13,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        //
+        // تحميل helper functions
+        if (file_exists(app_path('Helpers/ViteHelper.php'))) {
+            require_once app_path('Helpers/ViteHelper.php');
+        }
     }
 }
 
