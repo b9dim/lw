@@ -57,7 +57,7 @@ class RatingController extends Controller
             'status' => 'pending',
         ]);
 
-        return redirect()->route('client.dashboard')->with('success', 'تم إرسال التقييم بنجاح. سيتم مراجعته من قبل الإدارة.');
+        return redirect()->secure(route('client.dashboard'))->with('success', 'تم إرسال التقييم بنجاح. سيتم مراجعته من قبل الإدارة.');
     }
 }
 

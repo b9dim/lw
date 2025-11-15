@@ -48,7 +48,7 @@ Route::post('/login', function (\Illuminate\Http\Request $request) {
 
     if (Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
         $request->session()->regenerate();
-        return redirect()->intended(route('admin.dashboard'));
+        return redirect()->intended(route('admin.dashboard'))->secure();
     }
 
     return back()->withErrors([
@@ -64,7 +64,7 @@ Route::post('/logout', function (\Illuminate\Http\Request $request) {
     Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
-    return redirect('/');
+    return redirect('/')->secure();
 })->middleware('auth')->name('logout.post');
 
 // Admin Routes

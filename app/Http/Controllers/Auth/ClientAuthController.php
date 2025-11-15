@@ -32,7 +32,7 @@ class ClientAuthController extends Controller
         if (Auth::guard('client')->attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
             
-            return redirect()->route('client.dashboard');
+            return redirect()->secure(route('client.dashboard'));
         }
 
         throw ValidationException::withMessages([
@@ -46,7 +46,7 @@ class ClientAuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('home');
+        return redirect()->secure(route('home'));
     }
 }
 
