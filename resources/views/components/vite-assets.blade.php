@@ -1,7 +1,4 @@
 @php
-    // محاولة استخدام Vite أولاً
-    $viteLoaded = false;
-    
     // التحقق من وجود manifest
     $manifestPath = public_path('build/.vite/manifest.json');
     $manifest = null;
@@ -16,24 +13,28 @@
             if (isset($manifest[$asset])) {
                 $file = $manifest[$asset];
                 
-                // CSS
-                if (isset($file['css'])) {
+                // CSS - قد يكون في مصفوفة css أو في file مباشرة
+                if (isset($file['css']) && is_array($file['css'])) {
                     foreach ($file['css'] as $css) {
                         echo '<link rel="stylesheet" href="' . asset('build/' . $css) . '">' . "\n    ";
                     }
                 }
                 
-                // JS
+                // JS أو CSS في file مباشرة
                 if (isset($file['file'])) {
-                    echo '<script type="module" src="' . asset('build/' . $file['file']) . '"></script>' . "\n    ";
+                    $filePath = $file['file'];
+                    $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+                    
+                    if ($extension === 'css') {
+                        echo '<link rel="stylesheet" href="' . asset('build/' . $filePath) . '">' . "\n    ";
+                    } elseif ($extension === 'js') {
+                        echo '<script type="module" src="' . asset('build/' . $filePath) . '"></script>' . "\n    ";
+                    }
                 }
-                $viteLoaded = true;
             }
         }
-    }
-    
-    // إذا لم يتم تحميل الأصول من manifest، حاول تحميلها مباشرة
-    if (!$viteLoaded) {
+    } else {
+        // Fallback: تحميل مباشر من build/assets
         $buildDir = public_path('build/assets');
         if (is_dir($buildDir)) {
             foreach ($assets as $asset) {
