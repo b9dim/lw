@@ -41,8 +41,8 @@ RUN mkdir -p storage/framework/views \
     && mkdir -p storage/logs \
     && mkdir -p bootstrap/cache
 
-# تعيين الصلاحيات
-RUN chmod -R 755 storage bootstrap/cache
+# تعيين الصلاحيات (بما في ذلك مجلد build للأصول)
+RUN chmod -R 755 storage bootstrap/cache public/build
 
 # إنشاء storage link
 RUN php artisan storage:link || true
@@ -57,5 +57,5 @@ EXPOSE 10000
 # استخدام sh -c لضمان معالجة متغيرات البيئة بشكل صحيح
 # إنشاء مجلدات storage في runtime (للتأكد من وجودها)
 # إزالة view:cache لأنه يسبب خطأ "View path not found"
-CMD sh -c "mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions storage/logs bootstrap/cache && chmod -R 755 storage bootstrap/cache && php artisan config:cache && php artisan route:cache && php artisan serve --host=0.0.0.0 --port=\$PORT"
-
+# التأكد من وجود مجلد build وصلاحياته
+CMD sh -c "mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions storage/logs bootstrap/cache public/build && chmod -R 755 storage bootstrap/cache public/build && php artisan config:cache && php artisan route:cache && php artisan serve --host=0.0.0.0 --port=\$PORT"
