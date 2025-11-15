@@ -64,7 +64,28 @@
 
                 <div class="card-attorney p-10">
                     <h2 class="text-2xl font-bold mb-8 text-primary">أرسل لنا رسالة</h2>
-                    <form action="#" method="POST" class="space-y-5">
+                    
+                    @if(session('success'))
+                        <div class="bg-green-50 border-r-4 border-green-500 text-green-700 px-4 py-3 rounded-lg mb-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">✅</span>
+                                <p class="font-semibold">{{ session('success') }}</p>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if($errors->any())
+                        <div class="bg-red-50 border-r-4 border-red-500 text-red-700 px-4 py-3 rounded-lg mb-6">
+                            <p class="font-semibold mb-2">يرجى تصحيح الأخطاء التالية:</p>
+                            <ul class="list-disc list-inside space-y-1 text-sm">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form action="{{ secure_url(route('contact.store')) }}" method="POST" class="space-y-5">
                         @csrf
                         <div>
                             <label class="block text-gray-700 mb-2 font-semibold">الاسم</label>

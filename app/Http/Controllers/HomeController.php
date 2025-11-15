@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rating;
+use App\Models\ContactMessage;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -31,6 +32,26 @@ class HomeController extends Controller
     public function contact()
     {
         return view('public.contact');
+    }
+
+    public function storeContact(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string|max:2000',
+        ]);
+
+        ContactMessage::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'subject' => $validated['subject'],
+            'message' => $validated['message'],
+            'read' => false,
+        ]);
+
+        return redirect()->route('contact')->with('success', 'شكراً لك! تم إرسال رسالتك بنجاح وسنتواصل معك قريباً.');
     }
 }
 
