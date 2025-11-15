@@ -33,17 +33,19 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 RUN npm ci
 RUN npm run build
 
-# Cache Laravel
-RUN php artisan config:cache || true
-RUN php artisan route:cache || true
-RUN php artisan view:cache || true
+# تعيين الصلاحيات
+RUN chmod -R 755 storage bootstrap/cache
 
 # إنشاء storage link
 RUN php artisan storage:link || true
 
-# تعيين الصلاحيات
-RUN chmod -R 755 storage bootstrap/cache
+# لا نعمل cache في البناء - سنعمله في runtime
+# RUN php artisan config:cache || true
+# RUN php artisan route:cache || true
+# RUN php artisan view:cache || true
 
-EXPOSE $PORT
-CMD php artisan serve --host=0.0.0.0 --port=$PORT
+EXPOSE 10000
+
+# استخدام sh -c لضمان معالجة متغيرات البيئة بشكل صحيح
+CMD sh -c "php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan serve --host=0.0.0.0 --port=\$PORT"
 
