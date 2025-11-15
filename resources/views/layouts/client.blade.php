@@ -25,7 +25,7 @@
                     <a href="{{ route('client.dashboard') }}" class="btn-attorney-secondary text-sm flex items-center gap-2">
                         <span>جميع قضاياي</span>
                     </a>
-                    <form method="POST" action="{{ secure_url(route('client.logout')) }}" class="inline">
+                    <form method="POST" action="{{ route('client.logout') }}" class="inline">
                         @csrf
                         <button type="submit" class="btn-attorney-secondary text-sm">
                             تسجيل الخروج

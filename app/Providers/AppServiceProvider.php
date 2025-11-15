@@ -19,40 +19,9 @@ class AppServiceProvider extends ServiceProvider
             require_once app_path('Helpers/ViteHelper.php');
         }
         
-        // فرض HTTPS بشكل جذري في production
-        $isProduction = config('app.env') === 'production';
-        $appUrl = config('app.url');
-        $hasHttpsUrl = $appUrl && str_starts_with($appUrl, 'https://');
-        
-        // في production، نفرض HTTPS دائماً بغض النظر عن الطلب
-        if ($isProduction || $hasHttpsUrl) {
-            // فرض HTTPS scheme لجميع الروابط - يجب أن يكون أول شيء
+        // Globally force HTTPS in production
+        if ($this->app->environment('production')) {
             URL::forceScheme('https');
-            
-            // فرض HTTPS root URL إذا كان APP_URL يبدأ بـ https
-            if ($hasHttpsUrl) {
-                URL::forceRootUrl($appUrl);
-            }
-            
-            // فرض Secure cookies
-            config(['session.secure' => true]);
-            
-            // فرض HTTPS على $_SERVER مباشرة
-            if (!$this->app->runningInConsole()) {
-                $_SERVER['HTTPS'] = 'on';
-                $_SERVER['SERVER_PORT'] = 443;
-                $_SERVER['REQUEST_SCHEME'] = 'https';
-            }
-        } else {
-            // في development، نتحقق من الطلب الفعلي
-            $isSecure = request()->secure() || 
-                       request()->header('X-Forwarded-Proto') === 'https' ||
-                       request()->server('HTTP_X_FORWARDED_PROTO') === 'https';
-            
-            if ($isSecure) {
-                URL::forceScheme('https');
-                config(['session.secure' => true]);
-            }
         }
     }
 }

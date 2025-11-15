@@ -54,7 +54,7 @@
                                        class="action-link action-link-view">عرض</a>
                                     <a href="{{ route('admin.clients.edit', $client->id) }}" 
                                        class="action-link action-link-edit">تعديل</a>
-                                    <form method="POST" action="{{ secure_url(route('admin.clients.destroy', $client->id)) }}" 
+                                    <form method="POST" action="{{ route('admin.clients.destroy', $client->id) }}" 
                                           class="inline" onsubmit="return confirm('هل أنت متأكد من الحذف؟')">
                                         @csrf
                                         @method('DELETE')

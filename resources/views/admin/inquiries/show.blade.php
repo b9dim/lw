@@ -191,7 +191,7 @@
                 <p class="text-gray-500 text-sm mt-1">اكتب ردك على استفسار العميل</p>
             </div>
         </div>
-        <form method="POST" action="{{ secure_url(route('admin.inquiries.reply', $inquiry->id)) }}" class="space-y-6">
+        <form method="POST" action="{{ route('admin.inquiries.reply', $inquiry->id) }}" class="space-y-6">
             @csrf
             <div>
                 <label class="block text-gray-700 mb-2 font-semibold">اكتب ردك <span class="text-red-500">*</span></label>

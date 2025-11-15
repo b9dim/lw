@@ -11,7 +11,7 @@
             <p class="text-gray-600">هل أنت متأكد من رغبتك في تسجيل الخروج؟</p>
         </div>
         
-        <form method="POST" action="{{ secure_url(route('logout.post')) }}" class="space-y-4">
+        <form method="POST" action="{{ route('logout.post') }}" class="space-y-4">
             @csrf
             <div class="flex gap-4 justify-center">
                 <button type="submit" class="btn-attorney-primary">

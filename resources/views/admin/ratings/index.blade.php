@@ -160,7 +160,7 @@
 
         // Set form action and method
         if (action === 'approve') {
-            confirmForm.action = '{{ secure_url(route("admin.ratings.approve", ":id")) }}'.replace(':id', ratingId);
+            confirmForm.action = '{{ route("admin.ratings.approve", ":id") }}'.replace(':id', ratingId);
             formMethod.value = 'POST';
             modalTitle.textContent = 'تأكيد الموافقة على التقييم';
             modalMessage.textContent = `هل أنت متأكد من الموافقة على تقييم العميل "${clientName}"؟`;
@@ -177,7 +177,7 @@
                 modalStars.appendChild(star);
             }
         } else if (action === 'reject') {
-            confirmForm.action = '{{ secure_url(route("admin.ratings.reject", ":id")) }}'.replace(':id', ratingId);
+            confirmForm.action = '{{ route("admin.ratings.reject", ":id") }}'.replace(':id', ratingId);
             formMethod.value = 'POST';
             modalTitle.textContent = 'تأكيد رفض التقييم';
             modalMessage.textContent = `هل أنت متأكد من رفض تقييم العميل "${clientName}"؟`;
@@ -194,7 +194,7 @@
                 modalStars.appendChild(star);
             }
         } else if (action === 'delete') {
-            confirmForm.action = '{{ secure_url(route("admin.ratings.destroy", ":id")) }}'.replace(':id', ratingId);
+            confirmForm.action = '{{ route("admin.ratings.destroy", ":id") }}'.replace(':id', ratingId);
             formMethod.value = 'DELETE';
             modalTitle.textContent = 'تأكيد حذف التقييم';
             modalMessage.textContent = `هل أنت متأكد من حذف تقييم العميل "${clientName}"؟ هذا الإجراء لا يمكن التراجع عنه.`;
