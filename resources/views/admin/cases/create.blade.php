@@ -15,7 +15,7 @@
         <h1 class="text-3xl font-bold text-primary">إضافة قضية جديدة</h1>
     </div>
     
-    <form method="POST" action="{{ route('admin.cases.store') }}" class="space-y-6">
+    <form method="POST" action="{{ secure_url(route('admin.cases.store')) }}" class="space-y-6">
         @csrf
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

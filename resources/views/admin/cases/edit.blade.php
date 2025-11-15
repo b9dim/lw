@@ -15,7 +15,7 @@
         <h1 class="text-3xl font-bold text-primary">تعديل قضية</h1>
     </div>
     
-    <form method="POST" action="{{ route('admin.cases.update', $case->id) }}" class="space-y-6">
+    <form method="POST" action="{{ secure_url(route('admin.cases.update', $case->id)) }}" class="space-y-6">
         @csrf
         @method('PUT')
         

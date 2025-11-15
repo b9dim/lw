@@ -134,7 +134,7 @@
             <p class="text-gray-500 text-sm mt-1">أضف تحديثاً جديداً للقضية</p>
         </div>
     </div>
-    <form method="POST" action="{{ route('admin.cases.updates.store', $case->id) }}" class="space-y-6">
+    <form method="POST" action="{{ secure_url(route('admin.cases.updates.store', $case->id)) }}" class="space-y-6">
         @csrf
         <div>
             <label class="block text-gray-700 mb-2 font-semibold">العنوان <span class="text-red-500">*</span></label>

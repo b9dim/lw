@@ -87,3 +87,33 @@ if (!function_exists('vite_assets')) {
     }
 }
 
+if (!function_exists('secure_url')) {
+    /**
+     * إنشاء URL آمن (HTTPS) من route أو URL
+     * 
+     * @param string|null $path URL path أو route name
+     * @param array $parameters معاملات إضافية
+     * @param bool $secure فرض HTTPS
+     * @return string
+     */
+    function secure_url($path = null, $parameters = [], $secure = true)
+    {
+        // إذا كان $path هو URL كامل (من route() أو url())
+        if (is_string($path) && (str_starts_with($path, 'http://') || str_starts_with($path, 'https://'))) {
+            // حوله إلى HTTPS دائماً
+            return str_replace('http://', 'https://', $path);
+        }
+        
+        // إذا كان $path null، استخدم URL الحالي
+        if ($path === null) {
+            $url = url()->current();
+        } else {
+            // استخدام url() مع فرض HTTPS
+            $url = url($path, $parameters, $secure);
+        }
+        
+        // تأكد من أن URL يبدأ بـ https:// دائماً
+        return str_replace('http://', 'https://', $url);
+    }
+}
+

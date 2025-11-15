@@ -104,7 +104,7 @@
                 @endif
             </nav>
             <div class="absolute bottom-0 w-full p-4 border-t border-gray-700">
-                <a href="{{ route('logout') }}" class="sidebar-link block text-center">
+                <a href="{{ secure_url(route('logout')) }}" class="sidebar-link block text-center">
                     <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 6h4.5a3.5 3.5 0 013.5 3.5v5a3.5 3.5 0 01-3.5 3.5H9" />
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H3M6 9l-3 3 3 3" />

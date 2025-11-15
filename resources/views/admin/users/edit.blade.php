@@ -15,7 +15,7 @@
         <h1 class="text-3xl font-bold text-primary">تعديل مستخدم</h1>
     </div>
     
-    <form method="POST" action="{{ route('admin.users.update', $user->id) }}" class="space-y-6">
+    <form method="POST" action="{{ secure_url(route('admin.users.update', $user->id)) }}" class="space-y-6">
         @csrf
         @method('PUT')
         

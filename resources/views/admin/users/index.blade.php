@@ -59,7 +59,7 @@
                                     <a href="{{ route('admin.users.edit', $user->id) }}" 
                                        class="action-link action-link-edit">تعديل</a>
                                     @if(!$user->isAdmin() || $adminCount > 1)
-                                        <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}" 
+                                        <form method="POST" action="{{ secure_url(route('admin.users.destroy', $user->id)) }}" 
                                               class="inline" onsubmit="return confirm('هل أنت متأكد من الحذف؟')">
                                             @csrf
                                             @method('DELETE')
