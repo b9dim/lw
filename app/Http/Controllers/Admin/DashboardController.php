@@ -28,9 +28,26 @@ class DashboardController extends Controller
             'pending_ratings' => Rating::where('status', 'pending')->count(),
         ];
 
-        $recentCases = Case_::with(['client', 'lawyer'])->latest()->take(5)->get();
-        $recentInquiries = Inquiry::with(['case', 'client'])->whereNull('reply')->latest()->take(5)->get();
-        $recentRatings = Rating::with('client')->where('status', 'pending')->latest()->take(5)->get();
+        // تحديد الأعمدة المطلوبة فقط لتحسين الأداء
+        $recentCases = Case_::with(['client:id,name', 'lawyer:id,name'])
+            ->select('id', 'case_number', 'client_id', 'lawyer_id', 'status', 'created_at')
+            ->latest()
+            ->take(5)
+            ->get();
+        
+        $recentInquiries = Inquiry::with(['case:id,case_number', 'client:id,name'])
+            ->select('id', 'case_id', 'client_id', 'message', 'created_at')
+            ->whereNull('reply')
+            ->latest()
+            ->take(5)
+            ->get();
+        
+        $recentRatings = Rating::with('client:id,name')
+            ->select('id', 'client_id', 'rating', 'comment', 'created_at')
+            ->where('status', 'pending')
+            ->latest()
+            ->take(5)
+            ->get();
 
         return view('admin.dashboard', compact('stats', 'recentCases', 'recentInquiries', 'recentRatings'));
     }

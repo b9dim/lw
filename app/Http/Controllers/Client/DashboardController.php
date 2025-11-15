@@ -19,8 +19,16 @@ class DashboardController extends Controller
     {
         $client = Auth::guard('client')->user();
         
-        // عرض جميع قضايا العميل
-        $cases = $client->cases()->with(['lawyer', 'updates', 'inquiries'])->get();
+        // عرض جميع قضايا العميل مع تحديد الأعمدة المطلوبة فقط
+        $cases = $client->cases()
+            ->with([
+                'lawyer:id,name',
+                'updates:id,case_id,title,created_at',
+                'inquiries:id,case_id,message,created_at'
+            ])
+            ->select('id', 'case_number', 'lawyer_id', 'status', 'created_at')
+            ->latest()
+            ->get();
 
         return view('client.dashboard', compact('cases'));
     }

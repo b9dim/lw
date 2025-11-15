@@ -17,8 +17,8 @@ RUN apt-get update && apt-get install -y \
 # تثبيت PostgreSQL dependencies
 RUN apt-get update && apt-get install -y libpq-dev && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# تثبيت ملحقات PHP (PostgreSQL + MySQL للتوافق + intl للعربية)
-RUN docker-php-ext-install pdo_pgsql pdo_mysql mbstring exif pcntl bcmath gd intl
+# تثبيت ملحقات PHP (PostgreSQL + MySQL للتوافق + intl للعربية + opcache)
+RUN docker-php-ext-install pdo_pgsql pdo_mysql mbstring exif pcntl bcmath gd intl opcache
 
 # تثبيت Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -29,8 +29,8 @@ WORKDIR /var/www/html
 # نسخ ملفات المشروع
 COPY . /var/www/html
 
-# تثبيت المتطلبات
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# تثبيت المتطلبات مع تحسين autoload
+RUN composer install --no-dev --optimize-autoloader --classmap-authoritative --no-interaction
 RUN npm ci
 
 # بناء الأصول والتحقق من وجودها
@@ -66,4 +66,4 @@ EXPOSE 10000
 # إنشاء مجلدات storage في runtime (للتأكد من وجودها)
 # إزالة view:cache لأنه يسبب خطأ "View path not found"
 # التأكد من وجود مجلد build وصلاحياته
-CMD sh -c "mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions storage/logs bootstrap/cache public/build && chmod -R 755 storage bootstrap/cache public/build && php artisan config:cache && php artisan route:cache && php artisan serve --host=0.0.0.0 --port=\$PORT"
+CMD sh -c "mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions storage/logs bootstrap/cache public/build && chmod -R 755 storage bootstrap/cache public/build && php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan serve --host=0.0.0.0 --port=\$PORT"
