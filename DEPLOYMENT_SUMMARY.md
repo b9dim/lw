@@ -118,8 +118,10 @@ MAIL_MAILER=log
 ### Build Command:
 
 ```bash
-composer install --no-dev --optimize-autoloader && npm ci && npm run build && php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan storage:link
+composer install --no-dev --optimize-autoloader && npm ci && npm run build && php artisan config:cache && php artisan route:cache && php artisan storage:link
 ```
+
+**⚠️ ملاحظة:** تم إزالة `view:cache` لأنه يسبب خطأ "View path not found" في بعض الحالات.
 
 ### Start Command:
 

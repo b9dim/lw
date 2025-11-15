@@ -21,7 +21,8 @@ npm run build
 echo "⚙️  Caching configuration..."
 php artisan config:cache
 php artisan route:cache
-php artisan view:cache
+# تم إزالة view:cache لأنه يسبب خطأ "View path not found" في بعض الحالات
+# php artisan view:cache
 
 # Create storage link
 echo "🔗 Creating storage link..."

@@ -32,7 +32,7 @@ php artisan key:generate --show
 
 انسخ المفتاح وأضفه:
 ```
-APP_KEY=base64:YOUR_GENERATED_KEY_HERE
+APP_KEY=base64:SBDxjk+wgpl0pUG2/sHintaI8aquh5jXMilcZ13bUqo
 ```
 
 ---
