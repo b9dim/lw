@@ -91,29 +91,62 @@ if (!function_exists('secure_url')) {
     /**
      * إنشاء URL آمن (HTTPS) من route أو URL
      * 
-     * @param string|null $path URL path أو route name
+     * هذا الحل الجذري يضمن تحويل جميع الروابط إلى HTTPS بغض النظر عن إعدادات APP_URL
+     * 
+     * @param string|null $path URL path أو route name أو URL كامل (من route() أو url())
      * @param array $parameters معاملات إضافية
      * @param bool $secure فرض HTTPS
      * @return string
      */
     function secure_url($path = null, $parameters = [], $secure = true)
     {
+        // فرض HTTPS scheme قبل إنشاء URL
+        \Illuminate\Support\Facades\URL::forceScheme('https');
+        
         // إذا كان $path هو URL كامل (من route() أو url())
-        if (is_string($path) && (str_starts_with($path, 'http://') || str_starts_with($path, 'https://'))) {
-            // حوله إلى HTTPS دائماً
-            return str_replace('http://', 'https://', $path);
+        if (is_string($path)) {
+            // إذا كان يبدأ بـ http:// أو https://
+            if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://')) {
+                // حوله إلى HTTPS دائماً - هذا هو الحل الجذري
+                return str_replace('http://', 'https://', $path);
+            }
+            
+            // إذا كان URL نسبي يبدأ بـ /، أنشئ URL كامل
+            if (str_starts_with($path, '/')) {
+                $host = request()->getHost();
+                return 'https://' . $host . $path;
+            }
         }
         
         // إذا كان $path null، استخدم URL الحالي
         if ($path === null) {
             $url = url()->current();
         } else {
-            // استخدام url() مع فرض HTTPS
-            $url = url($path, $parameters, $secure);
+            // استخدام route() أو url() مع فرض HTTPS
+            try {
+                // محاولة استخدام route() إذا كان route name
+                if (is_string($path) && !str_contains($path, '/') && !str_contains($path, 'http') && !str_contains($path, '.')) {
+                    $url = route($path, $parameters);
+                } else {
+                    // استخدام url() مع فرض HTTPS
+                    $url = url($path, $parameters, $secure);
+                }
+            } catch (\Exception $e) {
+                // إذا فشل route()، استخدم url()
+                $url = url($path, $parameters, $secure);
+            }
         }
         
-        // تأكد من أن URL يبدأ بـ https:// دائماً
-        return str_replace('http://', 'https://', $url);
+        // تأكد من أن URL يبدأ بـ https:// دائماً - هذا هو الحل الجذري
+        $url = str_replace('http://', 'https://', $url);
+        
+        // إذا كان URL لا يبدأ بـ http أو https، أضف https://
+        if (!str_starts_with($url, 'http://') && !str_starts_with($url, 'https://')) {
+            $host = request()->getHost();
+            $url = 'https://' . $host . (str_starts_with($url, '/') ? '' : '/') . $url;
+        }
+        
+        return $url;
     }
 }
 
