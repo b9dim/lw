@@ -34,6 +34,13 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 RUN npm ci
 RUN npm run build
 
+# إنشاء مجلدات storage المطلوبة
+RUN mkdir -p storage/framework/views \
+    && mkdir -p storage/framework/cache \
+    && mkdir -p storage/framework/sessions \
+    && mkdir -p storage/logs \
+    && mkdir -p bootstrap/cache
+
 # تعيين الصلاحيات
 RUN chmod -R 755 storage bootstrap/cache
 
@@ -48,6 +55,7 @@ RUN php artisan storage:link || true
 EXPOSE 10000
 
 # استخدام sh -c لضمان معالجة متغيرات البيئة بشكل صحيح
+# إنشاء مجلدات storage في runtime (للتأكد من وجودها)
 # إزالة view:cache لأنه يسبب خطأ "View path not found"
-CMD sh -c "php artisan config:cache && php artisan route:cache && php artisan serve --host=0.0.0.0 --port=\$PORT"
+CMD sh -c "mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions storage/logs bootstrap/cache && chmod -R 755 storage bootstrap/cache && php artisan config:cache && php artisan route:cache && php artisan serve --host=0.0.0.0 --port=\$PORT"
 
