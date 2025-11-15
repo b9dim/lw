@@ -1,6 +1,6 @@
 FROM php:8.2-cli
 
-# تثبيت المتطلبات
+# تثبيت المتطلبات (بما في ذلك intl)
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -11,13 +11,14 @@ RUN apt-get update && apt-get install -y \
     unzip \
     nodejs \
     npm \
+    libicu-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # تثبيت PostgreSQL dependencies
 RUN apt-get update && apt-get install -y libpq-dev && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# تثبيت ملحقات PHP (PostgreSQL + MySQL للتوافق)
-RUN docker-php-ext-install pdo_pgsql pdo_mysql mbstring exif pcntl bcmath gd
+# تثبيت ملحقات PHP (PostgreSQL + MySQL للتوافق + intl للعربية)
+RUN docker-php-ext-install pdo_pgsql pdo_mysql mbstring exif pcntl bcmath gd intl
 
 # تثبيت Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
