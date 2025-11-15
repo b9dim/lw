@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="flex-shrink-0">
-                    <a href="{{ route('client.login') }}" class="btn-attorney-secondary whitespace-nowrap flex items-center gap-2">
+                    <a href="{{ secure_url(route('client.login')) }}" class="btn-attorney-secondary whitespace-nowrap flex items-center gap-2">
                         <span>دخول العملاء</span>
                     </a>
                 </div>
