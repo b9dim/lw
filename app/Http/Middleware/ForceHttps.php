@@ -25,17 +25,24 @@ class ForceHttps
             // التحقق من X-Forwarded-Proto header (لأننا وراء proxy)
             $proto = $request->header('X-Forwarded-Proto') ?? 
                      $request->server('HTTP_X_FORWARDED_PROTO') ?? 
-                     ($request->secure() ? 'https' : 'http');
+                     null;
             
-            // إذا لم يكن HTTPS، أعد التوجيه
-            if ($proto !== 'https') {
+            // إذا كان الطلب HTTP فعلياً، أعد التوجيه
+            if ($proto !== 'https' && str_starts_with($request->url(), 'http://')) {
                 $url = str_replace('http://', 'https://', $request->fullUrl());
                 return redirect($url, 301);
             }
             
-            // فرض HTTPS على الطلب الحالي لضمان أن Laravel يعرف أنه HTTPS
+            // فرض HTTPS على الطلب الحالي دائماً في production
+            // هذا يضمن أن Laravel يعرف أن الطلب HTTPS
             $request->server->set('HTTPS', 'on');
             $request->server->set('SERVER_PORT', 443);
+            $request->server->set('REQUEST_SCHEME', 'https');
+            
+            // أيضاً فرض على $_SERVER مباشرة
+            $_SERVER['HTTPS'] = 'on';
+            $_SERVER['SERVER_PORT'] = 443;
+            $_SERVER['REQUEST_SCHEME'] = 'https';
         }
         
         return $next($request);

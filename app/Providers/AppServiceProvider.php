@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
         
         // في production، نفرض HTTPS دائماً بغض النظر عن الطلب
         if ($isProduction || $hasHttpsUrl) {
-            // فرض HTTPS scheme لجميع الروابط
+            // فرض HTTPS scheme لجميع الروابط - يجب أن يكون أول شيء
             URL::forceScheme('https');
             
             // فرض HTTPS root URL إذا كان APP_URL يبدأ بـ https
@@ -36,6 +36,13 @@ class AppServiceProvider extends ServiceProvider
             
             // فرض Secure cookies
             config(['session.secure' => true]);
+            
+            // فرض HTTPS على $_SERVER مباشرة
+            if (!$this->app->runningInConsole()) {
+                $_SERVER['HTTPS'] = 'on';
+                $_SERVER['SERVER_PORT'] = 443;
+                $_SERVER['REQUEST_SCHEME'] = 'https';
+            }
         } else {
             // في development، نتحقق من الطلب الفعلي
             $isSecure = request()->secure() || 
