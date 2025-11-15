@@ -2,17 +2,10 @@ services:
   # Laravel Web Application
   - type: web
     name: law-firm-app
-    runtime: php
+    runtime: docker
     plan: starter
-    buildCommand: |
-      composer install --no-dev --optimize-autoloader
-      php artisan config:cache
-      php artisan route:cache
-      php artisan view:cache
-      npm ci
-      npm run build
-      php artisan storage:link
-    startCommand: php artisan serve --host=0.0.0.0 --port=$PORT
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
     envVars:
       - key: APP_NAME
         value: شركة مسفر محمد العرجاني للمحاماة
