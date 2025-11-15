@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class TrustProxies extends Middleware
 {
-    protected $proxies;
+    protected $proxies = '*'; // ثق بجميع الـ proxies (مطلوب لـ Render)
 
     protected $headers =
         Request::HEADER_X_FORWARDED_FOR |
