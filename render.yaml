@@ -28,27 +28,17 @@ services:
       - key: LOG_LEVEL
         value: error
       - key: DB_CONNECTION
-        value: mysql
+        value: pgsql
       - key: DB_HOST
-        fromDatabase:
-          name: law-firm-db
-          property: host
+        value: dpg-d4cd820gjchc73db1m8g-a.oregon-postgres.render.com
       - key: DB_PORT
-        fromDatabase:
-          name: law-firm-db
-          property: port
+        value: 5432
       - key: DB_DATABASE
-        fromDatabase:
-          name: law-firm-db
-          property: database
+        value: law_firm_db_i2lx
       - key: DB_USERNAME
-        fromDatabase:
-          name: law-firm-db
-          property: user
+        value: law_firm_db_i2lx_user
       - key: DB_PASSWORD
-        fromDatabase:
-          name: law-firm-db
-          property: password
+        value: OOxzUnrwhbAySqdtIeNTJjWHvO6wwY1E
       - key: SESSION_DRIVER
         value: database
       - key: CACHE_STORE
@@ -58,10 +48,6 @@ services:
       - key: MAIL_MAILER
         value: log
 
-  # MySQL Database
-  - type: mysql
-    name: law-firm-db
-    plan: starter
-    databaseName: law_firm
-    user: law_firm_user
+  # PostgreSQL Database (موجود بالفعل على Render)
+  # لا حاجة لإنشاء قاعدة بيانات جديدة - استخدم الموجودة
 

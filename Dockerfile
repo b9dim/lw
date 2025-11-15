@@ -13,8 +13,11 @@ RUN apt-get update && apt-get install -y \
     npm \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# تثبيت ملحقات PHP
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+# تثبيت PostgreSQL dependencies
+RUN apt-get update && apt-get install -y libpq-dev && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# تثبيت ملحقات PHP (PostgreSQL + MySQL للتوافق)
+RUN docker-php-ext-install pdo_pgsql pdo_mysql mbstring exif pcntl bcmath gd
 
 # تثبيت Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
