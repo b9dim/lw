@@ -21,16 +21,18 @@ class AppServiceProvider extends ServiceProvider
         
         // فرض HTTPS في production أو عندما يكون الطلب عبر HTTPS
         // هذا يضمن أن جميع الروابط تستخدم HTTPS في بيئة الإنتاج
-        if (config('app.env') === 'production') {
-            URL::forceScheme('https');
-        } elseif (request()->secure() || request()->header('X-Forwarded-Proto') === 'https') {
+        $isProduction = config('app.env') === 'production';
+        $isSecure = request()->secure() || request()->header('X-Forwarded-Proto') === 'https';
+        $appUrl = config('app.url');
+        $hasHttpsUrl = $appUrl && str_starts_with($appUrl, 'https://');
+        
+        if ($isProduction || $isSecure || $hasHttpsUrl) {
             URL::forceScheme('https');
         }
         
-        // فرض HTTPS إذا كان APP_URL يبدأ بـ https
-        $appUrl = config('app.url');
-        if ($appUrl && str_starts_with($appUrl, 'https://')) {
-            URL::forceScheme('https');
+        // فرض Secure cookies في production
+        if ($isProduction || $hasHttpsUrl) {
+            config(['session.secure' => true]);
         }
     }
 }
