@@ -16,7 +16,7 @@
                 // CSS - قد يكون في مصفوفة css أو في file مباشرة
                 if (isset($file['css']) && is_array($file['css'])) {
                     foreach ($file['css'] as $css) {
-                        echo '<link rel="stylesheet" href="' . asset('build/' . $css) . '">' . "\n    ";
+                        echo '<link rel="stylesheet" href="' . secure_asset('build/' . $css) . '">' . "\n    ";
                     }
                 }
                 
@@ -26,9 +26,9 @@
                     $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
                     
                     if ($extension === 'css') {
-                        echo '<link rel="stylesheet" href="' . asset('build/' . $filePath) . '">' . "\n    ";
+                        echo '<link rel="stylesheet" href="' . secure_asset('build/' . $filePath) . '">' . "\n    ";
                     } elseif ($extension === 'js') {
-                        echo '<script type="module" src="' . asset('build/' . $filePath) . '"></script>' . "\n    ";
+                        echo '<script type="module" src="' . secure_asset('build/' . $filePath) . '"></script>' . "\n    ";
                     }
                 }
             }
@@ -45,9 +45,9 @@
                 foreach ($files as $file) {
                     $relativePath = 'build/assets/' . basename($file);
                     if ($extension === 'css') {
-                        echo '<link rel="stylesheet" href="' . asset($relativePath) . '">' . "\n    ";
+                        echo '<link rel="stylesheet" href="' . secure_asset($relativePath) . '">' . "\n    ";
                     } elseif ($extension === 'js') {
-                        echo '<script type="module" src="' . asset($relativePath) . '"></script>' . "\n    ";
+                        echo '<script type="module" src="' . secure_asset($relativePath) . '"></script>' . "\n    ";
                     }
                 }
             }
