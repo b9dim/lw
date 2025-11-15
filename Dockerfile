@@ -67,4 +67,3 @@ EXPOSE 10000
 # إزالة view:cache لأنه يسبب خطأ "View path not found"
 # التأكد من وجود مجلد build وصلاحياته
 CMD sh -c "mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions storage/logs bootstrap/cache public/build && chmod -R 755 storage bootstrap/cache public/build && php artisan config:cache && php artisan route:cache && php artisan serve --host=0.0.0.0 --port=\$PORT"
-
