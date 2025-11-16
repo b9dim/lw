@@ -17,6 +17,8 @@ services:
       # يجب أن يبدأ بـ https:// (مثال: https://lw-2uez.onrender.com)
       - key: APP_URL
         sync: false
+      - key: FORCE_HTTPS
+        value: "true"
       - key: APP_TIMEZONE
         value: Asia/Riyadh
       - key: APP_LOCALE
