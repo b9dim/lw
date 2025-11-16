@@ -20,7 +20,11 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Support/helpers.php",
+            "app/Helpers/ViteHelper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
