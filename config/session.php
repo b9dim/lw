@@ -18,7 +18,10 @@ return [
     ),
     'path' => '/',
     'domain' => env('SESSION_DOMAIN'),
-    'secure' => env('SESSION_SECURE_COOKIE', false),
+    'secure' => filter_var(
+        env('SESSION_SECURE_COOKIE', env('APP_ENV', 'production') !== 'local'),
+        FILTER_VALIDATE_BOOLEAN
+    ),
     'http_only' => true,
     'same_site' => env('SESSION_SAME_SITE', 'lax'),
     'partitioned' => false,

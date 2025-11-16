@@ -6,6 +6,7 @@
 2. ✅ تم تحديث `config/database.php` لدعم PostgreSQL
 3. ✅ تم تحديث `Dockerfile` لدعم PostgreSQL
 4. ✅ تم إنشاء ملف `RENDER_ENV_VARIABLES.md` مع جميع المتغيرات
+5. ✅ تمت إضافة متغير `FORCE_HTTPS=true` وضبط إعدادات الـ Session للكوكيز الآمنة
 
 ---
 

@@ -7,6 +7,10 @@ return [
     'env' => env('APP_ENV', 'production'),
     'debug' => (bool) env('APP_DEBUG', false),
     'url' => env('APP_URL', 'http://localhost'),
+    'force_https' => filter_var(
+        env('FORCE_HTTPS', env('APP_ENV', 'production') !== 'local'),
+        FILTER_VALIDATE_BOOLEAN
+    ),
     'timezone' => env('APP_TIMEZONE', 'Asia/Riyadh'),
     'locale' => env('APP_LOCALE', 'ar'),
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'ar'),
