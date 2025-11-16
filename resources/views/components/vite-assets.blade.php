@@ -1,4 +1,17 @@
 @php
+    // Helper function لضمان HTTPS في assets
+    $getAssetUrl = function($path) {
+        // في production أو إذا كان APP_URL يبدأ بـ https://، استخدم secure_asset
+        $appUrl = config('app.url', '');
+        $isProduction = app()->environment('production');
+        
+        if ($isProduction || str_starts_with($appUrl, 'https://')) {
+            return secure_asset($path);
+        }
+        // وإلا استخدم asset() العادي
+        return asset($path);
+    };
+    
     // التحقق من وجود manifest
     $manifestPath = public_path('build/.vite/manifest.json');
     $manifest = null;
@@ -16,7 +29,7 @@
                 // CSS - قد يكون في مصفوفة css أو في file مباشرة
                 if (isset($file['css']) && is_array($file['css'])) {
                     foreach ($file['css'] as $css) {
-                        echo '<link rel="stylesheet" href="' . asset('build/' . $css) . '">' . "\n    ";
+                        echo '<link rel="stylesheet" href="' . $getAssetUrl('build/' . $css) . '">' . "\n    ";
                     }
                 }
                 
@@ -26,9 +39,9 @@
                     $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
                     
                     if ($extension === 'css') {
-                        echo '<link rel="stylesheet" href="' . asset('build/' . $filePath) . '">' . "\n    ";
+                        echo '<link rel="stylesheet" href="' . $getAssetUrl('build/' . $filePath) . '">' . "\n    ";
                     } elseif ($extension === 'js') {
-                        echo '<script type="module" src="' . asset('build/' . $filePath) . '"></script>' . "\n    ";
+                        echo '<script type="module" src="' . $getAssetUrl('build/' . $filePath) . '"></script>' . "\n    ";
                     }
                 }
             }
@@ -45,9 +58,9 @@
                 foreach ($files as $file) {
                     $relativePath = 'build/assets/' . basename($file);
                     if ($extension === 'css') {
-                        echo '<link rel="stylesheet" href="' . asset($relativePath) . '">' . "\n    ";
+                        echo '<link rel="stylesheet" href="' . $getAssetUrl($relativePath) . '">' . "\n    ";
                     } elseif ($extension === 'js') {
-                        echo '<script type="module" src="' . asset($relativePath) . '"></script>' . "\n    ";
+                        echo '<script type="module" src="' . $getAssetUrl($relativePath) . '"></script>' . "\n    ";
                     }
                 }
             }

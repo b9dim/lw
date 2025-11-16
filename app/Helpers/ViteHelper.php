@@ -34,13 +34,25 @@ if (!function_exists('vite_assets')) {
                     // CSS
                     if (isset($file['css'])) {
                         foreach ($file['css'] as $css) {
-                            $html .= '<link rel="stylesheet" href="' . asset('build/' . $css) . '">' . "\n    ";
+                            // استخدام secure_asset في production أو إذا كان APP_URL يبدأ بـ https://
+                            $appUrl = config('app.url', '');
+                            $isProduction = app()->environment('production');
+                            $assetUrl = ($isProduction || str_starts_with($appUrl, 'https://')) 
+                                ? secure_asset('build/' . $css) 
+                                : asset('build/' . $css);
+                            $html .= '<link rel="stylesheet" href="' . $assetUrl . '">' . "\n    ";
                         }
                     }
                     
                     // JS
                     if (isset($file['file'])) {
-                        $html .= '<script type="module" src="' . asset('build/' . $file['file']) . '"></script>' . "\n    ";
+                        // استخدام secure_asset في production أو إذا كان APP_URL يبدأ بـ https://
+                        $appUrl = config('app.url', '');
+                        $isProduction = app()->environment('production');
+                        $assetUrl = ($isProduction || str_starts_with($appUrl, 'https://')) 
+                            ? secure_asset('build/' . $file['file']) 
+                            : asset('build/' . $file['file']);
+                        $html .= '<script type="module" src="' . $assetUrl . '"></script>' . "\n    ";
                     }
                 } else {
                     // إذا لم يُوجد في manifest، حاول تحميل مباشرة
@@ -53,10 +65,17 @@ if (!function_exists('vite_assets')) {
                         $files = glob($buildDir . '/' . basename($assetPath) . '*');
                         foreach ($files as $file) {
                             $relativePath = 'build/assets/' . basename($file);
+                            // استخدام secure_asset في production أو إذا كان APP_URL يبدأ بـ https://
+                            $appUrl = config('app.url', '');
+                            $isProduction = app()->environment('production');
+                            $assetUrl = ($isProduction || str_starts_with($appUrl, 'https://')) 
+                                ? secure_asset($relativePath) 
+                                : asset($relativePath);
+                            
                             if (str_ends_with($file, '.css')) {
-                                $html .= '<link rel="stylesheet" href="' . asset($relativePath) . '">' . "\n    ";
+                                $html .= '<link rel="stylesheet" href="' . $assetUrl . '">' . "\n    ";
                             } elseif (str_ends_with($file, '.js')) {
-                                $html .= '<script type="module" src="' . asset($relativePath) . '"></script>' . "\n    ";
+                                $html .= '<script type="module" src="' . $assetUrl . '"></script>' . "\n    ";
                             }
                         }
                     }
@@ -73,10 +92,17 @@ if (!function_exists('vite_assets')) {
                     $files = glob($buildDir . '/' . $basename . '*.' . $extension);
                     foreach ($files as $file) {
                         $relativePath = 'build/assets/' . basename($file);
+                        // استخدام secure_asset في production أو إذا كان APP_URL يبدأ بـ https://
+                        $appUrl = config('app.url', '');
+                        $isProduction = app()->environment('production');
+                        $assetUrl = ($isProduction || str_starts_with($appUrl, 'https://')) 
+                            ? secure_asset($relativePath) 
+                            : asset($relativePath);
+                        
                         if ($extension === 'css') {
-                            $html .= '<link rel="stylesheet" href="' . asset($relativePath) . '">' . "\n    ";
+                            $html .= '<link rel="stylesheet" href="' . $assetUrl . '">' . "\n    ";
                         } elseif ($extension === 'js') {
-                            $html .= '<script type="module" src="' . asset($relativePath) . '"></script>' . "\n    ";
+                            $html .= '<script type="module" src="' . $assetUrl . '"></script>' . "\n    ";
                         }
                     }
                 }
