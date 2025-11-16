@@ -34,24 +34,36 @@ if (!function_exists('vite_assets')) {
                     // CSS
                     if (isset($file['css'])) {
                         foreach ($file['css'] as $css) {
-                            // استخدام secure_asset في production أو إذا كان APP_URL يبدأ بـ https://
+                            // بناء رابط HTTPS يدوياً لضمان HTTPS دائماً
                             $appUrl = config('app.url', '');
                             $isProduction = app()->environment('production');
-                            $assetUrl = ($isProduction || str_starts_with($appUrl, 'https://')) 
-                                ? secure_asset('build/' . $css) 
-                                : asset('build/' . $css);
+                            
+                            if ($isProduction || str_starts_with($appUrl, 'https://')) {
+                                $baseUrl = str_starts_with($appUrl, 'https://') ? rtrim($appUrl, '/') : 'https://' . parse_url($appUrl, PHP_URL_HOST);
+                                $assetPath = ltrim('build/' . $css, '/');
+                                $assetUrl = $baseUrl . '/' . $assetPath;
+                            } else {
+                                $assetUrl = secure_asset('build/' . $css);
+                            }
+                            
                             $html .= '<link rel="stylesheet" href="' . $assetUrl . '">' . "\n    ";
                         }
                     }
                     
                     // JS
                     if (isset($file['file'])) {
-                        // استخدام secure_asset في production أو إذا كان APP_URL يبدأ بـ https://
+                        // بناء رابط HTTPS يدوياً لضمان HTTPS دائماً
                         $appUrl = config('app.url', '');
                         $isProduction = app()->environment('production');
-                        $assetUrl = ($isProduction || str_starts_with($appUrl, 'https://')) 
-                            ? secure_asset('build/' . $file['file']) 
-                            : asset('build/' . $file['file']);
+                        
+                        if ($isProduction || str_starts_with($appUrl, 'https://')) {
+                            $baseUrl = str_starts_with($appUrl, 'https://') ? rtrim($appUrl, '/') : 'https://' . parse_url($appUrl, PHP_URL_HOST);
+                            $assetPath = ltrim('build/' . $file['file'], '/');
+                            $assetUrl = $baseUrl . '/' . $assetPath;
+                        } else {
+                            $assetUrl = secure_asset('build/' . $file['file']);
+                        }
+                        
                         $html .= '<script type="module" src="' . $assetUrl . '"></script>' . "\n    ";
                     }
                 } else {
@@ -65,12 +77,17 @@ if (!function_exists('vite_assets')) {
                         $files = glob($buildDir . '/' . basename($assetPath) . '*');
                         foreach ($files as $file) {
                             $relativePath = 'build/assets/' . basename($file);
-                            // استخدام secure_asset في production أو إذا كان APP_URL يبدأ بـ https://
+                            // بناء رابط HTTPS يدوياً لضمان HTTPS دائماً
                             $appUrl = config('app.url', '');
                             $isProduction = app()->environment('production');
-                            $assetUrl = ($isProduction || str_starts_with($appUrl, 'https://')) 
-                                ? secure_asset($relativePath) 
-                                : asset($relativePath);
+                            
+                            if ($isProduction || str_starts_with($appUrl, 'https://')) {
+                                $baseUrl = str_starts_with($appUrl, 'https://') ? rtrim($appUrl, '/') : 'https://' . parse_url($appUrl, PHP_URL_HOST);
+                                $assetPath = ltrim($relativePath, '/');
+                                $assetUrl = $baseUrl . '/' . $assetPath;
+                            } else {
+                                $assetUrl = secure_asset($relativePath);
+                            }
                             
                             if (str_ends_with($file, '.css')) {
                                 $html .= '<link rel="stylesheet" href="' . $assetUrl . '">' . "\n    ";
@@ -92,12 +109,17 @@ if (!function_exists('vite_assets')) {
                     $files = glob($buildDir . '/' . $basename . '*.' . $extension);
                     foreach ($files as $file) {
                         $relativePath = 'build/assets/' . basename($file);
-                        // استخدام secure_asset في production أو إذا كان APP_URL يبدأ بـ https://
+                        // بناء رابط HTTPS يدوياً لضمان HTTPS دائماً
                         $appUrl = config('app.url', '');
                         $isProduction = app()->environment('production');
-                        $assetUrl = ($isProduction || str_starts_with($appUrl, 'https://')) 
-                            ? secure_asset($relativePath) 
-                            : asset($relativePath);
+                        
+                        if ($isProduction || str_starts_with($appUrl, 'https://')) {
+                            $baseUrl = str_starts_with($appUrl, 'https://') ? rtrim($appUrl, '/') : 'https://' . parse_url($appUrl, PHP_URL_HOST);
+                            $assetPath = ltrim($relativePath, '/');
+                            $assetUrl = $baseUrl . '/' . $assetPath;
+                        } else {
+                            $assetUrl = secure_asset($relativePath);
+                        }
                         
                         if ($extension === 'css') {
                             $html .= '<link rel="stylesheet" href="' . $assetUrl . '">' . "\n    ";

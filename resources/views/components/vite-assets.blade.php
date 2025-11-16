@@ -1,15 +1,30 @@
 @php
-    // Helper function لضمان HTTPS في assets
+    // Helper function لضمان HTTPS في assets دائماً
     $getAssetUrl = function($path) {
-        // في production أو إذا كان APP_URL يبدأ بـ https://، استخدم secure_asset
+        // بناء رابط HTTPS يدوياً لضمان HTTPS دائماً
         $appUrl = config('app.url', '');
         $isProduction = app()->environment('production');
         
+        // في production أو إذا كان APP_URL يبدأ بـ https://، استخدم HTTPS مباشرة
         if ($isProduction || str_starts_with($appUrl, 'https://')) {
-            return secure_asset($path);
+            // بناء رابط HTTPS يدوياً
+            if (str_starts_with($appUrl, 'https://')) {
+                $baseUrl = rtrim($appUrl, '/');
+            } elseif (!empty($appUrl)) {
+                // إذا كان APP_URL لا يبدأ بـ https://، أضفه
+                $host = parse_url($appUrl, PHP_URL_HOST) ?: str_replace(['http://', 'https://'], '', $appUrl);
+                $baseUrl = 'https://' . rtrim($host, '/');
+            } else {
+                // إذا كان APP_URL فارغاً، استخدم secure_asset
+                return secure_asset($path);
+            }
+            
+            $assetPath = ltrim($path, '/');
+            return $baseUrl . '/' . $assetPath;
         }
-        // وإلا استخدم asset() العادي
-        return asset($path);
+        
+        // وإلا استخدم secure_asset() كـ fallback
+        return secure_asset($path);
     };
     
     // التحقق من وجود manifest
