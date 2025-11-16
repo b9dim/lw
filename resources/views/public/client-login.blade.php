@@ -12,7 +12,7 @@
                     <p class="text-gray-600">تابع قضاياك واستفساراتك</p>
                 </div>
                 
-                <form method="POST" action="{{ route('client.login') }}" class="space-y-6">
+                <form method="POST" action="{{ force_https_route('client.login') }}" class="space-y-6">
                     @csrf
                     
                     <div>
