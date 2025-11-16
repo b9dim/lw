@@ -51,7 +51,7 @@
     </div>
 @else
     <div class="card-attorney p-8">
-        <form method="POST" action="{{ route('client.ratings.store') }}">
+        <form method="POST" action="{{ force_https_route('client.ratings.store') }}">
             @csrf
 
             @if(session('error'))

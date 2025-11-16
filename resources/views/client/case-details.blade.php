@@ -182,7 +182,7 @@
     
     <!-- Inquiry Form -->
     <div class="bg-gradient-to-br from-accent/10 via-accent/5 to-accent/10 rounded-lg p-5 mb-8 border border-accent/30">
-        <form method="POST" action="{{ route('client.cases.inquiries.store', $case->id) }}">
+        <form method="POST" action="{{ force_https_route('client.cases.inquiries.store', $case->id) }}">
             @csrf
             <div class="flex items-center gap-2 mb-3">
                 <div class="icon-circle icon-circle-sm icon-circle-accent">
