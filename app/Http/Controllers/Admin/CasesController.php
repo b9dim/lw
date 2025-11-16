@@ -25,7 +25,7 @@ class CasesController extends Controller
 
     public function create()
     {
-        $clients = Client::orderBy('name')->get(['id', 'name']);
+        $clients = Client::orderBy('name')->get(['id', 'name', 'national_id']);
         $lawyers = User::where('role', 'محامي')->orderBy('name')->get(['id', 'name']);
         return view('admin.cases.create', compact('clients', 'lawyers'));
     }
@@ -132,7 +132,7 @@ class CasesController extends Controller
 
     public function edit(Case_ $case)
     {
-        $clients = Client::orderBy('name')->get(['id', 'name']);
+        $clients = Client::orderBy('name')->get(['id', 'name', 'national_id']);
         $lawyers = User::where('role', 'محامي')->orderBy('name')->get(['id', 'name']);
         return view('admin.cases.edit', compact('case', 'clients', 'lawyers'));
     }
