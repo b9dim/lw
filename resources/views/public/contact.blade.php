@@ -85,7 +85,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('contact.store') }}" method="POST" class="space-y-5">
+                    <form action="{{ force_https_route('contact.store') }}" method="POST" class="space-y-5">
                         @csrf
                         <div>
                             <label class="block text-gray-700 mb-2 font-semibold">الاسم</label>
