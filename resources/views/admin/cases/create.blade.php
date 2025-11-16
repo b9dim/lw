@@ -15,7 +15,7 @@
         <h1 class="text-3xl font-bold text-primary">إضافة قضية جديدة</h1>
     </div>
     
-    <form method="POST" action="{{ route('admin.cases.store') }}" class="space-y-6">
+    <form method="POST" action="{{ force_https_route('admin.cases.store') }}" class="space-y-6">
         @csrf
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -128,7 +128,7 @@
         }
         
         // Get unique case number from backend
-        const url = '{{ route("admin.cases.generate-number") }}';
+        const url = '{{ force_https_route("admin.cases.generate-number") }}';
         console.log('Fetching from URL:', url);
         
         fetch(url, {

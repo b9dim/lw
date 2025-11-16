@@ -52,6 +52,36 @@ class AppServiceProvider extends ServiceProvider
                 return secure_asset($path);
             }
         }
+        
+        // إضافة helper function لضمان HTTPS في routes دائماً
+        if (!function_exists('force_https_route')) {
+            function force_https_route($name, $parameters = [], $absolute = true) {
+                // بناء رابط HTTPS يدوياً لضمان HTTPS دائماً
+                $appUrl = config('app.url', '');
+                $isProduction = app()->environment('production');
+                
+                // في production أو إذا كان APP_URL يبدأ بـ https://، استخدم HTTPS مباشرة
+                if ($isProduction || str_starts_with($appUrl, 'https://')) {
+                    // بناء رابط HTTPS يدوياً
+                    if (str_starts_with($appUrl, 'https://')) {
+                        $baseUrl = rtrim($appUrl, '/');
+                    } elseif (!empty($appUrl)) {
+                        $host = parse_url($appUrl, PHP_URL_HOST) ?: str_replace(['http://', 'https://'], '', $appUrl);
+                        $baseUrl = 'https://' . rtrim($host, '/');
+                    } else {
+                        // إذا كان APP_URL فارغاً، استخدم route() العادي
+                        return route($name, $parameters, $absolute);
+                    }
+                    
+                    // الحصول على المسار من route() بدون scheme
+                    $routePath = route($name, $parameters, false);
+                    return $baseUrl . $routePath;
+                }
+                
+                // وإلا استخدم route() العادي
+                return route($name, $parameters, $absolute);
+            }
+        }
     }
 }
 

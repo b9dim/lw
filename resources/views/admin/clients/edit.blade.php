@@ -15,7 +15,7 @@
         <h1 class="text-3xl font-bold text-primary">تعديل عميل</h1>
     </div>
     
-    <form method="POST" action="{{ route('admin.clients.update', $client->id) }}" class="space-y-6">
+    <form method="POST" action="{{ force_https_route('admin.clients.update', $client->id) }}" class="space-y-6">
         @csrf
         @method('PUT')
         

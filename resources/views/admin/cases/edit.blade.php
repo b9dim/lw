@@ -15,7 +15,7 @@
         <h1 class="text-3xl font-bold text-primary">تعديل قضية</h1>
     </div>
     
-    <form method="POST" action="{{ route('admin.cases.update', $case->id) }}" class="space-y-6">
+    <form method="POST" action="{{ force_https_route('admin.cases.update', $case->id) }}" class="space-y-6">
         @csrf
         @method('PUT')
         
@@ -129,7 +129,7 @@
         }
         
         // Get unique case number from backend
-        const url = '{{ route("admin.cases.generate-number") }}';
+        const url = '{{ force_https_route("admin.cases.generate-number") }}';
         console.log('Fetching from URL:', url);
         
         fetch(url, {
