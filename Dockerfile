@@ -1,8 +1,8 @@
-# force full rebuild v4
+# force full rebuild v5
 FROM php:8.2-cli
 
-# Build argument to bust Docker cache
-ARG CACHE_BUSTER=4
+# bust Docker build cache layer
+ARG CACHE_BUSTER=5
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -12,40 +12,47 @@ RUN apt-get update && apt-get install -y \
 # Install PHP extensions
 RUN docker-php-ext-install pdo_pgsql pdo_mysql mbstring exif pcntl bcmath gd intl opcache
 
-# Install Composer
+# Install composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-# Force rebuild of COPY layer
-ARG APP_REFRESH=4
-
-# Copy application source
+# copy app files (buster ensures no cache)
+ARG APP_REFRESH=5
 COPY . .
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --classmap-authoritative --no-interaction
 
-# Install Node dependencies & build assets
+# Install Node dependencies and build assets
 RUN npm ci
 RUN npm run build
 
-# Create storage directories
+# Prepare Laravel directories
 RUN mkdir -p storage/framework/views \
     && mkdir -p storage/framework/cache \
     && mkdir -p storage/framework/sessions \
     && mkdir -p storage/logs \
     && mkdir -p bootstrap/cache
 
-# Fix permissions
+# Laravel file permissions
 RUN chmod -R 755 storage bootstrap/cache public/build && \
     chown -R www-data:www-data public/build || true
 
-# Create storage link
+# Clear all Laravel caches (important!)
+RUN php artisan config:clear || true \
+    && php artisan route:clear || true \
+    && php artisan view:clear || true \
+    && php artisan cache:clear || true
+
+# No build-time caching of config here — avoid mixing HTTP/HTTPS
+# RUN php artisan config:cache 
+# RUN php artisan route:cache
+
+# Storage link
 RUN php artisan storage:link || true
 
-# Expose port
 EXPOSE 10000
 
-# No Laravel caching at build time — this is REQUIRED for Render
+# Runtime command — no caches generated here
 CMD sh -c "mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions storage/logs bootstrap/cache public/build && chmod -R 755 storage bootstrap/cache public/build && php artisan serve --host=0.0.0.0 --port=\$PORT"
