@@ -8,7 +8,7 @@ use Illuminate\Http\Middleware\TrustProxies as Middleware;
 class TrustProxies extends Middleware
 {
     /**
-     * الثقة في جميع البروكسيات (Render يحتاج هذا)
+     * الثقة في جميع البروكسيات (Render يحتاج ذلك)
      */
     protected $proxies = '*';
 
