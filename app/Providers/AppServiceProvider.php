@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,15 +15,10 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        // تحميل helper functions
-        if (file_exists(app_path('Helpers/ViteHelper.php'))) {
-            require_once app_path('Helpers/ViteHelper.php');
-        }
-        
-        // Globally force HTTPS in production
-        if ($this->app->environment('production')) {
-            URL::forceScheme('https');
-        }
+        // فرض HTTPS على جميع الروابط
+        URL::forceScheme('https');
+
+        // استخدام Bootstrap في Pagination (اختياري)
+        Paginator::useBootstrap();
     }
 }
-
