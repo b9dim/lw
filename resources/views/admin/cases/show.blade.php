@@ -268,7 +268,7 @@
                                     </div>
                                     <p class="text-xs text-primary flex items-center gap-1 mt-1 font-medium">
                                         <span>🕐</span>
-                                        {{ $inquiry->replied_at->format('Y-m-d H:i') }}
+                                        {{ optional($inquiry->replied_at)->format('Y-m-d H:i') ?? 'غير متوفر' }}
                                     </p>
                                 </div>
                             </div>

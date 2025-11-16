@@ -85,6 +85,23 @@ return new class extends Migration
         $connection = Schema::getConnection();
         $databaseName = $connection->getDatabaseName();
         
+        if ($connection->getDriverName() === 'sqlite') {
+            $result = $connection->select(sprintf(
+                "PRAGMA index_list('%s')",
+                str_replace("'", "''", $table)
+            ));
+
+            foreach ($result as $row) {
+                $name = $row->name ?? $row->Name ?? null;
+
+                if ($name === $index) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         if ($connection->getDriverName() === 'pgsql') {
             $result = $connection->select(
                 "SELECT 1 FROM pg_indexes WHERE tablename = ? AND indexname = ?",
