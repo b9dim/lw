@@ -1,3 +1,5 @@
+# force rebuild v2
+
 FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
@@ -30,5 +32,4 @@ RUN php artisan storage:link || true
 
 EXPOSE 10000
 
-# حل Mixed Content: إزالة كل أوامر الكاش
 CMD sh -c "mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions storage/logs bootstrap/cache public/build && chmod -R 755 storage bootstrap/cache public/build && php artisan serve --host=0.0.0.0 --port=$PORT"
