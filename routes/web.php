@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CasesController;
 use App\Http\Controllers\Admin\InquiriesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\RatingsController;
+use App\Http\Controllers\Admin\ContactMessagesController;
 use App\Http\Controllers\Client\RatingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -94,5 +95,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::post('/ratings/{rating}/approve', [RatingsController::class, 'approve'])->name('ratings.approve');
     Route::post('/ratings/{rating}/reject', [RatingsController::class, 'reject'])->name('ratings.reject');
     Route::delete('/ratings/{rating}', [RatingsController::class, 'destroy'])->name('ratings.destroy');
+    
+    // Contact Messages Management
+    Route::get('/contact-messages', [ContactMessagesController::class, 'index'])->name('contact-messages.index');
+    Route::get('/contact-messages/{contactMessage}', [ContactMessagesController::class, 'show'])->name('contact-messages.show');
+    Route::post('/contact-messages/{contactMessage}/mark-read', [ContactMessagesController::class, 'markAsRead'])->name('contact-messages.mark-read');
+    Route::post('/contact-messages/{contactMessage}/mark-unread', [ContactMessagesController::class, 'markAsUnread'])->name('contact-messages.mark-unread');
+    Route::delete('/contact-messages/{contactMessage}', [ContactMessagesController::class, 'destroy'])->name('contact-messages.destroy');
 });
 

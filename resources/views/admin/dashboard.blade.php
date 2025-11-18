@@ -9,7 +9,7 @@
 </div>
 
 <!-- Stats Cards -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
     <div class="card-dashboard">
         <div class="flex items-center justify-between">
             <div>
@@ -67,6 +67,20 @@
             <div class="icon-circle icon-circle-lg icon-circle-accent">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M7 7h10a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-2.5L12 17v-2H7a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="card-dashboard">
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="stat-label">رسائل غير مقروءة</p>
+                <p class="stat-number" style="color: #f59e0b;">{{ $stats['unread_messages'] }}</p>
+            </div>
+            <div class="icon-circle icon-circle-lg text-primary">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
             </div>
         </div>

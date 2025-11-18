@@ -85,7 +85,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ force_https_route('contact.store') }}" method="POST" class="space-y-5">
+                    <form action="{{ force_https_route('contact.store') }}" method="POST" class="space-y-5" id="contactForm">
                         @csrf
                         <div>
                             <label class="block text-gray-700 mb-2 font-semibold">الاسم</label>
@@ -103,8 +103,16 @@
                             <label class="block text-gray-700 mb-2 font-semibold">الرسالة</label>
                             <textarea name="message" rows="5" class="form-input-attorney" required></textarea>
                         </div>
+                        <div>
+                            <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
+                            @error('g-recaptcha-response')
+                                <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+                            @enderror
+                        </div>
                         <button type="submit" class="btn-attorney-primary w-full">إرسال الرسالة</button>
                     </form>
+                    
+                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
                 </div>
             </div>
         </div>

@@ -41,7 +41,20 @@ class HomeController extends Controller
             'email' => 'required|email|max:255',
             'subject' => 'required|string|max:255',
             'message' => 'required|string|max:2000',
+            'g-recaptcha-response' => 'required',
         ]);
+
+        // Verify reCAPTCHA
+        $recaptchaSecret = config('services.recaptcha.secret_key');
+        if ($recaptchaSecret) {
+            $recaptchaResponse = $request->input('g-recaptcha-response');
+            $verifyResponse = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$recaptchaSecret}&response={$recaptchaResponse}");
+            $responseData = json_decode($verifyResponse);
+            
+            if (!$responseData->success) {
+                return back()->withErrors(['g-recaptcha-response' => 'فشل التحقق من reCAPTCHA. يرجى المحاولة مرة أخرى.'])->withInput();
+            }
+        }
 
         ContactMessage::create([
             'name' => $validated['name'],

@@ -7,6 +7,7 @@ use App\Models\Case_;
 use App\Models\Client;
 use App\Models\Inquiry;
 use App\Models\Rating;
+use App\Models\ContactMessage;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -26,6 +27,7 @@ class DashboardController extends Controller
             'total_clients' => Client::count(),
             'pending_inquiries' => Inquiry::whereNull('reply')->count(),
             'pending_ratings' => Rating::where('status', 'pending')->count(),
+            'unread_messages' => ContactMessage::where('read', false)->count(),
         ];
 
         // تحديد الأعمدة المطلوبة فقط لتحسين الأداء
