@@ -3,9 +3,9 @@
 @section('title', 'لوحة التحكم')
 
 @section('content')
-<div class="mb-8">
-    <h1 class="text-4xl font-bold text-primary mb-2">لوحة التحكم</h1>
-    <p class="text-gray-600 text-lg">نظرة عامة على النظام والإحصائيات</p>
+<div class="mb-8 lg:mb-12">
+    <h1 class="text-4xl lg:text-5xl font-bold text-primary mb-2 lg:mb-3">لوحة التحكم</h1>
+    <p class="text-gray-600 text-lg lg:text-xl">نظرة عامة على النظام والإحصائيات</p>
 </div>
 
 <!-- Stats Cards -->
@@ -171,13 +171,13 @@
 
 <!-- Recent Cases -->
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <div class="card-dashboard p-4 md:p-8">
-        <div class="mb-6 flex items-center justify-between flex-wrap gap-3">
-            <div class="flex items-center gap-3">
-                <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
-                <h2 class="text-2xl font-bold text-primary">آخر القضايا</h2>
+    <div class="card-dashboard p-4 md:p-8 lg:p-10">
+        <div class="mb-6 lg:mb-8 flex items-center justify-between flex-wrap gap-3 lg:gap-4">
+            <div class="flex items-center gap-3 lg:gap-4">
+                <div class="w-1 h-8 lg:h-10 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                <h2 class="text-2xl lg:text-3xl font-bold text-primary">آخر القضايا</h2>
             </div>
-            <span class="rounded-full bg-slate-100 px-4 py-1 text-sm font-semibold text-slate-600 shadow-inner">{{ $recentCases->count() }} قضية</span>
+            <span class="rounded-full bg-slate-100 px-4 py-1 text-sm lg:text-base font-semibold text-slate-600 shadow-inner">{{ $recentCases->count() }} قضية</span>
         </div>
         @if($recentCases->count() > 0)
             @php
@@ -322,13 +322,13 @@
         @endif
     </div>
 
-    <div class="card-dashboard p-4 md:p-8">
-        <div class="mb-6 flex items-center justify-between flex-wrap gap-3">
-            <div class="flex items-center gap-3">
-                <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
-                <h2 class="text-2xl font-bold text-primary">استفسارات معلقة</h2>
+    <div class="card-dashboard p-4 md:p-8 lg:p-10">
+        <div class="mb-6 lg:mb-8 flex items-center justify-between flex-wrap gap-3 lg:gap-4">
+            <div class="flex items-center gap-3 lg:gap-4">
+                <div class="w-1 h-8 lg:h-10 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                <h2 class="text-2xl lg:text-3xl font-bold text-primary">استفسارات معلقة</h2>
             </div>
-            <span class="rounded-full bg-slate-100 px-4 py-1 text-sm font-semibold text-slate-600 shadow-inner">{{ $recentInquiries->count() }} استفسار</span>
+            <span class="rounded-full bg-slate-100 px-4 py-1 text-sm lg:text-base font-semibold text-slate-600 shadow-inner">{{ $recentInquiries->count() }} استفسار</span>
         </div>
         @if($recentInquiries->count() > 0)
             <div class="space-y-3">
@@ -366,13 +366,13 @@
         @endif
     </div>
 
-    <div class="card-dashboard p-4 md:p-8">
-        <div class="mb-6 flex items-center justify-between flex-wrap gap-3">
-            <div class="flex items-center gap-3">
-                <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
-                <h2 class="text-2xl font-bold text-primary">تقييمات قيد المراجعة</h2>
+    <div class="card-dashboard p-4 md:p-8 lg:p-10">
+        <div class="mb-6 lg:mb-8 flex items-center justify-between flex-wrap gap-3 lg:gap-4">
+            <div class="flex items-center gap-3 lg:gap-4">
+                <div class="w-1 h-8 lg:h-10 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                <h2 class="text-2xl lg:text-3xl font-bold text-primary">تقييمات قيد المراجعة</h2>
             </div>
-            <span class="rounded-full bg-slate-100 px-4 py-1 text-sm font-semibold text-slate-600 shadow-inner">{{ $recentRatings->count() }} تقييم</span>
+            <span class="rounded-full bg-slate-100 px-4 py-1 text-sm lg:text-base font-semibold text-slate-600 shadow-inner">{{ $recentRatings->count() }} تقييم</span>
         </div>
         @if($recentRatings->count() > 0)
             <div class="space-y-3">

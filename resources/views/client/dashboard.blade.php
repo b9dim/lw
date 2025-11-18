@@ -3,9 +3,9 @@
 @section('title', 'لوحة العميل')
 
 @section('content')
-<div class="mb-8">
-    <h1 class="text-4xl font-bold text-primary mb-2">مرحباً، {{ auth()->guard('client')->user()->name }}</h1>
-    <p class="text-gray-600 text-lg">تابع قضاياك واستفساراتك من هنا</p>
+<div class="mb-8 lg:mb-12">
+    <h1 class="text-4xl lg:text-5xl font-bold text-primary mb-2 lg:mb-3">مرحباً، {{ auth()->guard('client')->user()->name }}</h1>
+    <p class="text-gray-600 text-lg lg:text-xl">تابع قضاياك واستفساراتك من هنا</p>
 </div>
 
 <!-- Stats Cards -->
