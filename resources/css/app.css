@@ -1231,12 +1231,17 @@ body {
 
 /* Ensure body padding for fixed client header */
 body:has(.header-client) {
-    padding-top: 80px;
+    padding-top: 0;
+}
+
+/* Add padding to main content when client header is present */
+body:has(.header-client) .main-client-content {
+    padding-top: 6rem;
 }
 
 @media (max-width: 768px) {
-    body:has(.header-client) {
-        padding-top: 70px;
+    body:has(.header-client) .main-client-content {
+        padding-top: 5.5rem;
     }
 }
 
