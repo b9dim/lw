@@ -52,7 +52,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 md:px-8 lg:px-12 py-8 main-client-content">
+    <main class="container mx-auto px-6 md:px-8 lg:px-12 pt-24 py-8 main-client-content">
         @if(session('success'))
             <div class="bg-green-100 border-r-4 border-green-500 text-green-700 px-6 py-4 rounded-lg mb-6 shadow-md">
                 <div class="flex items-center gap-3">
