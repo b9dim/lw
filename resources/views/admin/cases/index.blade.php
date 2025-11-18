@@ -44,9 +44,14 @@
                             <td class="font-semibold">{{ $case->client->name }}</td>
                             <td>{{ $case->court_name ?? '-' }}</td>
                             <td>
-                                <span class="badge-dashboard badge-{{ str_replace(' ', '-', strtolower($case->status)) }}">
-                                    {{ $case->status }}
-                                </span>
+                                <div class="inline-flex flex-wrap items-center gap-2 text-sm leading-tight">
+                                    <span class="badge-dashboard badge-{{ str_replace(' ', '-', strtolower($case->status)) }}">
+                                        {{ $case->status }}
+                                    </span>
+                                    <span class="text-gray-600 font-medium">
+                                        {{ $case->last_update_text ?? 'لا يوجد تحديث مضاف بعد' }}
+                                    </span>
+                                </div>
                             </td>
                             <td>
                                 <div class="flex gap-2 flex-wrap">
@@ -77,9 +82,14 @@
                             <p class="text-xs text-gray-500 mb-1">رقم القضية</p>
                             <p class="font-mono font-semibold text-primary text-sm break-all">{{ $case->case_number }}</p>
                         </div>
-                        <span class="badge-dashboard badge-{{ str_replace(' ', '-', strtolower($case->status)) }} text-xs ml-2 flex-shrink-0">
-                            {{ $case->status }}
-                        </span>
+                        <div class="flex flex-col items-end gap-1 text-right">
+                            <span class="badge-dashboard badge-{{ str_replace(' ', '-', strtolower($case->status)) }} text-xs ml-2 flex-shrink-0">
+                                {{ $case->status }}
+                            </span>
+                            <span class="text-xs text-gray-600 font-medium leading-snug">
+                                {{ $case->last_update_text ?? 'لا يوجد تحديث مضاف بعد' }}
+                            </span>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <p class="text-xs text-gray-500 mb-1">العميل</p>
