@@ -89,120 +89,141 @@
 
 <!-- Recent Cases -->
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <div class="card-dashboard p-6">
-        <div class="mb-6 flex items-center gap-3">
-            <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
-            <h2 class="text-2xl font-bold text-primary">آخر القضايا</h2>
+    <div class="card-dashboard p-4 md:p-8">
+        <div class="mb-6 flex items-center justify-between flex-wrap gap-3">
+            <div class="flex items-center gap-3">
+                <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                <h2 class="text-2xl font-bold text-primary">آخر القضايا</h2>
+            </div>
+            <span class="rounded-full bg-slate-100 px-4 py-1 text-sm font-semibold text-slate-600 shadow-inner">{{ $recentCases->count() }} قضية</span>
         </div>
         @if($recentCases->count() > 0)
-            <div class="space-y-4">
+            <div class="space-y-3">
                 @foreach($recentCases as $case)
-                    <div class="border-b border-gray-200 pb-4 last:border-0 hover:bg-gray-50 p-2 rounded transition">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <p class="font-semibold text-primary">{{ $case->case_number }}</p>
-                                <p class="text-sm text-gray-600">{{ $case->client->name }}</p>
+                    <div class="rounded-2xl border border-slate-200/70 bg-white p-4 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5">
+                        <div class="flex justify-between items-start gap-4">
+                            <div class="flex-1 min-w-0">
+                                <div class="inline-flex items-center gap-2 rounded-2xl border border-[#E5E7EB] bg-white/80 px-3 py-1.5 font-semibold text-slate-900 shadow-sm mb-2">
+                                    <span class="text-[10px] uppercase tracking-[0.35em] text-slate-400">قضية</span>
+                                    <span class="font-mono text-sm text-slate-900">{{ $case->case_number }}</span>
+                                </div>
+                                <p class="text-sm font-semibold text-slate-900 mt-2">{{ $case->client->name }}</p>
+                                <p class="text-[11px] text-slate-400 mt-1">أضيفت {{ $case->created_at->format('Y-m-d') }}</p>
                             </div>
-                            <span class="badge-dashboard badge-{{ str_replace(' ', '-', strtolower($case->status)) }}">
+                            <span class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold shadow-sm bg-slate-100 text-slate-600">
+                                <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
                                 {{ $case->status }}
                             </span>
                         </div>
                     </div>
                 @endforeach
             </div>
-            <a href="{{ route('admin.cases.index') }}" class="btn-attorney-secondary mt-6 inline-block">
-                عرض الكل ←
-            </a>
-        @else
-            <div class="text-center py-8">
-                <div class="icon-circle icon-circle-lg icon-circle-accent mx-auto mb-4">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M4 7h16M4 12h16M4 17h10" />
-                        <rect x="2" y="3" width="20" height="18" rx="2" />
+            <div class="mt-6">
+                <a href="{{ route('admin.cases.index') }}" class="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-l from-primary to-accent px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:shadow-md">
+                    <span>عرض الكل</span>
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 18l6-6-6-6" />
                     </svg>
-                </div>
-                <p class="text-gray-600">لا توجد قضايا</p>
+                </a>
+            </div>
+        @else
+            <div class="text-center py-12">
+                <div class="text-6xl mb-4 opacity-30">⚖️</div>
+                <p class="text-gray-600 text-lg">لا توجد قضايا</p>
             </div>
         @endif
     </div>
 
-    <div class="card-dashboard p-6">
-        <div class="mb-6 flex items-center gap-3">
-            <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
-            <h2 class="text-2xl font-bold text-primary">استفسارات معلقة</h2>
+    <div class="card-dashboard p-4 md:p-8">
+        <div class="mb-6 flex items-center justify-between flex-wrap gap-3">
+            <div class="flex items-center gap-3">
+                <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                <h2 class="text-2xl font-bold text-primary">استفسارات معلقة</h2>
+            </div>
+            <span class="rounded-full bg-slate-100 px-4 py-1 text-sm font-semibold text-slate-600 shadow-inner">{{ $recentInquiries->count() }} استفسار</span>
         </div>
         @if($recentInquiries->count() > 0)
-            <div class="space-y-4">
+            <div class="space-y-3">
                 @foreach($recentInquiries as $inquiry)
-                    <div class="border-b border-gray-200 pb-4 last:border-0 hover:bg-gray-50 p-2 rounded transition">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <p class="font-semibold text-primary">{{ $inquiry->case->case_number }}</p>
-                                <p class="text-sm text-gray-600">{{ $inquiry->client->name }}</p>
-                                <p class="text-sm text-gray-500 mt-1">{{ Str::limit($inquiry->message, 50) }}</p>
+                    <div class="rounded-2xl border border-slate-200/70 bg-white p-4 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5">
+                        <div class="flex justify-between items-start gap-4">
+                            <div class="flex-1 min-w-0">
+                                <div class="inline-flex items-center gap-2 rounded-2xl border border-[#E5E7EB] bg-white/80 px-3 py-1.5 font-semibold text-slate-900 shadow-sm mb-2">
+                                    <span class="text-[10px] uppercase tracking-[0.35em] text-slate-400">قضية</span>
+                                    <span class="font-mono text-sm text-slate-900">{{ $inquiry->case->case_number }}</span>
+                                </div>
+                                <p class="text-sm font-semibold text-slate-900">{{ $inquiry->client->name }}</p>
+                                <p class="text-sm text-slate-600 mt-1">{{ Str::limit($inquiry->message, 50) }}</p>
+                                <p class="text-[11px] text-slate-400 mt-1">{{ $inquiry->created_at->format('Y-m-d H:i') }}</p>
                             </div>
                             <a href="{{ route('admin.inquiries.show', $inquiry->id) }}" 
-                               class="action-link action-link-view text-sm">عرض</a>
+                               class="inline-flex items-center justify-center rounded-2xl bg-gradient-to-l from-primary to-accent px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:shadow-md flex-shrink-0">عرض</a>
                         </div>
                     </div>
                 @endforeach
             </div>
-            <a href="{{ route('admin.inquiries.index') }}" class="btn-attorney-secondary mt-6 inline-block">
-                عرض الكل ←
-            </a>
-        @else
-            <div class="text-center py-8">
-                <div class="icon-circle icon-circle-lg icon-circle-accent mx-auto mb-4">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M7 7h10a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-2.5L12 17v-2H7a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3z" />
+            <div class="mt-6">
+                <a href="{{ route('admin.inquiries.index') }}" class="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-l from-primary to-accent px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:shadow-md">
+                    <span>عرض الكل</span>
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 18l6-6-6-6" />
                     </svg>
-                </div>
-                <p class="text-gray-600">لا توجد استفسارات معلقة</p>
+                </a>
+            </div>
+        @else
+            <div class="text-center py-12">
+                <div class="text-6xl mb-4 opacity-30">💬</div>
+                <p class="text-gray-600 text-lg">لا توجد استفسارات معلقة</p>
             </div>
         @endif
     </div>
 
-    <div class="card-dashboard p-6">
-        <div class="mb-6 flex items-center gap-3">
-            <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
-            <h2 class="text-2xl font-bold text-primary">تقييمات قيد المراجعة</h2>
+    <div class="card-dashboard p-4 md:p-8">
+        <div class="mb-6 flex items-center justify-between flex-wrap gap-3">
+            <div class="flex items-center gap-3">
+                <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                <h2 class="text-2xl font-bold text-primary">تقييمات قيد المراجعة</h2>
+            </div>
+            <span class="rounded-full bg-slate-100 px-4 py-1 text-sm font-semibold text-slate-600 shadow-inner">{{ $recentRatings->count() }} تقييم</span>
         </div>
         @if($recentRatings->count() > 0)
-            <div class="space-y-4">
+            <div class="space-y-3">
                 @foreach($recentRatings as $rating)
-                    <div class="border-b border-gray-200 pb-4 last:border-0 hover:bg-gray-50 p-2 rounded transition">
-                        <div class="flex justify-between items-start">
-                            <div class="flex-1">
-                                <p class="font-semibold text-primary">{{ $rating->client->name }}</p>
-                                <div class="flex items-center gap-2 mt-1">
+                    <div class="rounded-2xl border border-slate-200/70 bg-white p-4 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5">
+                        <div class="flex justify-between items-start gap-4">
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-semibold text-slate-900">{{ $rating->client->name }}</p>
+                                <div class="flex items-center gap-2 mt-2">
                                     <div class="flex gap-1">
                                         @for($i = 1; $i <= 5; $i++)
-                                            <span class="text-sm {{ $i <= $rating->rating ? 'text-yellow-400' : 'text-gray-300' }}">★</span>
+                                            <span class="text-lg {{ $i <= $rating->rating ? 'text-yellow-400' : 'text-gray-300' }}">★</span>
                                         @endfor
                                     </div>
-                                    <span class="text-sm text-gray-500">({{ $rating->rating }}/5)</span>
+                                    <span class="text-sm text-slate-600 font-medium">({{ $rating->rating }}/5)</span>
                                 </div>
                                 @if($rating->comment)
-                                    <p class="text-sm text-gray-500 mt-2">{{ Str::limit($rating->comment, 60) }}</p>
+                                    <p class="text-sm text-slate-600 mt-2">{{ Str::limit($rating->comment, 60) }}</p>
                                 @endif
+                                <p class="text-[11px] text-slate-400 mt-2">{{ $rating->created_at->format('Y-m-d') }}</p>
                             </div>
                             <a href="{{ route('admin.ratings.index') }}" 
-                               class="action-link action-link-view text-sm">عرض</a>
+                               class="inline-flex items-center justify-center rounded-2xl bg-gradient-to-l from-primary to-accent px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:shadow-md flex-shrink-0">عرض</a>
                         </div>
                     </div>
                 @endforeach
             </div>
-            <a href="{{ route('admin.ratings.index') }}" class="btn-attorney-secondary mt-6 inline-block">
-                عرض الكل ←
-            </a>
-        @else
-            <div class="text-center py-8">
-                <div class="icon-circle icon-circle-lg icon-circle-accent mx-auto mb-4">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            <div class="mt-6">
+                <a href="{{ route('admin.ratings.index') }}" class="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-l from-primary to-accent px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:shadow-md">
+                    <span>عرض الكل</span>
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 18l6-6-6-6" />
                     </svg>
-                </div>
-                <p class="text-gray-600">لا توجد تقييمات قيد المراجعة</p>
+                </a>
+            </div>
+        @else
+            <div class="text-center py-12">
+                <div class="text-6xl mb-4 opacity-30">⭐</div>
+                <p class="text-gray-600 text-lg">لا توجد تقييمات قيد المراجعة</p>
             </div>
         @endif
     </div>
