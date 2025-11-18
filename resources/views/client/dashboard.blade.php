@@ -55,7 +55,6 @@
                         <th>رقم القضية</th>
                         <th>المحكمة</th>
                         <th>الحالة</th>
-                        <th>المحامي</th>
                         <th>الإجراءات</th>
                     </tr>
                 </thead>
@@ -69,7 +68,6 @@
                                     {{ $case->status }}
                                 </span>
                             </td>
-                            <td>{{ $case->lawyer->name ?? 'غير محدد' }}</td>
                             <td>
                                 <a href="{{ route('client.cases.show', $case->id) }}" 
                                    class="action-link action-link-view">عرض التفاصيل</a>

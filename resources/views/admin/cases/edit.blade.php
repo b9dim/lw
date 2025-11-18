@@ -61,30 +61,13 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-                <label class="block text-gray-700 mb-2 font-semibold">المحامي</label>
-                <select name="lawyer_id" class="form-input-attorney @error('lawyer_id') border-red-500 @enderror">
-                    <option value="">اختر المحامي</option>
-                    @foreach($lawyers as $lawyer)
-                        <option value="{{ $lawyer->id }}" {{ old('lawyer_id', $case->lawyer_id) == $lawyer->id ? 'selected' : '' }}>
-                            {{ $lawyer->name }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('lawyer_id')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div>
-                <label class="block text-gray-700 mb-2 font-semibold">المحكمة</label>
-                <input type="text" name="court_name" value="{{ old('court_name', $case->court_name) }}" 
-                       class="form-input-attorney @error('court_name') border-red-500 @enderror">
-                @error('court_name')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
-            </div>
+        <div>
+            <label class="block text-gray-700 mb-2 font-semibold">المحكمة</label>
+            <input type="text" name="court_name" value="{{ old('court_name', $case->court_name) }}" 
+                   class="form-input-attorney @error('court_name') border-red-500 @enderror">
+            @error('court_name')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
         </div>
 
         <div>

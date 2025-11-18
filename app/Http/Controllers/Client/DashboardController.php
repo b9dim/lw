@@ -24,7 +24,7 @@ class DashboardController extends Controller
             ->with([
                 'inquiries:id,case_id,message,created_at'
             ])
-            ->select('id', 'case_number', 'status', 'created_at', 'last_update_text')
+            ->select('id', 'case_number', 'status', 'created_at', 'last_update_text', 'court_name')
             ->latest()
             ->get();
 

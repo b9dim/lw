@@ -30,7 +30,6 @@
                     <tr>
                         <th>رقم القضية</th>
                         <th>العميل</th>
-                        <th>المحامي</th>
                         <th>المحكمة</th>
                         <th>الحالة</th>
                         <th>الإجراءات</th>
@@ -41,7 +40,6 @@
                         <tr>
                             <td class="font-mono font-semibold text-primary">{{ $case->case_number }}</td>
                             <td class="font-semibold">{{ $case->client->name }}</td>
-                            <td>{{ $case->lawyer->name ?? '-' }}</td>
                             <td>{{ $case->court_name ?? '-' }}</td>
                             <td>
                                 <span class="badge-dashboard badge-{{ str_replace(' ', '-', strtolower($case->status)) }}">

@@ -19,15 +19,14 @@ class CasesController extends Controller
 
     public function index()
     {
-        $cases = Case_::with(['client', 'lawyer'])->latest()->paginate(15);
+        $cases = Case_::with(['client'])->latest()->paginate(15);
         return view('admin.cases.index', compact('cases'));
     }
 
     public function create()
     {
         $clients = Client::orderBy('name')->get(['id', 'name', 'national_id']);
-        $lawyers = User::where('role', 'محامي')->orderBy('name')->get(['id', 'name']);
-        return view('admin.cases.create', compact('clients', 'lawyers'));
+        return view('admin.cases.create', compact('clients'));
     }
 
     public function getLastCaseNumber()
@@ -113,7 +112,6 @@ class CasesController extends Controller
         $validated = $request->validate([
             'case_number' => 'required|string|unique:cases,case_number',
             'client_id' => 'required|exists:clients,id',
-            'lawyer_id' => 'nullable|exists:users,id',
             'court_name' => 'nullable|string|max:255',
             'status' => 'required|in:قيد المعالجة,قيد المحاكمة,منتهية,ملغاة',
             'description' => 'nullable|string',
@@ -133,8 +131,7 @@ class CasesController extends Controller
     public function edit(Case_ $case)
     {
         $clients = Client::orderBy('name')->get(['id', 'name', 'national_id']);
-        $lawyers = User::where('role', 'محامي')->orderBy('name')->get(['id', 'name']);
-        return view('admin.cases.edit', compact('case', 'clients', 'lawyers'));
+        return view('admin.cases.edit', compact('case', 'clients'));
     }
 
     public function update(Request $request, Case_ $case)
@@ -142,7 +139,6 @@ class CasesController extends Controller
         $validated = $request->validate([
             'case_number' => 'required|string|unique:cases,case_number,' . $case->id,
             'client_id' => 'required|exists:clients,id',
-            'lawyer_id' => 'nullable|exists:users,id',
             'court_name' => 'nullable|string|max:255',
             'status' => 'required|in:قيد المعالجة,قيد المحاكمة,منتهية,ملغاة',
             'description' => 'nullable|string',
