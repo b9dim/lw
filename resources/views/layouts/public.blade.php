@@ -28,13 +28,13 @@
     <!-- Header -->
     <header class="header-attorney">
         <nav class="container mx-auto">
-            <div class="flex items-center justify-between flex-wrap gap-4 px-6 md:px-8 lg:px-12 xl:px-16">
-                <div class="flex items-center space-x-reverse space-x-6 md:space-x-10 flex-1 min-w-0">
-                    <a href="{{ route('home') }}" class="logo whitespace-nowrap flex items-center gap-3">
-                        <div class="logo-gold">
+            <div class="flex items-center justify-between gap-4 px-6 md:px-8 lg:px-12 xl:px-16">
+                <div class="flex items-center space-x-reverse space-x-6 md:space-x-10 flex-shrink-0">
+                    <a href="{{ route('home') }}" class="logo whitespace-nowrap flex items-center gap-3 z-10">
+                        <div class="logo-gold flex-shrink-0">
                             <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-12 w-auto">
                         </div>
-                        <div class="flex flex-col">
+                        <div class="flex flex-col flex-shrink-0">
                             <span class="font-extrabold text-lg leading-tight">مكتب مسفر محمد العرجاني</span>
                             <span class="text-sm text-gold/80">للمحاماة والاستشارات القانونية</span>
                         </div>
@@ -46,7 +46,7 @@
                         <a href="{{ route('contact') }}" class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">اتصل بنا</a>
                     </div>
                 </div>
-                <div class="flex items-center gap-3 flex-shrink-0">
+                <div class="flex items-center gap-3 flex-shrink-0 z-10">
                     <a href="{{ route('client.login') }}" class="btn-attorney-secondary whitespace-nowrap flex items-center gap-2">
                         <span>دخول العملاء</span>
                     </a>

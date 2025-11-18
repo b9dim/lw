@@ -19,15 +19,15 @@
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
-    <header class="header-attorney">
+    <header class="header-attorney header-client" id="clientHeader">
         <nav class="container mx-auto">
-            <div class="flex items-center justify-between flex-wrap gap-4 px-6 md:px-8 lg:px-12 xl:px-16">
-                <div class="flex items-center space-x-reverse space-x-6 md:space-x-10 flex-1 min-w-0">
-                    <a href="{{ route('home') }}" class="logo whitespace-nowrap flex items-center gap-3">
-                        <div class="logo-gold">
+            <div class="flex items-center justify-between gap-4 px-6 md:px-8 lg:px-12 xl:px-16">
+                <div class="flex items-center space-x-reverse space-x-6 md:space-x-10 flex-shrink-0">
+                    <a href="{{ route('home') }}" class="logo whitespace-nowrap flex items-center gap-3 z-10">
+                        <div class="logo-gold flex-shrink-0">
                             <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-12 w-auto">
                         </div>
-                        <div class="flex flex-col">
+                        <div class="flex flex-col flex-shrink-0">
                             <span class="font-extrabold text-lg leading-tight">مكتب مسفر محمد العرجاني</span>
                             <span class="text-sm text-gold/80">للمحاماة والاستشارات القانونية</span>
                         </div>
@@ -36,7 +36,7 @@
                         <a href="{{ route('client.dashboard') }}" class="nav-link {{ request()->routeIs('client.*') ? 'active' : '' }}">لوحة العميل</a>
                     </div>
                 </div>
-                <div class="flex items-center gap-3 flex-shrink-0">
+                <div class="flex items-center gap-3 flex-shrink-0 z-10">
                     <a href="{{ route('client.dashboard') }}" class="btn-attorney-secondary text-sm flex items-center gap-2">
                         <span>جميع قضاياي</span>
                     </a>
@@ -131,6 +131,47 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Hide header on scroll down, show on scroll up
+        (function() {
+            let lastScrollTop = 0;
+            const header = document.getElementById('clientHeader');
+            if (!header) return;
+            
+            let scrollTimeout;
+            let ticking = false;
+
+            function handleScroll() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                        
+                        clearTimeout(scrollTimeout);
+                        
+                        if (scrollTop > lastScrollTop && scrollTop > 100) {
+                            // Scrolling down - hide header
+                            header.classList.add('hidden');
+                        } else if (scrollTop < lastScrollTop) {
+                            // Scrolling up - show header
+                            header.classList.remove('hidden');
+                        }
+                        
+                        // At top of page - always show
+                        if (scrollTop <= 50) {
+                            header.classList.remove('hidden');
+                        }
+                        
+                        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll, { passive: true });
+        })();
+    </script>
 
 </body>
 </html>
