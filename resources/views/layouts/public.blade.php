@@ -50,9 +50,6 @@
                     <a href="{{ route('client.login') }}" class="btn-attorney-secondary whitespace-nowrap flex items-center gap-2">
                         <span>دخول العملاء</span>
                     </a>
-                    <a href="{{ route('contact') }}" class="px-5 py-2 rounded-full bg-gold text-deep font-semibold hover:bg-[#A0842F] transition shadow-lg whitespace-nowrap">
-                        احجز استشارة
-                    </a>
                 </div>
             </div>
         </nav>

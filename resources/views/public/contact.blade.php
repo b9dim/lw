@@ -57,26 +57,26 @@
                         <div class="grid grid-cols-2 gap-6 mb-6">
                             <div>
                                 <label class="block text-gold mb-1">الاسم الكامل</label>
-                                <input type="text" name="name" class="w-full bg-deep border border-gold/20 rounded-xl p-3 text-white focus:border-gold" required>
+                                <input type="text" name="name" class="form-input-attorney" required>
                             </div>
                             <div>
                                 <label class="block text-gold mb-1">رقم الجوال</label>
-                                <input type="tel" name="phone" class="w-full bg-deep border border-gold/20 rounded-xl p-3 text-white focus:border-gold">
+                                <input type="tel" name="phone" class="form-input-attorney">
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-6 mb-6">
                             <div>
                                 <label class="block text-gold mb-1">البريد الإلكتروني</label>
-                                <input type="email" name="email" class="w-full bg-deep border border-gold/20 rounded-xl p-3 text-white focus:border-gold" required>
+                                <input type="email" name="email" class="form-input-attorney" required>
                             </div>
                             <div>
                                 <label class="block text-gold mb-1">نوع الخدمة</label>
-                                <input type="text" name="subject" class="w-full bg-deep border border-gold/20 rounded-xl p-3 text-white focus:border-gold" required>
+                                <input type="text" name="subject" class="form-input-attorney" required>
                             </div>
                         </div>
                         <div class="mb-6">
                             <label class="block text-gold mb-1">الرسالة</label>
-                            <textarea name="message" rows="5" class="w-full bg-deep border border-gold/20 rounded-xl p-3 text-white focus:border-gold" required></textarea>
+                            <textarea name="message" rows="5" class="form-input-attorney" required></textarea>
                         </div>
                         <div>
                             <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>

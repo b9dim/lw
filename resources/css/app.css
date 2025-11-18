@@ -212,15 +212,28 @@ body {
     }
 }
 
-/* Card Styles - Dark Professional Design */
+/* Card Styles - White Background */
 .card-attorney {
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(16px);
+    background: #ffffff;
     border-radius: 24px;
     box-shadow: var(--shadow-xl);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--border-color);
     overflow: hidden;
+    color: var(--text-dark);
+}
+
+.card-attorney h1,
+.card-attorney h2,
+.card-attorney h3,
+.card-attorney h4,
+.card-attorney h5,
+.card-attorney h6 {
+    color: var(--text-dark);
+}
+
+.card-attorney p {
+    color: var(--text-gray);
 }
 
 .card-attorney:hover {
@@ -581,7 +594,7 @@ body {
     color: var(--text-dark);
 }
 
-/* Form Styles - Modern Professional */
+/* Form Styles - White Background */
 .form-input-attorney,
 .form-input-moj {
     border: 1px solid var(--border-color);
@@ -591,8 +604,8 @@ body {
     transition: all 0.3s ease;
     font-family: 'Tajawal', 'Cairo', sans-serif;
     font-size: 16px;
-    color: var(--text-white);
-    background: var(--deep);
+    color: var(--text-dark);
+    background: #ffffff;
 }
 
 .form-input-attorney:focus,
@@ -600,7 +613,7 @@ body {
     outline: none;
     border-color: var(--accent-color);
     box-shadow: 0 0 0 4px rgba(200, 168, 72, 0.1);
-    background: rgba(7, 32, 23, 0.8);
+    background: #ffffff;
 }
 
 .form-input-attorney::placeholder,
