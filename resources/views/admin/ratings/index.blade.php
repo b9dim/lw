@@ -39,10 +39,11 @@
     </div>
 </div>
 
-<div class="card-attorney p-8">
+<div class="card-attorney p-4 md:p-8">
     @if($ratings->count() > 0)
-        <div class="overflow-x-auto">
-            <table class="table-dashboard">
+        <!-- Desktop Table View -->
+        <div class="hidden md:block overflow-x-auto">
+            <table class="table-dashboard w-full">
                 <thead>
                     <tr>
                         <th>العميل</th>
@@ -102,6 +103,64 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- Mobile Card View -->
+        <div class="md:hidden space-y-4">
+            @foreach($ratings as $rating)
+                <div class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex-1 min-w-0">
+                            <p class="text-xs text-gray-500 mb-1">العميل</p>
+                            <p class="text-gray-800 font-semibold text-sm">{{ $rating->client->name }}</p>
+                        </div>
+                        @if($rating->status === 'pending')
+                            <span class="badge-dashboard badge-processing text-xs ml-2 flex-shrink-0">قيد المراجعة</span>
+                        @elseif($rating->status === 'approved')
+                            <span class="badge-dashboard badge-completed text-xs ml-2 flex-shrink-0">معتمد</span>
+                        @else
+                            <span class="badge-dashboard badge-cancelled text-xs ml-2 flex-shrink-0">مرفوض</span>
+                        @endif
+                    </div>
+                    <div class="mb-3">
+                        <p class="text-xs text-gray-500 mb-1">التقييم</p>
+                        <div class="flex gap-1 items-center">
+                            @for($i = 1; $i <= 5; $i++)
+                                <span class="text-lg {{ $i <= $rating->rating ? 'text-yellow-400' : 'text-gray-300' }}">★</span>
+                            @endfor
+                            <span class="mr-2 text-gray-600 text-sm">({{ $rating->rating }}/5)</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <p class="text-xs text-gray-500 mb-1">التعليق</p>
+                        <p class="text-gray-800 text-sm">{{ Str::limit($rating->comment ?? 'لا يوجد تعليق', 100) }}</p>
+                    </div>
+                    <div class="mb-3">
+                        <p class="text-xs text-gray-500 mb-1">التاريخ</p>
+                        <p class="text-gray-800 text-sm">{{ $rating->created_at->format('Y-m-d') }}</p>
+                    </div>
+                    <div class="pt-3 border-t border-gray-100 flex gap-2 flex-wrap">
+                        @if($rating->status === 'pending')
+                            <button type="button" 
+                                    class="flex-1 text-center px-3 py-2 bg-green-50 text-green-600 rounded-lg hover:bg-green-100 transition-colors text-sm font-semibold"
+                                    onclick="showConfirmModal('approve', {{ $rating->id }}, '{{ $rating->client->name }}', '{{ $rating->rating }}')">
+                                موافقة
+                            </button>
+                            <button type="button" 
+                                    class="flex-1 text-center px-3 py-2 bg-orange-50 text-orange-600 rounded-lg hover:bg-orange-100 transition-colors text-sm font-semibold"
+                                    onclick="showConfirmModal('reject', {{ $rating->id }}, '{{ $rating->client->name }}', '{{ $rating->rating }}')">
+                                رفض
+                            </button>
+                        @endif
+                        <button type="button" 
+                                class="flex-1 text-center px-3 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors text-sm font-semibold"
+                                onclick="showConfirmModal('delete', {{ $rating->id }}, '{{ $rating->client->name }}', '{{ $rating->rating }}')">
+                            حذف
+                        </button>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        
         <div class="mt-6">
             {{ $ratings->links() }}
         </div>
