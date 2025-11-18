@@ -44,12 +44,13 @@
 </div>
 
 <!-- Cases List -->
-<div class="card-attorney p-8 mb-8">
+<div class="card-attorney p-4 md:p-8 mb-8">
     <h2 class="text-2xl font-bold text-primary mb-6">قضاياي</h2>
     
     @if($cases->count() > 0)
-        <div class="overflow-x-auto">
-            <table class="table-dashboard">
+        <!-- Desktop Table View (hidden on mobile) -->
+        <div class="hidden md:block overflow-x-auto">
+            <table class="table-dashboard w-full">
                 <thead>
                     <tr>
                         <th>رقم القضية</th>
@@ -61,7 +62,7 @@
                 <tbody>
                     @foreach($cases as $case)
                         <tr>
-                            <td>{{ $case->case_number }}</td>
+                            <td class="font-mono font-semibold text-primary">{{ $case->case_number }}</td>
                             <td>{{ $case->court_name ?? 'غير محدد' }}</td>
                             <td>
                                 <span class="badge-dashboard badge-{{ str_replace(' ', '-', strtolower($case->status)) }}">
@@ -76,6 +77,36 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+
+        <!-- Mobile Card View (visible only on mobile) -->
+        <div class="md:hidden space-y-4">
+            @foreach($cases as $case)
+                <div class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex-1 min-w-0">
+                            <p class="text-xs text-gray-500 mb-1">رقم القضية</p>
+                            <p class="font-mono font-semibold text-primary text-sm break-all">{{ $case->case_number }}</p>
+                        </div>
+                        <span class="badge-dashboard badge-{{ str_replace(' ', '-', strtolower($case->status)) }} text-xs ml-2 flex-shrink-0">
+                            {{ $case->status }}
+                        </span>
+                    </div>
+                    <div class="mb-3">
+                        <p class="text-xs text-gray-500 mb-1">المحكمة</p>
+                        <p class="text-gray-800 text-sm">{{ $case->court_name ?? 'غير محدد' }}</p>
+                    </div>
+                    <div class="pt-3 border-t border-gray-100">
+                        <a href="{{ route('client.cases.show', $case->id) }}" 
+                           class="inline-flex items-center gap-2 text-primary hover:text-accent font-semibold text-sm transition-colors">
+                            <span>عرض التفاصيل</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            @endforeach
         </div>
     @else
         <div class="text-center py-12">
