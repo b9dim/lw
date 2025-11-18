@@ -994,6 +994,70 @@ textarea.form-input-moj {
     color: var(--primary-color);
 }
 
+.case-number-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(17, 94, 59, 0.12) 0%, rgba(200, 168, 72, 0.18) 100%);
+    border: 1px solid rgba(17, 94, 59, 0.25);
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    box-shadow: 0 8px 16px rgba(17, 94, 59, 0.08);
+}
+
+.case-number-pill-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px dashed rgba(200, 168, 72, 0.5);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    flex-shrink: 0;
+    box-shadow: 0 6px 12px rgba(7, 32, 23, 0.12);
+}
+
+.case-number-pill-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.6;
+}
+
+.case-number-pill-text {
+    font-family: 'Cairo', 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--primary-dark);
+}
+
+.js-clickable-row {
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.table-dashboard .js-clickable-row:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+}
+
+.js-clickable-row:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(200, 168, 72, 0.35);
+    border-radius: 12px;
+}
+
+.js-clickable-row[data-row-href]:active {
+    transform: translateY(0);
+}
+
 /* Badge Styles for Dashboard */
 .badge-dashboard {
     padding: 8px 16px;

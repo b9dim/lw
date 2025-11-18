@@ -37,10 +37,20 @@
                         <th>الإجراءات</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach($cases as $case)
-                        <tr>
-                            <td class="font-mono font-semibold text-primary">{{ $case->case_number }}</td>
+                    <tbody>
+                        @foreach($cases as $case)
+                            <tr class="js-clickable-row" data-row-href="{{ route('admin.cases.show', $case->id) }}" tabindex="0" role="link" aria-label="عرض تفاصيل القضية رقم {{ $case->case_number }}">
+                                <td>
+                                    <span class="case-number-pill" title="رقم القضية">
+                                        <span class="case-number-pill-icon" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                <path d="M5 12h14" stroke-linecap="round" stroke-width="1.6" />
+                                                <path d="M9 6l-2 12M17 6l-2 12" stroke-linecap="round" stroke-width="1.6" />
+                                            </svg>
+                                        </span>
+                                        <span class="case-number-pill-text">{{ $case->case_number }}</span>
+                                    </span>
+                                </td>
                             <td class="font-semibold">{{ $case->client->name }}</td>
                             <td>{{ $case->court_name ?? '-' }}</td>
                             <td>
@@ -64,17 +74,20 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>
-                                <div class="flex gap-2 flex-wrap">
-                                    <a href="{{ route('admin.cases.show', $case->id) }}" 
-                                       class="action-link action-link-view">عرض</a>
-                                    <a href="{{ route('admin.cases.edit', $case->id) }}" 
-                                       class="action-link action-link-edit">تعديل</a>
-                                    <form method="POST" action="{{ force_https_route('admin.cases.destroy', $case->id) }}" 
-                                          class="inline" onsubmit="return confirm('هل أنت متأكد من الحذف؟')">
+                                <td>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <a href="{{ route('admin.cases.show', $case->id) }}" 
+                                           class="action-link action-link-view"
+                                           data-row-link-ignore>عرض</a>
+                                        <a href="{{ route('admin.cases.edit', $case->id) }}" 
+                                           class="action-link action-link-edit"
+                                           data-row-link-ignore>تعديل</a>
+                                        <form method="POST" action="{{ force_https_route('admin.cases.destroy', $case->id) }}" 
+                                              class="inline" onsubmit="return confirm('هل أنت متأكد من الحذف؟')"
+                                              data-row-link-ignore>
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="action-link action-link-delete">حذف</button>
+                                            <button type="submit" class="action-link action-link-delete" data-row-link-ignore>حذف</button>
                                     </form>
                                 </div>
                             </td>
@@ -87,11 +100,19 @@
         <!-- Mobile Card View -->
         <div class="md:hidden space-y-4">
             @foreach($cases as $case)
-                <div class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow js-clickable-row" 
+                         data-row-href="{{ route('admin.cases.show', $case->id) }}"
+                         tabindex="0"
+                         role="link"
+                         aria-label="عرض تفاصيل القضية رقم {{ $case->case_number }}">
                     <div class="flex items-start justify-between mb-3">
                         <div class="flex-1 min-w-0">
                             <p class="text-xs text-gray-500 mb-1">رقم القضية</p>
-                            <p class="font-mono font-semibold text-primary text-sm break-all">{{ $case->case_number }}</p>
+                                <p class="text-sm">
+                                    <span class="case-number-pill w-full justify-between">
+                                        <span class="case-number-pill-text break-all">{{ $case->case_number }}</span>
+                                    </span>
+                                </p>
                         </div>
                           <div class="flex flex-col items-end gap-2 text-right">
                               <span class="badge-dashboard badge-{{ str_replace(' ', '-', strtolower($case->status)) }} text-xs ml-2 flex-shrink-0">
@@ -121,20 +142,23 @@
                         <p class="text-xs text-gray-500 mb-1">المحكمة</p>
                         <p class="text-gray-800 text-sm">{{ $case->court_name ?? '-' }}</p>
                     </div>
-                    <div class="pt-3 border-t border-gray-100 flex gap-2 flex-wrap">
-                        <a href="{{ route('admin.cases.show', $case->id) }}" 
-                           class="flex-1 text-center px-3 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors text-sm font-semibold">
+                        <div class="pt-3 border-t border-gray-100 flex gap-2 flex-wrap" data-row-link-ignore>
+                            <a href="{{ route('admin.cases.show', $case->id) }}" 
+                               class="flex-1 text-center px-3 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors text-sm font-semibold"
+                               data-row-link-ignore>
                             عرض
                         </a>
                         <a href="{{ route('admin.cases.edit', $case->id) }}" 
-                           class="flex-1 text-center px-3 py-2 bg-accent/10 text-accent rounded-lg hover:bg-accent/20 transition-colors text-sm font-semibold">
+                               class="flex-1 text-center px-3 py-2 bg-accent/10 text-accent rounded-lg hover:bg-accent/20 transition-colors text-sm font-semibold"
+                               data-row-link-ignore>
                             تعديل
                         </a>
                         <form method="POST" action="{{ force_https_route('admin.cases.destroy', $case->id) }}" 
-                              class="flex-1" onsubmit="return confirm('هل أنت متأكد من الحذف؟')">
+                                  class="flex-1" onsubmit="return confirm('هل أنت متأكد من الحذف؟')"
+                                  data-row-link-ignore>
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="w-full px-3 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors text-sm font-semibold">
+                                <button type="submit" class="w-full px-3 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors text-sm font-semibold" data-row-link-ignore>
                                 حذف
                             </button>
                         </form>
