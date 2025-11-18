@@ -53,12 +53,12 @@
                                 </td>
                                 <td class="px-6 py-4 align-middle">
                                     @if($message->read)
-                                        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold shadow-sm bg-slate-100 text-slate-600">
+                                        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold shadow-sm bg-[#F1F5F9] text-[#475569]">
                                             <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
                                             مقروءة
                                         </span>
                                     @else
-                                        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold shadow-sm bg-blue-50 text-blue-600">
+                                        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold shadow-sm bg-[#DBEAFE] text-[#1E40AF]">
                                             <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
                                             جديدة
                                         </span>
@@ -104,12 +104,12 @@
                             <p class="text-sm font-semibold {{ !$message->read ? 'text-primary' : 'text-slate-900' }}">{{ $message->name }}</p>
                         </div>
                         @if($message->read)
-                            <span class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold bg-slate-100 text-slate-600">
+                            <span class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold bg-[#F1F5F9] text-[#475569]">
                                 <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
                                 مقروءة
                             </span>
                         @else
-                            <span class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold bg-blue-50 text-blue-600">
+                            <span class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold bg-[#DBEAFE] text-[#1E40AF]">
                                 <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
                                 جديدة
                             </span>

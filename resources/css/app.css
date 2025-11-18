@@ -1131,29 +1131,47 @@ textarea.form-input-moj {
     border: 1px solid #ff9999;
 }
 
+/* Case Status Badges - Unified Color Palette */
 .badge-قيد-المعالجة {
-    background: linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%);
-    color: #b8860b;
-    border: 1px solid #ffd89b;
+    background: linear-gradient(135deg, #DDF3EA 0%, #B8E6D1 100%);
+    color: #2B8A4A;
+    border: 1px solid #7DD3A0;
 }
 
 .badge-قيد-المحاكمة {
-    background: linear-gradient(135deg, #e6f3ff 0%, #cce7ff 100%);
-    color: #0066cc;
-    border: 1px solid #99d3ff;
+    background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+    color: #1E40AF;
+    border: 1px solid #93C5FD;
 }
 
-.badge-مكتملة,
+.badge-مكتملة {
+    background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
+    color: #065F46;
+    border: 1px solid #6EE7B7;
+}
+
 .badge-منتهية {
-    background: linear-gradient(135deg, #e6f7e6 0%, #ccf0cc 100%);
-    color: #006600;
-    border: 1px solid #99e699;
+    background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
+    color: #475569;
+    border: 1px solid #CBD5E1;
+}
+
+.badge-مغلقة {
+    background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
+    color: #475569;
+    border: 1px solid #CBD5E1;
+}
+
+.badge-معلقة {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    color: #92400E;
+    border: 1px solid #FCD34D;
 }
 
 .badge-ملغاة {
-    background: linear-gradient(135deg, #ffe6e6 0%, #ffcccc 100%);
-    color: #cc0000;
-    border: 1px solid #ff9999;
+    background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
+    color: #991B1B;
+    border: 1px solid #FCA5A5;
 }
 
 /* Last Update Tag */

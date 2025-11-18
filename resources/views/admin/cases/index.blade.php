@@ -27,11 +27,12 @@
         @php
             $statusBadgePalette = [
                 'قيد المعالجة' => 'bg-[#DDF3EA] text-[#2B8A4A]',
-                'قيد المحاكمة' => 'bg-blue-50 text-blue-600',
-                'مكتملة' => 'bg-emerald-50 text-emerald-600',
-                'منتهية' => 'bg-slate-100 text-slate-600',
-                'مغلقة' => 'bg-slate-100 text-slate-600',
-                'معلقة' => 'bg-amber-50 text-amber-600',
+                'قيد المحاكمة' => 'bg-[#DBEAFE] text-[#1E40AF]',
+                'مكتملة' => 'bg-[#D1FAE5] text-[#065F46]',
+                'منتهية' => 'bg-[#F1F5F9] text-[#475569]',
+                'مغلقة' => 'bg-[#F1F5F9] text-[#475569]',
+                'معلقة' => 'bg-[#FEF3C7] text-[#92400E]',
+                'ملغاة' => 'bg-[#FEE2E2] text-[#991B1B]',
             ];
         @endphp
         <!-- Desktop Table View -->

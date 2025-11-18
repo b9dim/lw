@@ -9,79 +9,153 @@
 </div>
 
 <!-- Stats Cards -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
-    <div class="card-dashboard">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="stat-label">إجمالي القضايا</p>
-                <p class="stat-number text-primary">{{ $stats['total_cases'] }}</p>
+<div class="mb-8">
+    <!-- Mobile: Horizontal Scroll -->
+    <div class="md:hidden overflow-x-auto pb-2 -mx-4 px-4">
+        <div class="flex gap-3 min-w-max">
+            <div class="card-dashboard flex-shrink-0 w-[180px] p-3">
+                <div class="flex flex-col">
+                    <p class="stat-label text-xs mb-1">إجمالي القضايا</p>
+                    <p class="stat-number text-primary text-xl">{{ $stats['total_cases'] }}</p>
+                    <div class="icon-circle icon-circle-sm text-primary mt-2">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4">
+                            <path d="M12 4v15" />
+                            <path d="M7 19h10" />
+                            <path d="m5 10 3 6 3-6" />
+                            <path d="m13 10 3 6 3-6" />
+                        </svg>
+                    </div>
+                </div>
             </div>
-            <div class="icon-circle icon-circle-lg text-primary">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 4v15" />
-                    <path d="M7 19h10" />
-                    <path d="m5 10 3 6 3-6" />
-                    <path d="m13 10 3 6 3-6" />
-                </svg>
+            <div class="card-dashboard flex-shrink-0 w-[180px] p-3">
+                <div class="flex flex-col">
+                    <p class="stat-label text-xs mb-1">القضايا النشطة</p>
+                    <p class="stat-number text-xl" style="color: #0066cc;">{{ $stats['active_cases'] }}</p>
+                    <div class="icon-circle icon-circle-sm text-primary mt-2">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4">
+                            <path d="M9 12h6" />
+                            <path d="M9 16h4" />
+                            <path d="M12 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9l-6-6z" />
+                            <path d="M14 3v5h5" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="card-dashboard flex-shrink-0 w-[180px] p-3">
+                <div class="flex flex-col">
+                    <p class="stat-label text-xs mb-1">إجمالي العملاء</p>
+                    <p class="stat-number text-xl" style="color: #7c3aed;">{{ $stats['total_clients'] }}</p>
+                    <div class="icon-circle icon-circle-sm text-primary mt-2">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4">
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+                            <path d="M16 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8z" />
+                            <path d="M16 21v-2a4 4 0 0 0-4-4h-2" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="card-dashboard flex-shrink-0 w-[180px] p-3">
+                <div class="flex flex-col">
+                    <p class="stat-label text-xs mb-1">استفسارات معلقة</p>
+                    <p class="stat-number text-xl" style="color: #dc2626;">{{ $stats['pending_inquiries'] }}</p>
+                    <div class="icon-circle icon-circle-sm icon-circle-accent mt-2">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4">
+                            <path d="M7 7h10a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-2.5L12 17v-2H7a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="card-dashboard flex-shrink-0 w-[180px] p-3">
+                <div class="flex flex-col">
+                    <p class="stat-label text-xs mb-1">رسائل غير مقروءة</p>
+                    <p class="stat-number text-xl" style="color: #f59e0b;">{{ $stats['unread_messages'] }}</p>
+                    <div class="icon-circle icon-circle-sm text-primary mt-2">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4">
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                        </svg>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="card-dashboard">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="stat-label">القضايا النشطة</p>
-                <p class="stat-number" style="color: #0066cc;">{{ $stats['active_cases'] }}</p>
-            </div>
-            <div class="icon-circle icon-circle-lg text-primary">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M9 12h6" />
-                    <path d="M9 16h4" />
-                    <path d="M12 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9l-6-6z" />
-                    <path d="M14 3v5h5" />
-                </svg>
-            </div>
-        </div>
-    </div>
-    <div class="card-dashboard">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="stat-label">إجمالي العملاء</p>
-                <p class="stat-number" style="color: #7c3aed;">{{ $stats['total_clients'] }}</p>
-            </div>
-            <div class="icon-circle icon-circle-lg text-primary">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
-                    <path d="M16 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8z" />
-                    <path d="M16 21v-2a4 4 0 0 0-4-4h-2" />
-                </svg>
+    
+    <!-- Desktop: Grid -->
+    <div class="hidden md:grid grid-cols-2 lg:grid-cols-5 gap-6">
+        <div class="card-dashboard">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="stat-label">إجمالي القضايا</p>
+                    <p class="stat-number text-primary">{{ $stats['total_cases'] }}</p>
+                </div>
+                <div class="icon-circle icon-circle-lg text-primary">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 4v15" />
+                        <path d="M7 19h10" />
+                        <path d="m5 10 3 6 3-6" />
+                        <path d="m13 10 3 6 3-6" />
+                    </svg>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="card-dashboard">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="stat-label">استفسارات معلقة</p>
-                <p class="stat-number" style="color: #dc2626;">{{ $stats['pending_inquiries'] }}</p>
-            </div>
-            <div class="icon-circle icon-circle-lg icon-circle-accent">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M7 7h10a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-2.5L12 17v-2H7a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3z" />
-                </svg>
+        <div class="card-dashboard">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="stat-label">القضايا النشطة</p>
+                    <p class="stat-number" style="color: #0066cc;">{{ $stats['active_cases'] }}</p>
+                </div>
+                <div class="icon-circle icon-circle-lg text-primary">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M9 12h6" />
+                        <path d="M9 16h4" />
+                        <path d="M12 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9l-6-6z" />
+                        <path d="M14 3v5h5" />
+                    </svg>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="card-dashboard">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="stat-label">رسائل غير مقروءة</p>
-                <p class="stat-number" style="color: #f59e0b;">{{ $stats['unread_messages'] }}</p>
+        <div class="card-dashboard">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="stat-label">إجمالي العملاء</p>
+                    <p class="stat-number" style="color: #7c3aed;">{{ $stats['total_clients'] }}</p>
+                </div>
+                <div class="icon-circle icon-circle-lg text-primary">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+                        <path d="M16 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8z" />
+                        <path d="M16 21v-2a4 4 0 0 0-4-4h-2" />
+                    </svg>
+                </div>
             </div>
-            <div class="icon-circle icon-circle-lg text-primary">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <rect x="2" y="4" width="20" height="16" rx="2" />
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                </svg>
+        </div>
+        <div class="card-dashboard">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="stat-label">استفسارات معلقة</p>
+                    <p class="stat-number" style="color: #dc2626;">{{ $stats['pending_inquiries'] }}</p>
+                </div>
+                <div class="icon-circle icon-circle-lg icon-circle-accent">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M7 7h10a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-2.5L12 17v-2H7a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="card-dashboard">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="stat-label">رسائل غير مقروءة</p>
+                    <p class="stat-number" style="color: #f59e0b;">{{ $stats['unread_messages'] }}</p>
+                </div>
+                <div class="icon-circle icon-circle-lg text-primary">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                    </svg>
+                </div>
             </div>
         </div>
     </div>

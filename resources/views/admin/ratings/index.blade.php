@@ -82,17 +82,17 @@
                                 </td>
                                 <td class="px-6 py-4 align-middle">
                                     @if($rating->status === 'pending')
-                                        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold shadow-sm bg-amber-50 text-amber-600">
+                                        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold shadow-sm bg-[#FEF3C7] text-[#92400E]">
                                             <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
                                             قيد المراجعة
                                         </span>
                                     @elseif($rating->status === 'approved')
-                                        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold shadow-sm bg-emerald-50 text-emerald-600">
+                                        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold shadow-sm bg-[#D1FAE5] text-[#065F46]">
                                             <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
                                             معتمد
                                         </span>
                                     @else
-                                        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold shadow-sm bg-slate-100 text-slate-600">
+                                        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold shadow-sm bg-[#FEE2E2] text-[#991B1B]">
                                             <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
                                             مرفوض
                                         </span>
@@ -139,17 +139,17 @@
                             <p class="text-sm font-semibold text-slate-900">{{ $rating->client->name }}</p>
                         </div>
                         @if($rating->status === 'pending')
-                            <span class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold bg-amber-50 text-amber-600">
+                            <span class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold bg-[#FEF3C7] text-[#92400E]">
                                 <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
                                 قيد المراجعة
                             </span>
                         @elseif($rating->status === 'approved')
-                            <span class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold bg-emerald-50 text-emerald-600">
+                            <span class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold bg-[#D1FAE5] text-[#065F46]">
                                 <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
                                 معتمد
                             </span>
                         @else
-                            <span class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold bg-slate-100 text-slate-600">
+                            <span class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold bg-[#FEE2E2] text-[#991B1B]">
                                 <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
                                 مرفوض
                             </span>

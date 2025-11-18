@@ -9,36 +9,70 @@
 </div>
 
 <!-- Stats Cards -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-    <div class="card-dashboard">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="stat-label">إجمالي القضايا</p>
-                <p class="stat-number text-primary">{{ $cases->count() }}</p>
+<div class="mb-8">
+    <!-- Mobile: Horizontal Scroll -->
+    <div class="md:hidden overflow-x-auto pb-2 -mx-4 px-4">
+        <div class="flex gap-3 min-w-max">
+            <div class="card-dashboard flex-shrink-0 w-[200px] p-4">
+                <div class="flex flex-col">
+                    <p class="stat-label text-xs mb-1">إجمالي القضايا</p>
+                    <p class="stat-number text-primary text-2xl">{{ $cases->count() }}</p>
+                    <div class="text-3xl opacity-20 mt-2">⚖️</div>
+                </div>
             </div>
-            <div class="text-5xl opacity-20">⚖️</div>
+            <div class="card-dashboard flex-shrink-0 w-[200px] p-4">
+                <div class="flex flex-col">
+                    <p class="stat-label text-xs mb-1">قضايا قيد المعالجة</p>
+                    <p class="stat-number text-xl" style="color: #0066cc;">
+                        {{ $cases->where('status', 'قيد المعالجة')->count() }}
+                    </p>
+                    <div class="text-3xl opacity-20 mt-2">📋</div>
+                </div>
+            </div>
+            <div class="card-dashboard flex-shrink-0 w-[200px] p-4">
+                <div class="flex flex-col">
+                    <p class="stat-label text-xs mb-1">قضايا قيد المحاكمة</p>
+                    <p class="stat-number text-xl" style="color: #7c3aed;">
+                        {{ $cases->where('status', 'قيد المحاكمة')->count() }}
+                    </p>
+                    <div class="text-3xl opacity-20 mt-2">🏛️</div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="card-dashboard">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="stat-label">قضايا قيد المعالجة</p>
-                <p class="stat-number" style="color: #0066cc;">
-                    {{ $cases->where('status', 'قيد المعالجة')->count() }}
-                </p>
+    
+    <!-- Desktop: Grid -->
+    <div class="hidden md:grid grid-cols-3 gap-6">
+        <div class="card-dashboard">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="stat-label">إجمالي القضايا</p>
+                    <p class="stat-number text-primary">{{ $cases->count() }}</p>
+                </div>
+                <div class="text-5xl opacity-20">⚖️</div>
             </div>
-            <div class="text-5xl opacity-20">📋</div>
         </div>
-    </div>
-    <div class="card-dashboard">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="stat-label">قضايا قيد المحاكمة</p>
-                <p class="stat-number" style="color: #7c3aed;">
-                    {{ $cases->where('status', 'قيد المحاكمة')->count() }}
-                </p>
+        <div class="card-dashboard">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="stat-label">قضايا قيد المعالجة</p>
+                    <p class="stat-number" style="color: #0066cc;">
+                        {{ $cases->where('status', 'قيد المعالجة')->count() }}
+                    </p>
+                </div>
+                <div class="text-5xl opacity-20">📋</div>
             </div>
-            <div class="text-5xl opacity-20">🏛️</div>
+        </div>
+        <div class="card-dashboard">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="stat-label">قضايا قيد المحاكمة</p>
+                    <p class="stat-number" style="color: #7c3aed;">
+                        {{ $cases->where('status', 'قيد المحاكمة')->count() }}
+                    </p>
+                </div>
+                <div class="text-5xl opacity-20">🏛️</div>
+            </div>
         </div>
     </div>
 </div>
@@ -51,10 +85,12 @@
         @php
             $statusBadgePalette = [
                 'قيد المعالجة' => 'bg-[#DDF3EA] text-[#2B8A4A]',
-                'قيد المحاكمة' => 'bg-blue-50 text-blue-600',
-                'مكتملة' => 'bg-emerald-50 text-emerald-600',
-                'منتهية' => 'bg-slate-100 text-slate-600',
-                'مغلقة' => 'bg-slate-100 text-slate-600',
+                'قيد المحاكمة' => 'bg-[#DBEAFE] text-[#1E40AF]',
+                'مكتملة' => 'bg-[#D1FAE5] text-[#065F46]',
+                'منتهية' => 'bg-[#F1F5F9] text-[#475569]',
+                'مغلقة' => 'bg-[#F1F5F9] text-[#475569]',
+                'معلقة' => 'bg-[#FEF3C7] text-[#92400E]',
+                'ملغاة' => 'bg-[#FEE2E2] text-[#991B1B]',
             ];
             // فصل القضايا إلى نشطة ومنتهية
             $activeCases = $cases->where('status', '!=', 'منتهية');
