@@ -19,7 +19,7 @@
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
-    <header class="header-attorney header-client" id="clientHeader">
+    <header class="header-attorney header-client fixed top-0 left-0 right-0 z-50 w-full" id="clientHeader">
         <nav class="container mx-auto">
             <div class="flex items-center justify-between gap-4 px-6 md:px-8 lg:px-12 xl:px-16">
                 <div class="flex items-center space-x-reverse space-x-6 md:space-x-10 flex-shrink-0">
@@ -52,7 +52,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 md:px-8 lg:px-12 pt-24 py-8 main-client-content">
+    <main class="relative z-0 container mx-auto px-6 md:px-8 lg:px-12 pt-40 md:pt-32 lg:pt-28 py-8 main-client-content">
         @if(session('success'))
             <div class="bg-green-100 border-r-4 border-green-500 text-green-700 px-6 py-4 rounded-lg mb-6 shadow-md">
                 <div class="flex items-center gap-3">
@@ -140,12 +140,21 @@
             
             if (!header || !mainContent) return;
             
+            function getBasePadding() {
+                const previousInlinePadding = mainContent.style.paddingTop;
+                mainContent.style.paddingTop = '';
+                const basePadding = parseFloat(window.getComputedStyle(mainContent).paddingTop) || 0;
+                mainContent.style.paddingTop = previousInlinePadding;
+                return basePadding;
+            }
+
             function updatePadding() {
                 // Force reflow to get accurate height
                 header.style.display = 'block';
                 const headerHeight = header.offsetHeight;
-                // Add extra 30px for safety margin (increased for better spacing)
-                const paddingValue = Math.max(headerHeight + 30, 120); // Minimum 120px
+                const basePadding = getBasePadding();
+                // Add extra 30px for safety margin while respecting responsive base padding
+                const paddingValue = Math.max(headerHeight + 30, basePadding);
                 mainContent.style.paddingTop = paddingValue + 'px';
             }
             
