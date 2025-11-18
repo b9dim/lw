@@ -10,72 +10,80 @@
 
 <!-- Stats Cards -->
 <div class="mb-8">
-    <!-- Mobile: Horizontal Scroll -->
-    <div class="md:hidden overflow-x-auto pb-2 -mx-4 px-4">
-        <div class="flex gap-3 min-w-max">
-            <div class="card-dashboard flex-shrink-0 w-[180px] p-3">
-                <div class="flex flex-col">
-                    <p class="stat-label text-xs mb-1">إجمالي القضايا</p>
-                    <p class="stat-number text-primary text-xl">{{ $stats['total_cases'] }}</p>
-                    <div class="icon-circle icon-circle-sm text-primary mt-2">
-                        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4">
-                            <path d="M12 4v15" />
-                            <path d="M7 19h10" />
-                            <path d="m5 10 3 6 3-6" />
-                            <path d="m13 10 3 6 3-6" />
-                        </svg>
-                    </div>
+    <!-- Mobile: Organized Grid -->
+    <div class="grid grid-cols-2 gap-3 md:hidden">
+        <div class="card-dashboard p-4">
+            <div class="flex items-start justify-between">
+                <div class="flex-1 min-w-0">
+                    <p class="stat-label text-[11px] mb-1.5 text-slate-500">إجمالي القضايا</p>
+                    <p class="stat-number text-primary text-2xl font-bold leading-tight">{{ $stats['total_cases'] }}</p>
+                </div>
+                <div class="icon-circle icon-circle-sm text-primary flex-shrink-0">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4">
+                        <path d="M12 4v15" />
+                        <path d="M7 19h10" />
+                        <path d="m5 10 3 6 3-6" />
+                        <path d="m13 10 3 6 3-6" />
+                    </svg>
                 </div>
             </div>
-            <div class="card-dashboard flex-shrink-0 w-[180px] p-3">
-                <div class="flex flex-col">
-                    <p class="stat-label text-xs mb-1">القضايا النشطة</p>
-                    <p class="stat-number text-xl" style="color: #0066cc;">{{ $stats['active_cases'] }}</p>
-                    <div class="icon-circle icon-circle-sm text-primary mt-2">
-                        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4">
-                            <path d="M9 12h6" />
-                            <path d="M9 16h4" />
-                            <path d="M12 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9l-6-6z" />
-                            <path d="M14 3v5h5" />
-                        </svg>
-                    </div>
+        </div>
+        <div class="card-dashboard p-4">
+            <div class="flex items-start justify-between">
+                <div class="flex-1 min-w-0">
+                    <p class="stat-label text-[11px] mb-1.5 text-slate-500">القضايا النشطة</p>
+                    <p class="stat-number text-xl font-bold leading-tight" style="color: #0066cc;">{{ $stats['active_cases'] }}</p>
+                </div>
+                <div class="icon-circle icon-circle-sm text-primary flex-shrink-0">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4">
+                        <path d="M9 12h6" />
+                        <path d="M9 16h4" />
+                        <path d="M12 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9l-6-6z" />
+                        <path d="M14 3v5h5" />
+                    </svg>
                 </div>
             </div>
-            <div class="card-dashboard flex-shrink-0 w-[180px] p-3">
-                <div class="flex flex-col">
-                    <p class="stat-label text-xs mb-1">إجمالي العملاء</p>
-                    <p class="stat-number text-xl" style="color: #7c3aed;">{{ $stats['total_clients'] }}</p>
-                    <div class="icon-circle icon-circle-sm text-primary mt-2">
-                        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4">
-                            <circle cx="9" cy="7" r="4" />
-                            <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
-                            <path d="M16 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8z" />
-                            <path d="M16 21v-2a4 4 0 0 0-4-4h-2" />
-                        </svg>
-                    </div>
+        </div>
+        <div class="card-dashboard p-4">
+            <div class="flex items-start justify-between">
+                <div class="flex-1 min-w-0">
+                    <p class="stat-label text-[11px] mb-1.5 text-slate-500">إجمالي العملاء</p>
+                    <p class="stat-number text-xl font-bold leading-tight" style="color: #7c3aed;">{{ $stats['total_clients'] }}</p>
+                </div>
+                <div class="icon-circle icon-circle-sm text-primary flex-shrink-0">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4">
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+                        <path d="M16 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8z" />
+                        <path d="M16 21v-2a4 4 0 0 0-4-4h-2" />
+                    </svg>
                 </div>
             </div>
-            <div class="card-dashboard flex-shrink-0 w-[180px] p-3">
-                <div class="flex flex-col">
-                    <p class="stat-label text-xs mb-1">استفسارات معلقة</p>
-                    <p class="stat-number text-xl" style="color: #dc2626;">{{ $stats['pending_inquiries'] }}</p>
-                    <div class="icon-circle icon-circle-sm icon-circle-accent mt-2">
-                        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4">
-                            <path d="M7 7h10a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-2.5L12 17v-2H7a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3z" />
-                        </svg>
-                    </div>
+        </div>
+        <div class="card-dashboard p-4">
+            <div class="flex items-start justify-between">
+                <div class="flex-1 min-w-0">
+                    <p class="stat-label text-[11px] mb-1.5 text-slate-500">استفسارات معلقة</p>
+                    <p class="stat-number text-xl font-bold leading-tight" style="color: #dc2626;">{{ $stats['pending_inquiries'] }}</p>
+                </div>
+                <div class="icon-circle icon-circle-sm icon-circle-accent flex-shrink-0">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4">
+                        <path d="M7 7h10a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-2.5L12 17v-2H7a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3z" />
+                    </svg>
                 </div>
             </div>
-            <div class="card-dashboard flex-shrink-0 w-[180px] p-3">
-                <div class="flex flex-col">
-                    <p class="stat-label text-xs mb-1">رسائل غير مقروءة</p>
-                    <p class="stat-number text-xl" style="color: #f59e0b;">{{ $stats['unread_messages'] }}</p>
-                    <div class="icon-circle icon-circle-sm text-primary mt-2">
-                        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4">
-                            <rect x="2" y="4" width="20" height="16" rx="2" />
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                        </svg>
-                    </div>
+        </div>
+        <div class="card-dashboard p-4 col-span-2">
+            <div class="flex items-start justify-between">
+                <div class="flex-1 min-w-0">
+                    <p class="stat-label text-[11px] mb-1.5 text-slate-500">رسائل غير مقروءة</p>
+                    <p class="stat-number text-xl font-bold leading-tight" style="color: #f59e0b;">{{ $stats['unread_messages'] }}</p>
+                </div>
+                <div class="icon-circle icon-circle-sm text-primary flex-shrink-0">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                    </svg>
                 </div>
             </div>
         </div>
@@ -172,26 +180,130 @@
             <span class="rounded-full bg-slate-100 px-4 py-1 text-sm font-semibold text-slate-600 shadow-inner">{{ $recentCases->count() }} قضية</span>
         </div>
         @if($recentCases->count() > 0)
-            <div class="space-y-3">
+            @php
+                $statusBadgePalette = [
+                    'قيد المعالجة' => 'bg-[#DDF3EA] text-[#2B8A4A]',
+                    'قيد المحاكمة' => 'bg-[#DBEAFE] text-[#1E40AF]',
+                    'مكتملة' => 'bg-[#D1FAE5] text-[#065F46]',
+                    'منتهية' => 'bg-[#F1F5F9] text-[#475569]',
+                    'مغلقة' => 'bg-[#F1F5F9] text-[#475569]',
+                    'معلقة' => 'bg-[#FEF3C7] text-[#92400E]',
+                    'ملغاة' => 'bg-[#FEE2E2] text-[#991B1B]',
+                ];
+            @endphp
+            
+            <!-- Desktop Table View -->
+            <div class="hidden md:block overflow-x-auto mb-6">
+                <div class="min-w-[860px] overflow-hidden rounded-[30px] border border-slate-200/70 bg-white shadow-[0_35px_70px_rgba(15,23,42,0.08)]">
+                    <table class="min-w-full text-right text-sm text-slate-600">
+                        <thead class="bg-slate-50">
+                            <tr class="text-[0.72rem] font-semibold uppercase tracking-[0.25em] text-slate-500">
+                                <th class="px-6 py-4 text-right first:rounded-tl-[30px] last:rounded-tr-[30px]">رقم القضية</th>
+                                <th class="px-6 py-4 text-right">العميل</th>
+                                <th class="px-6 py-4 text-right">المحكمة</th>
+                                <th class="px-6 py-4 text-right">الحالة</th>
+                                <th class="px-6 py-4 text-right">الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            @foreach($recentCases as $case)
+                                @php
+                                    $badgeClass = $statusBadgePalette[$case->status] ?? 'bg-gray-100 text-gray-600';
+                                @endphp
+                                <tr class="js-clickable-row transition-all duration-200 hover:bg-white hover:shadow-[0_18px_45px_rgba(15,23,42,0.08)] hover:-translate-y-0.5 odd:bg-white even:bg-slate-50/60" data-row-href="{{ route('admin.cases.show', $case->id) }}" tabindex="0" role="link" aria-label="عرض تفاصيل القضية رقم {{ $case->case_number }}">
+                                    <td class="px-6 py-4 align-middle">
+                                        <div class="inline-flex items-center gap-2 rounded-2xl border border-[#E5E7EB] bg-white/80 px-4 py-2 font-semibold text-slate-900 shadow-sm">
+                                            <span class="text-[10px] uppercase tracking-[0.35em] text-slate-400">قضية</span>
+                                            <span class="font-mono text-base text-slate-900">{{ $case->case_number }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 align-middle">
+                                        <p class="text-sm font-semibold text-slate-900">{{ $case->client->name }}</p>
+                                        <p class="text-[11px] text-slate-400 mt-1">أضيفت {{ $case->created_at->format('Y-m-d') }}</p>
+                                    </td>
+                                    <td class="px-6 py-4 align-middle">
+                                        <p class="text-sm font-medium text-slate-900">{{ $case->court_name ?? '-' }}</p>
+                                        <p class="text-[11px] text-slate-400 mt-1">القضية #{{ $case->id }}</p>
+                                    </td>
+                                    <td class="px-6 py-4 align-middle">
+                                        <div class="flex flex-col gap-2 text-right">
+                                            <span class="inline-flex w-max items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold shadow-sm {{ $badgeClass }}">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
+                                                {{ $case->status }}
+                                            </span>
+                                            @if($case->last_update_text)
+                                                <div class="case-last-update inline-flex items-center gap-2 rounded-2xl border border-white/60 bg-white/70 px-3 py-2 text-[11px] font-medium text-slate-500">
+                                                    <svg viewBox="0 0 24 24" class="h-4 w-4 text-primary/70" aria-hidden="true">
+                                                        <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.2"></circle>
+                                                        <path d="M12 8v4.2l2.8 1.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.2"></path>
+                                                    </svg>
+                                                    <span>{{ Str::limit($case->last_update_text, 30) }}</span>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 align-middle" data-row-link-ignore>
+                                        <div class="flex flex-wrap gap-2">
+                                            <a href="{{ route('admin.cases.show', $case->id) }}" 
+                                               class="inline-flex items-center justify-center rounded-2xl bg-gradient-to-l from-primary to-accent px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:shadow-md"
+                                               data-row-link-ignore>عرض</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Mobile Card View -->
+            <div class="md:hidden space-y-4 mb-6">
                 @foreach($recentCases as $case)
-                    <div class="rounded-2xl border border-slate-200/70 bg-white p-4 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5">
-                        <div class="flex justify-between items-start gap-4">
-                            <div class="flex-1 min-w-0">
-                                <div class="inline-flex items-center gap-2 rounded-2xl border border-[#E5E7EB] bg-white/80 px-3 py-1.5 font-semibold text-slate-900 shadow-sm mb-2">
-                                    <span class="text-[10px] uppercase tracking-[0.35em] text-slate-400">قضية</span>
-                                    <span class="font-mono text-sm text-slate-900">{{ $case->case_number }}</span>
+                    @php
+                        $badgeClass = $statusBadgePalette[$case->status] ?? 'bg-gray-100 text-gray-600';
+                    @endphp
+                    <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_18px_35px_rgba(15,23,42,0.08)] transition-shadow hover:shadow-[0_25px_50px_rgba(15,23,42,0.12)] js-clickable-row" 
+                         data-row-href="{{ route('admin.cases.show', $case->id) }}"
+                         tabindex="0"
+                         role="link"
+                         aria-label="عرض تفاصيل القضية رقم {{ $case->case_number }}">
+                        <div class="flex items-start justify-between mb-4 gap-4">
+                            <div>
+                                <p class="text-[11px] text-slate-500 mb-1">رقم القضية</p>
+                                <div class="inline-flex items-center rounded-2xl border border-[#E5E7EB] bg-slate-50/80 px-3 py-1.5 font-semibold text-slate-900">
+                                    <span class="font-mono text-sm">{{ $case->case_number }}</span>
                                 </div>
-                                <p class="text-sm font-semibold text-slate-900 mt-2">{{ $case->client->name }}</p>
-                                <p class="text-[11px] text-slate-400 mt-1">أضيفت {{ $case->created_at->format('Y-m-d') }}</p>
                             </div>
-                            <span class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold shadow-sm bg-slate-100 text-slate-600">
+                            <span class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold {{ $badgeClass }}">
                                 <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
                                 {{ $case->status }}
                             </span>
                         </div>
+                        <div class="mb-3">
+                            <p class="text-[11px] text-slate-500 mb-1">العميل</p>
+                            <p class="text-sm font-semibold text-slate-900">{{ $case->client->name }}</p>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-[11px] text-slate-500 mb-1">المحكمة</p>
+                            <p class="text-sm text-slate-800">{{ $case->court_name ?? '-' }}</p>
+                        </div>
+                        @if($case->last_update_text)
+                            <div class="mb-3">
+                                <p class="text-[11px] text-slate-500 mb-1">آخر تحديث</p>
+                                <p class="text-sm text-slate-800">{{ Str::limit($case->last_update_text, 50) }}</p>
+                            </div>
+                        @endif
+                        <div class="pt-4 border-t border-slate-100 mt-4" data-row-link-ignore>
+                            <a href="{{ route('admin.cases.show', $case->id) }}" 
+                               class="flex items-center justify-center rounded-2xl bg-gradient-to-l from-primary to-accent px-3 py-2 text-center text-xs font-semibold text-white"
+                               data-row-link-ignore>
+                                عرض التفاصيل
+                            </a>
+                        </div>
                     </div>
                 @endforeach
             </div>
+            
             <div class="mt-6">
                 <a href="{{ route('admin.cases.index') }}" class="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-l from-primary to-accent px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:shadow-md">
                     <span>عرض الكل</span>

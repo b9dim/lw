@@ -10,33 +10,37 @@
 
 <!-- Stats Cards -->
 <div class="mb-8">
-    <!-- Mobile: Horizontal Scroll -->
-    <div class="md:hidden overflow-x-auto pb-2 -mx-4 px-4">
-        <div class="flex gap-3 min-w-max">
-            <div class="card-dashboard flex-shrink-0 w-[200px] p-4">
-                <div class="flex flex-col">
-                    <p class="stat-label text-xs mb-1">إجمالي القضايا</p>
-                    <p class="stat-number text-primary text-2xl">{{ $cases->count() }}</p>
-                    <div class="text-3xl opacity-20 mt-2">⚖️</div>
+    <!-- Mobile: Organized Grid -->
+    <div class="grid grid-cols-2 gap-3 md:hidden">
+        <div class="card-dashboard p-4">
+            <div class="flex items-start justify-between">
+                <div class="flex-1 min-w-0">
+                    <p class="stat-label text-[11px] mb-1.5 text-slate-500">إجمالي القضايا</p>
+                    <p class="stat-number text-primary text-2xl font-bold leading-tight">{{ $cases->count() }}</p>
                 </div>
+                <div class="text-3xl opacity-20 flex-shrink-0">⚖️</div>
             </div>
-            <div class="card-dashboard flex-shrink-0 w-[200px] p-4">
-                <div class="flex flex-col">
-                    <p class="stat-label text-xs mb-1">قضايا قيد المعالجة</p>
-                    <p class="stat-number text-xl" style="color: #0066cc;">
+        </div>
+        <div class="card-dashboard p-4">
+            <div class="flex items-start justify-between">
+                <div class="flex-1 min-w-0">
+                    <p class="stat-label text-[11px] mb-1.5 text-slate-500">قضايا قيد المعالجة</p>
+                    <p class="stat-number text-xl font-bold leading-tight" style="color: #0066cc;">
                         {{ $cases->where('status', 'قيد المعالجة')->count() }}
                     </p>
-                    <div class="text-3xl opacity-20 mt-2">📋</div>
                 </div>
+                <div class="text-3xl opacity-20 flex-shrink-0">📋</div>
             </div>
-            <div class="card-dashboard flex-shrink-0 w-[200px] p-4">
-                <div class="flex flex-col">
-                    <p class="stat-label text-xs mb-1">قضايا قيد المحاكمة</p>
-                    <p class="stat-number text-xl" style="color: #7c3aed;">
+        </div>
+        <div class="card-dashboard p-4 col-span-2">
+            <div class="flex items-start justify-between">
+                <div class="flex-1 min-w-0">
+                    <p class="stat-label text-[11px] mb-1.5 text-slate-500">قضايا قيد المحاكمة</p>
+                    <p class="stat-number text-xl font-bold leading-tight" style="color: #7c3aed;">
                         {{ $cases->where('status', 'قيد المحاكمة')->count() }}
                     </p>
-                    <div class="text-3xl opacity-20 mt-2">🏛️</div>
                 </div>
+                <div class="text-3xl opacity-20 flex-shrink-0">🏛️</div>
             </div>
         </div>
     </div>
