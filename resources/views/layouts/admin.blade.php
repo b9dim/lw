@@ -6,6 +6,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'لوحة التحكم') - شركة مسفر محمد العرجاني</title>
     @include('components.vite-assets', ['assets' => ['resources/css/app.css', 'resources/js/app.js']])
+    <!-- SVG Gold Gradient Definition -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#C8A848;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#A0842F;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+    </svg>
 </head>
 <body class="bg-gray-50">
     <!-- Mobile Menu Button -->
@@ -29,7 +39,12 @@
             </button>
             
             <div class="px-6 mb-8 pb-6 border-b border-gray-700">
-                <h2 class="text-white text-xl font-bold mb-2">لوحة التحكم</h2>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="logo-gold">
+                        <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-10 w-auto">
+                    </div>
+                    <h2 class="text-white text-xl font-bold">لوحة التحكم</h2>
+                </div>
                 <div class="flex items-center gap-2 mb-1">
                     <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 7.5a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />

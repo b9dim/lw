@@ -135,16 +135,55 @@ body {
     padding: 0.5rem 0;
 }
 
-.header-attorney .logo span:first-child {
-    width: 3rem;
+.header-attorney .logo img,
+.header-attorney .logo svg {
+    width: auto;
     height: 3rem;
-    border-radius: 9999px;
-    background: var(--primary-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    box-shadow: var(--shadow-xl);
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(200, 168, 72, 0.3));
+    transition: all 0.3s ease;
+}
+
+/* Gold gradient filter for logo */
+.logo-gold {
+    filter: url(#gold-gradient);
+}
+
+.logo-gold svg path,
+.logo-gold svg circle,
+.logo-gold svg rect,
+.logo-gold svg polygon,
+.logo-gold svg ellipse {
+    fill: url(#goldGradient);
+}
+
+/* Gold gradient effect for logo images */
+.logo-gold img {
+    filter: brightness(1.2) contrast(1.1) saturate(1.8) sepia(0.3) hue-rotate(10deg);
+    transition: all 0.3s ease;
+    -webkit-filter: brightness(1.2) contrast(1.1) saturate(1.8) sepia(0.3) hue-rotate(10deg);
+}
+
+.logo-gold:hover img {
+    filter: brightness(1.3) contrast(1.2) saturate(2) sepia(0.4) hue-rotate(15deg) drop-shadow(0 4px 12px rgba(200, 168, 72, 0.5));
+    transform: scale(1.05);
+    -webkit-filter: brightness(1.3) contrast(1.2) saturate(2) sepia(0.4) hue-rotate(15deg) drop-shadow(0 4px 12px rgba(200, 168, 72, 0.5));
+}
+
+/* Admin sidebar logo */
+.sidebar-admin .logo-gold img {
+    height: 2.5rem;
+    filter: brightness(1.15) contrast(1.05) saturate(1.6) sepia(0.25) hue-rotate(8deg);
+}
+
+/* Footer logo styling */
+.footer-attorney .logo-gold img {
+    height: 2.5rem;
+    opacity: 0.9;
+}
+
+.footer-attorney .logo-gold:hover img {
+    opacity: 1;
 }
 
 .header-attorney .logo:hover {

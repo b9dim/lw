@@ -6,6 +6,23 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'شركة مسفر محمد العرجاني للمحاماة والاستشارات القانونية')</title>
     @include('components.vite-assets', ['assets' => ['resources/css/app.css', 'resources/js/app.js']])
+    <!-- SVG Gold Gradient Definition -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#C8A848;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#A0842F;stop-opacity:1" />
+            </linearGradient>
+            <filter id="gold-gradient">
+                <feColorMatrix type="matrix" values="
+                    0.5 0.3 0.0 0 0
+                    0.4 0.3 0.0 0 0
+                    0.0 0.0 0.0 0 0
+                    0 0 0 1 0"/>
+            </filter>
+        </defs>
+    </svg>
 </head>
 <body class="bg-deep text-gray-200">
     <!-- Header -->
@@ -13,9 +30,14 @@
         <nav class="container mx-auto">
             <div class="flex items-center justify-between flex-wrap gap-4 px-6 md:px-8 lg:px-12 xl:px-16">
                 <div class="flex items-center space-x-reverse space-x-6 md:space-x-10 flex-1 min-w-0">
-                    <a href="{{ route('home') }}" class="logo whitespace-nowrap flex items-center gap-2">
-                        <span class="text-2xl">⚖️</span>
-                        <span class="font-bold">شركة مسفر محمد العرجاني</span>
+                    <a href="{{ route('home') }}" class="logo whitespace-nowrap flex items-center gap-3">
+                        <div class="logo-gold">
+                            <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-12 w-auto">
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-extrabold text-lg leading-tight">مكتب مسفر محمد العرجاني</span>
+                            <span class="text-sm text-gold/80">للمحاماة والاستشارات القانونية</span>
+                        </div>
                     </a>
                     <div class="hidden md:flex items-center space-x-reverse space-x-2">
                         <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">الرئيسية</a>
@@ -46,7 +68,12 @@
         <div class="container mx-auto px-6 md:px-8 lg:px-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
                 <div>
-                    <h3>شركة مسفر محمد العرجاني</h3>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="logo-gold">
+                            <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-10 w-auto">
+                        </div>
+                        <h3>شركة مسفر محمد العرجاني</h3>
+                    </div>
                     <p>
                         للمحاماة والاستشارات القانونية
                     </p>

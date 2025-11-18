@@ -6,7 +6,12 @@
 <section class="py-20">
     <div class="container mx-auto px-6 md:px-8 lg:px-12">
         <div class="max-w-4xl mx-auto">
-            <h1 class="section-title">من نحن</h1>
+            <div class="text-center mb-12">
+                <div class="logo-gold inline-block mb-6">
+                    <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-24 w-auto mx-auto">
+                </div>
+                <h1 class="section-title">من نحن</h1>
+            </div>
             
             <div class="card-attorney p-10 mb-10">
                 <h2 class="text-3xl font-bold mb-6 text-gold">شركة مسفر محمد العرجاني للمحاماة والاستشارات القانونية</h2>
