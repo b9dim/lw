@@ -3,10 +3,10 @@
 @section('title', 'إدارة العملاء')
 
 @section('content')
-<div class="mb-8 lg:mb-12">
-    <div class="flex justify-between items-center mb-6 lg:mb-8">
+<div class="mb-8 lg:mb-14">
+    <div class="flex justify-between items-center mb-6 lg:mb-8 flex-wrap gap-4 lg:gap-6">
         <div>
-            <h1 class="text-4xl lg:text-5xl font-bold text-primary mb-2 lg:mb-3">إدارة العملاء</h1>
+            <h1 class="text-4xl lg:text-5xl font-bold text-primary mb-2 lg:mb-4">إدارة العملاء</h1>
             <p class="text-gray-600 text-lg lg:text-xl">إدارة بيانات العملاء والقضايا المرتبطة بهم</p>
         </div>
         <a href="{{ route('admin.clients.create') }}" class="btn-attorney-primary">
@@ -15,14 +15,14 @@
     </div>
 </div>
 
-<div class="card-dashboard p-4 md:p-8 lg:p-10">
+<div class="card-dashboard p-4 md:p-8 lg:p-12">
     @if($clients->count() > 0)
-        <div class="mb-6 lg:mb-8 flex items-center justify-between flex-wrap gap-3 lg:gap-4">
-            <div class="flex items-center gap-3 lg:gap-4">
-                <div class="w-1 h-8 lg:h-10 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+        <div class="mb-6 lg:mb-10 flex items-center justify-between flex-wrap gap-3 lg:gap-5">
+            <div class="flex items-center gap-3 lg:gap-5">
+                <div class="w-1 h-8 lg:h-12 bg-gradient-to-b from-primary to-accent rounded-full"></div>
                 <h2 class="text-2xl lg:text-3xl font-bold text-primary">قائمة العملاء</h2>
             </div>
-            <span class="rounded-full bg-slate-100 px-4 py-1 text-sm font-semibold text-slate-600 shadow-inner">{{ $clients->total() }} عميل</span>
+            <span class="rounded-full bg-slate-100 px-4 lg:px-6 py-1 lg:py-2 text-sm lg:text-lg font-semibold text-slate-600 shadow-inner">{{ $clients->total() }} عميل</span>
         </div>
         
         <!-- Desktop Table View -->

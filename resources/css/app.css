@@ -1530,39 +1530,49 @@ html {
         line-height: 1.4;
     }
     
-    /* Page Headers - Target specific classes */
+    /* Page Headers - Target specific classes - زيادة بنسبة 20-25% */
     section h1.text-4xl,
     .content h1.text-4xl,
     main h1.text-4xl {
-        font-size: 2.75rem;
+        font-size: 3rem !important;
+        line-height: 1.2;
+    }
+    
+    section h1.text-5xl,
+    .content h1.text-5xl,
+    main h1.text-5xl {
+        font-size: 3.75rem !important;
+        line-height: 1.2;
     }
     
     section h2.text-3xl,
     .content h2.text-3xl,
     main h2.text-3xl {
-        font-size: 2.25rem;
+        font-size: 2.5rem !important;
+        line-height: 1.3;
     }
     
     section h2.text-2xl,
     .content h2.text-2xl,
     main h2.text-2xl {
-        font-size: 1.875rem;
+        font-size: 2rem !important;
+        line-height: 1.3;
     }
     
-    /* Body Text */
+    /* Body Text - زيادة بنسبة 15-20% */
     body {
-        font-size: 1.0625rem;
-        line-height: 1.75;
+        font-size: 1.125rem;
+        line-height: 1.8;
     }
     
     p {
-        font-size: 1.0625rem;
-        line-height: 1.75;
+        font-size: 1.125rem;
+        line-height: 1.8;
     }
     
-    /* Cards - Better spacing */
+    /* Cards - Better spacing - زيادة المسافات */
     .card-dashboard {
-        padding: 2rem;
+        padding: 2.5rem !important;
         border-radius: 20px;
     }
     
@@ -1570,112 +1580,184 @@ html {
         padding: 2.5rem;
     }
     
-    /* Tables - Better spacing and font sizes */
+    /* Tables - Better spacing and font sizes - زيادة الخطوط والمسافات */
     .table-dashboard {
-        font-size: 0.9375rem;
+        font-size: 1rem;
     }
     
     .table-dashboard th {
-        padding: 1.5rem 1.75rem;
-        font-size: 0.8125rem;
+        padding: 1.75rem 2rem !important;
+        font-size: 0.875rem !important;
     }
     
     .table-dashboard td {
-        padding: 1.25rem 1.75rem;
-        font-size: 0.9375rem;
+        padding: 1.5rem 2rem !important;
+        font-size: 1rem !important;
     }
     
-    /* Stats Cards */
+    /* Table text sizes - زيادة أحجام الخطوط */
+    .table-dashboard td p,
+    .table-dashboard td .text-sm {
+        font-size: 1rem !important;
+    }
+    
+    .table-dashboard td .text-xs {
+        font-size: 0.875rem !important;
+    }
+    
+    /* Stats Cards - زيادة أحجام الخطوط */
     .stat-number {
-        font-size: 3rem;
+        font-size: 3.5rem !important;
     }
     
     .stat-label {
-        font-size: 1.0625rem;
+        font-size: 1.125rem !important;
     }
     
-    /* Badges */
+    /* Badges - زيادة الخطوط والمسافات */
     .badge-dashboard {
-        font-size: 0.9375rem;
-        padding: 0.625rem 1.25rem;
+        font-size: 1rem !important;
+        padding: 0.75rem 1.5rem !important;
     }
     
-    /* Buttons */
+    /* Buttons - زيادة الخطوط والمسافات */
     .btn-attorney-primary,
     .btn-attorney-secondary {
-        font-size: 1rem;
-        padding: 0.875rem 1.75rem;
+        font-size: 1.0625rem !important;
+        padding: 1rem 2rem !important;
     }
     
-    /* Icon sizes */
+    /* Icon sizes - زيادة أحجام الأيقونات */
     .icon-circle {
-        width: 3.5rem;
-        height: 3.5rem;
+        width: 3.75rem;
+        height: 3.75rem;
     }
     
     .icon-circle-lg {
-        width: 4.5rem;
-        height: 4.5rem;
+        width: 5rem;
+        height: 5rem;
     }
     
     .icon-circle svg {
-        width: 1.875rem;
-        height: 1.875rem;
+        width: 2rem;
+        height: 2rem;
     }
     
-    /* Form inputs */
-    .form-input-attorney {
-        font-size: 1rem;
-        padding: 0.875rem 1.25rem;
+    /* Form inputs - زيادة الخطوط والمسافات */
+    .form-input-attorney,
+    .form-input-moj {
+        font-size: 1.0625rem !important;
+        padding: 1rem 1.5rem !important;
     }
     
-    /* Last update text */
+    /* Last update text - زيادة الخطوط */
     .case-last-update {
-        font-size: 0.9375rem;
-        padding: 0.75rem 1rem;
+        font-size: 1rem !important;
+        padding: 0.875rem 1.25rem !important;
     }
     
-    /* Sidebar improvements */
+    .case-last-update-text {
+        font-size: 1rem !important;
+    }
+    
+    .case-last-update-label {
+        font-size: 0.875rem !important;
+    }
+    
+    /* Sidebar improvements - زيادة الخطوط والمسافات */
     .sidebar-admin {
         padding: 2rem 1.5rem;
     }
     
     .sidebar-link {
-        font-size: 1rem;
-        padding: 0.875rem 1.25rem;
+        font-size: 1.0625rem !important;
+        padding: 1rem 1.5rem !important;
     }
     
-    /* Section spacing improvements */
+    /* Section spacing improvements - زيادة المسافات */
     section > .mb-8,
-    .content > .mb-8 {
-        margin-bottom: 3rem;
+    .content > .mb-8,
+    main > .mb-8 {
+        margin-bottom: 3.5rem !important;
     }
     
     section > .mb-6,
-    .content > .mb-6 {
-        margin-bottom: 2.25rem;
+    .content > .mb-6,
+    main > .mb-6 {
+        margin-bottom: 2.5rem !important;
     }
     
-    /* Grid gaps improvements */
+    section > .mb-12,
+    .content > .mb-12,
+    main > .mb-12 {
+        margin-bottom: 4rem !important;
+    }
+    
+    /* Grid gaps improvements - زيادة المسافات بين العناصر */
     .grid.gap-6 {
-        gap: 2rem;
+        gap: 2.5rem !important;
     }
     
     .grid.gap-4 {
-        gap: 1.5rem;
+        gap: 2rem !important;
     }
     
-    /* Table cell text sizes */
-    .table-dashboard td p {
-        font-size: 0.9375rem;
+    .grid.gap-3 {
+        gap: 1.5rem !important;
     }
     
-    .table-dashboard td .text-sm {
-        font-size: 0.9375rem;
+    /* Container padding - زيادة المسافات الداخلية */
+    .container {
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
     }
     
-    .table-dashboard td .text-xs {
-        font-size: 0.8125rem;
+    /* Main content padding - زيادة المسافات */
+    main .container {
+        padding-top: 2.5rem !important;
+        padding-bottom: 2.5rem !important;
+    }
+    
+    /* Text sizes in cards and sections */
+    .text-lg {
+        font-size: 1.25rem !important;
+        line-height: 1.75;
+    }
+    
+    .text-xl {
+        font-size: 1.5rem !important;
+        line-height: 1.6;
+    }
+    
+    .text-base {
+        font-size: 1.125rem !important;
+        line-height: 1.75;
+    }
+    
+    /* Links and navigation */
+    a {
+        font-size: 1.0625rem;
+    }
+    
+    /* Notification text sizes */
+    .notification-title {
+        font-size: 1.25rem !important;
+    }
+    
+    .notification-subtitle {
+        font-size: 1rem !important;
+    }
+    
+    /* Case number pill - زيادة الخطوط */
+    .case-number-pill {
+        font-size: 1rem !important;
+        padding: 0.5rem 1rem !important;
+    }
+    
+    /* Action links - زيادة الخطوط */
+    .action-link {
+        font-size: 1rem !important;
+        padding: 0.75rem 1.25rem !important;
     }
 }
 

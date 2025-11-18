@@ -3,23 +3,23 @@
 @section('title', 'إدارة الاستفسارات')
 
 @section('content')
-<div class="mb-8 lg:mb-12">
-    <div class="flex justify-between items-center mb-6 lg:mb-8">
+<div class="mb-8 lg:mb-14">
+    <div class="flex justify-between items-center mb-6 lg:mb-8 flex-wrap gap-4 lg:gap-6">
         <div>
-            <h1 class="text-4xl lg:text-5xl font-bold text-primary mb-2 lg:mb-3">إدارة الاستفسارات</h1>
+            <h1 class="text-4xl lg:text-5xl font-bold text-primary mb-2 lg:mb-4">إدارة الاستفسارات</h1>
             <p class="text-gray-600 text-lg lg:text-xl">إدارة استفسارات العملاء والرد عليها</p>
         </div>
     </div>
 </div>
 
-<div class="card-dashboard p-4 md:p-8 lg:p-10">
+<div class="card-dashboard p-4 md:p-8 lg:p-12">
     @if($inquiries->count() > 0)
-        <div class="mb-6 lg:mb-8 flex items-center justify-between flex-wrap gap-3 lg:gap-4">
-            <div class="flex items-center gap-3 lg:gap-4">
-                <div class="w-1 h-8 lg:h-10 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+        <div class="mb-6 lg:mb-10 flex items-center justify-between flex-wrap gap-3 lg:gap-5">
+            <div class="flex items-center gap-3 lg:gap-5">
+                <div class="w-1 h-8 lg:h-12 bg-gradient-to-b from-primary to-accent rounded-full"></div>
                 <h2 class="text-2xl lg:text-3xl font-bold text-primary">قائمة الاستفسارات</h2>
             </div>
-            <span class="rounded-full bg-slate-100 px-4 py-1 text-sm font-semibold text-slate-600 shadow-inner">{{ $inquiries->total() }} استفسار</span>
+            <span class="rounded-full bg-slate-100 px-4 lg:px-6 py-1 lg:py-2 text-sm lg:text-lg font-semibold text-slate-600 shadow-inner">{{ $inquiries->total() }} استفسار</span>
         </div>
         <!-- Desktop Table View -->
         <div class="hidden md:block overflow-x-auto">

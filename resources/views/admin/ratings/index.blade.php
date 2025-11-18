@@ -3,13 +3,13 @@
 @section('title', 'إدارة التقييمات')
 
 @section('content')
-<div class="mb-8 lg:mb-12">
-    <h1 class="text-4xl lg:text-5xl font-bold text-primary mb-2 lg:mb-3">إدارة التقييمات</h1>
+<div class="mb-8 lg:mb-14">
+    <h1 class="text-4xl lg:text-5xl font-bold text-primary mb-2 lg:mb-4">إدارة التقييمات</h1>
     <p class="text-gray-600 text-lg lg:text-xl">مراجعة واعتماد التقييمات من العملاء</p>
 </div>
 
 <!-- Stats Cards -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-8 lg:mb-10">
     <div class="card-dashboard">
         <div class="flex items-center justify-between">
             <div>
@@ -39,14 +39,14 @@
     </div>
 </div>
 
-<div class="card-dashboard p-4 md:p-8">
+<div class="card-dashboard p-4 md:p-8 lg:p-12">
     @if($ratings->count() > 0)
-        <div class="mb-6 flex items-center justify-between flex-wrap gap-3">
-            <div class="flex items-center gap-3">
-                <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
-                <h2 class="text-2xl font-bold text-primary">قائمة التقييمات</h2>
+        <div class="mb-6 lg:mb-10 flex items-center justify-between flex-wrap gap-3 lg:gap-5">
+            <div class="flex items-center gap-3 lg:gap-5">
+                <div class="w-1 h-8 lg:h-12 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                <h2 class="text-2xl lg:text-3xl font-bold text-primary">قائمة التقييمات</h2>
             </div>
-            <span class="rounded-full bg-slate-100 px-4 py-1 text-sm font-semibold text-slate-600 shadow-inner">{{ $ratings->total() }} تقييم</span>
+            <span class="rounded-full bg-slate-100 px-4 lg:px-6 py-1 lg:py-2 text-sm lg:text-lg font-semibold text-slate-600 shadow-inner">{{ $ratings->total() }} تقييم</span>
         </div>
         <!-- Desktop Table View -->
         <div class="hidden md:block overflow-x-auto">
