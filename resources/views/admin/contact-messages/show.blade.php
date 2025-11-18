@@ -138,12 +138,12 @@
     
     <div class="flex gap-4 flex-wrap">
         @if($contactMessage->read)
-            <form method="POST" action="{{ route('admin.contact-messages.mark-unread', $contactMessage->id) }}" class="inline">
+            <form method="POST" action="{{ force_https_route('admin.contact-messages.mark-unread', $contactMessage->id) }}" class="inline">
                 @csrf
                 <button type="submit" class="btn-attorney-secondary">تحديد كغير مقروءة</button>
             </form>
         @else
-            <form method="POST" action="{{ route('admin.contact-messages.mark-read', $contactMessage->id) }}" class="inline">
+            <form method="POST" action="{{ force_https_route('admin.contact-messages.mark-read', $contactMessage->id) }}" class="inline">
                 @csrf
                 <button type="submit" class="btn-attorney-secondary">تحديد كمقروءة</button>
             </form>
@@ -152,7 +152,7 @@
         <a href="mailto:{{ $contactMessage->email }}?subject=Re: {{ $contactMessage->subject }}" 
            class="btn-attorney-primary">الرد عبر البريد الإلكتروني</a>
         
-        <form method="POST" action="{{ route('admin.contact-messages.destroy', $contactMessage->id) }}" 
+        <form method="POST" action="{{ force_https_route('admin.contact-messages.destroy', $contactMessage->id) }}" 
               class="inline" onsubmit="return confirm('هل أنت متأكد من حذف هذه الرسالة؟')">
             @csrf
             @method('DELETE')
