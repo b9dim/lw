@@ -44,13 +44,24 @@
                             <td class="font-semibold">{{ $case->client->name }}</td>
                             <td>{{ $case->court_name ?? '-' }}</td>
                             <td>
-                                <div class="inline-flex flex-wrap items-center gap-2 text-sm leading-tight">
+                                <div class="flex flex-col gap-2">
                                     <span class="badge-dashboard badge-{{ str_replace(' ', '-', strtolower($case->status)) }}">
                                         {{ $case->status }}
                                     </span>
-                                    <span class="text-gray-600 font-medium">
-                                        {{ $case->last_update_text ?? 'لا يوجد تحديث مضاف بعد' }}
-                                    </span>
+                                    <div class="case-last-update">
+                                        <div class="case-last-update-icon">
+                                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                                <circle cx="12" cy="12" r="8.5" fill="none"></circle>
+                                                <path d="M12 7.5v4.5l3 1.75" fill="none"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="case-last-update-content">
+                                            <span class="case-last-update-label">آخر تحديث</span>
+                                            <span class="case-last-update-text">
+                                                {{ $case->last_update_text ?? 'لا يوجد تحديث مضاف بعد' }}
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </td>
                             <td>
@@ -82,14 +93,25 @@
                             <p class="text-xs text-gray-500 mb-1">رقم القضية</p>
                             <p class="font-mono font-semibold text-primary text-sm break-all">{{ $case->case_number }}</p>
                         </div>
-                        <div class="flex flex-col items-end gap-1 text-right">
-                            <span class="badge-dashboard badge-{{ str_replace(' ', '-', strtolower($case->status)) }} text-xs ml-2 flex-shrink-0">
-                                {{ $case->status }}
-                            </span>
-                            <span class="text-xs text-gray-600 font-medium leading-snug">
-                                {{ $case->last_update_text ?? 'لا يوجد تحديث مضاف بعد' }}
-                            </span>
-                        </div>
+                          <div class="flex flex-col items-end gap-2 text-right">
+                              <span class="badge-dashboard badge-{{ str_replace(' ', '-', strtolower($case->status)) }} text-xs ml-2 flex-shrink-0">
+                                  {{ $case->status }}
+                              </span>
+                              <div class="case-last-update">
+                                  <div class="case-last-update-icon">
+                                      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                          <circle cx="12" cy="12" r="8.5" fill="none"></circle>
+                                          <path d="M12 7.5v4.5l3 1.75" fill="none"></path>
+                                      </svg>
+                                  </div>
+                                  <div class="case-last-update-content text-right">
+                                      <span class="case-last-update-label">آخر تحديث</span>
+                                      <span class="case-last-update-text leading-snug">
+                                          {{ $case->last_update_text ?? 'لا يوجد تحديث مضاف بعد' }}
+                                      </span>
+                                  </div>
+                              </div>
+                          </div>
                     </div>
                     <div class="mb-3">
                         <p class="text-xs text-gray-500 mb-1">العميل</p>
