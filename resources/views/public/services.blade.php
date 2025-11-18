@@ -3,7 +3,7 @@
 @section('title', 'خدماتنا')
 
 @section('content')
-<section class="py-24 bg-white">
+<section class="py-20">
     <div class="container mx-auto px-6 md:px-8 lg:px-12">
         <h1 class="section-title">خدماتنا</h1>
         <p class="section-subtitle">نقدم مجموعة شاملة من الخدمات القانونية المتخصصة</p>

@@ -7,7 +7,7 @@
     <title>@yield('title', 'شركة مسفر محمد العرجاني للمحاماة والاستشارات القانونية')</title>
     @include('components.vite-assets', ['assets' => ['resources/css/app.css', 'resources/js/app.js']])
 </head>
-<body class="bg-gray-50">
+<body class="bg-deep text-gray-200">
     <!-- Header -->
     <header class="header-attorney">
         <nav class="container mx-auto">
@@ -24,9 +24,12 @@
                         <a href="{{ route('contact') }}" class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">اتصل بنا</a>
                     </div>
                 </div>
-                <div class="flex-shrink-0">
+                <div class="flex items-center gap-3 flex-shrink-0">
                     <a href="{{ route('client.login') }}" class="btn-attorney-secondary whitespace-nowrap flex items-center gap-2">
                         <span>دخول العملاء</span>
+                    </a>
+                    <a href="{{ route('contact') }}" class="px-5 py-2 rounded-full bg-gold text-deep font-semibold hover:bg-[#A0842F] transition shadow-lg whitespace-nowrap">
+                        احجز استشارة
                     </a>
                 </div>
             </div>

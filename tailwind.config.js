@@ -14,12 +14,18 @@ export default {
             },
             colors: {
                 'primary': {
-                    DEFAULT: '#1a472a',
-                    dark: '#0f2818',
+                    DEFAULT: '#115E3B',
+                    dark: '#0B2F24',
                     light: '#2d5a3d',
                 },
+                'primaryDark': '#0B2F24',
+                'deep': '#072017',
+                'gold': {
+                    DEFAULT: '#C8A848',
+                    dark: '#A0842F',
+                },
                 'accent': {
-                    DEFAULT: '#c9a961',
+                    DEFAULT: '#C8A848',
                 },
                 'text': {
                     dark: '#1a1a1a',
