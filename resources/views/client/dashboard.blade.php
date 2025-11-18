@@ -75,7 +75,7 @@
                                 </td>
                             <td>{{ $case->court_name ?? 'غير محدد' }}</td>
                             <td>
-                                <div class="flex flex-col gap-2">
+                                <div class="flex flex-col gap-2 case-status-cell">
                                     <span class="badge-dashboard badge-{{ str_replace(' ', '-', strtolower($case->status)) }}">
                                         {{ $case->status }}
                                     </span>

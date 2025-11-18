@@ -997,17 +997,19 @@ textarea.form-input-moj {
 .case-number-pill {
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-    padding: 0.4rem 0.9rem;
+    gap: clamp(0.35rem, 1vw, 0.6rem);
+    padding: clamp(0.32rem, 1vw, 0.45rem) clamp(0.55rem, 1.6vw, 0.9rem);
     border-radius: 999px;
     background: linear-gradient(135deg, rgba(17, 94, 59, 0.12) 0%, rgba(200, 168, 72, 0.18) 100%);
     border: 1px solid rgba(17, 94, 59, 0.25);
     color: var(--primary-color);
     font-weight: 700;
-    font-size: 0.95rem;
-    letter-spacing: 0.02em;
+    font-size: clamp(0.78rem, 1.8vw, 0.95rem);
+    letter-spacing: clamp(0.02em, 0.3vw, 0.08em);
     text-transform: uppercase;
     box-shadow: 0 8px 16px rgba(17, 94, 59, 0.08);
+    max-width: 100%;
+    line-height: 1.2;
 }
 
 .case-number-pill-icon {
@@ -1035,6 +1037,42 @@ textarea.form-input-moj {
     font-weight: 800;
     letter-spacing: 0.08em;
     color: var(--primary-dark);
+    word-break: break-word;
+}
+
+.case-status-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+@media (max-width: 1100px) {
+    .table-dashboard tbody td {
+        padding: 16px 18px;
+    }
+
+    .case-number-pill-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 900px) {
+    .case-status-cell {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.35rem 0.6rem;
+    }
+
+    .case-status-cell .badge-dashboard {
+        order: 1;
+    }
+
+    .case-status-cell .case-last-update {
+        order: 2;
+        flex: 1 1 100%;
+    }
 }
 
 .js-clickable-row {
@@ -1185,6 +1223,33 @@ textarea.form-input-moj {
 
     .case-last-update-text {
         font-size: 0.9rem;
+    }
+
+    .case-number-pill {
+        width: 100%;
+        justify-content: flex-start;
+        font-size: 0.82rem;
+        padding: 0.35rem 0.7rem;
+        letter-spacing: 0.03em;
+        text-transform: none;
+        border-radius: 14px;
+        gap: 0.4rem;
+    }
+
+    .case-number-pill-icon {
+        width: 26px;
+        height: 26px;
+    }
+
+    .badge-dashboard {
+        width: 100%;
+        min-width: 0;
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+
+    .case-status-cell {
+        gap: 0.35rem;
     }
 }
 
@@ -1379,6 +1444,25 @@ html {
     .btn-attorney-secondary {
         padding: 10px 16px;
         font-size: 13px;
+    }
+
+    .case-number-pill {
+        justify-content: center;
+        text-align: center;
+        padding: 0.4rem 0.65rem;
+        letter-spacing: 0.02em;
+    }
+
+    .case-number-pill-icon {
+        display: none;
+    }
+
+    .case-number-pill-text {
+        letter-spacing: 0.03em;
+    }
+
+    .badge-dashboard {
+        font-size: 0.8rem;
     }
     
     /* Increase padding for client header on very small screens */
