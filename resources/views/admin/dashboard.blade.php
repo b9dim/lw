@@ -231,15 +231,13 @@
                                                 <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
                                                 {{ $case->status }}
                                             </span>
-                                            @if($case->last_update_text)
-                                                <div class="case-last-update inline-flex items-center gap-2 rounded-2xl border border-white/60 bg-white/70 px-3 py-2 text-[11px] font-medium text-slate-500">
-                                                    <svg viewBox="0 0 24 24" class="h-4 w-4 text-primary/70" aria-hidden="true">
-                                                        <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.2"></circle>
-                                                        <path d="M12 8v4.2l2.8 1.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.2"></path>
-                                                    </svg>
-                                                    <span>{{ Str::limit($case->last_update_text, 30) }}</span>
-                                                </div>
-                                            @endif
+                                            <div class="case-last-update inline-flex items-center gap-2 rounded-2xl border border-white/60 bg-white/70 px-3 py-2 text-[11px] font-medium text-slate-500">
+                                                <svg viewBox="0 0 24 24" class="h-4 w-4 text-primary/70" aria-hidden="true">
+                                                    <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.2"></circle>
+                                                    <path d="M12 8v4.2l2.8 1.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.2"></path>
+                                                </svg>
+                                                <span>{{ $case->last_update_text ?? 'لا يوجد تحديث مضاف بعد' }}</span>
+                                            </div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 align-middle" data-row-link-ignore>
