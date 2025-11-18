@@ -40,7 +40,7 @@
             <div class="min-w-[860px] overflow-hidden rounded-[30px] border border-slate-200/70 bg-white shadow-[0_35px_70px_rgba(15,23,42,0.08)]">
                 <table class="min-w-full text-right text-sm text-slate-600">
                     <thead class="bg-slate-50">
-                        <tr class="text-[0.72rem] font-semibold uppercase tracking-[0.25em] text-slate-500">
+                        <tr class="text-[0.72rem] font-semibold uppercase  text-slate-500">
                             <th class="px-6 py-4 text-right first:rounded-tl-[30px] last:rounded-tr-[30px]">رقم القضية</th>
                             <th class="px-6 py-4 text-right">العميل</th>
                             <th class="px-6 py-4 text-right">المحكمة</th>
@@ -56,7 +56,7 @@
                             <tr class="js-clickable-row transition-all duration-200 hover:bg-white hover:shadow-[0_18px_45px_rgba(15,23,42,0.08)] hover:-translate-y-0.5 odd:bg-white even:bg-slate-50/60" data-row-href="{{ route('admin.cases.show', $case->id) }}" tabindex="0" role="link" aria-label="عرض تفاصيل القضية رقم {{ $case->case_number }}">
                                 <td class="px-6 py-4 align-middle">
                                     <div class="inline-flex items-center gap-2 rounded-2xl border border-[#E5E7EB] bg-white/80 px-4 py-2 font-semibold text-slate-900 shadow-sm">
-                                        <span class="text-[10px] uppercase tracking-[0.35em] text-slate-400">قضية</span>
+                                        <span class="text-[10px] uppercase text-slate-400">قضية</span>
                                         <span class="font-mono text-base text-slate-900">{{ $case->case_number }}</span>
                                     </div>
                                 </td>

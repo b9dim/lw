@@ -197,7 +197,7 @@
                 <div class="min-w-[860px] overflow-hidden rounded-[30px] border border-slate-200/70 bg-white shadow-[0_35px_70px_rgba(15,23,42,0.08)]">
                     <table class="min-w-full text-right text-sm text-slate-600">
                         <thead class="bg-slate-50">
-                            <tr class="text-[0.72rem] font-semibold uppercase tracking-[0.25em] text-slate-500">
+                            <tr class="text-[0.72rem] font-semibold uppercase  text-slate-500">
                                 <th class="px-6 py-4 text-right first:rounded-tl-[30px] last:rounded-tr-[30px]">رقم القضية</th>
                                 <th class="px-6 py-4 text-right">العميل</th>
                                 <th class="px-6 py-4 text-right">المحكمة</th>
@@ -213,7 +213,7 @@
                                 <tr class="js-clickable-row transition-all duration-200 hover:bg-white hover:shadow-[0_18px_45px_rgba(15,23,42,0.08)] hover:-translate-y-0.5 odd:bg-white even:bg-slate-50/60" data-row-href="{{ route('admin.cases.show', $case->id) }}" tabindex="0" role="link" aria-label="عرض تفاصيل القضية رقم {{ $case->case_number }}">
                                     <td class="px-6 py-4 align-middle">
                                         <div class="inline-flex items-center gap-2 rounded-2xl border border-[#E5E7EB] bg-white/80 px-4 py-2 font-semibold text-slate-900 shadow-sm">
-                                            <span class="text-[10px] uppercase tracking-[0.35em] text-slate-400">قضية</span>
+                                            <span class="text-[10px] uppercase text-slate-400">قضية</span>
                                             <span class="font-mono text-base text-slate-900">{{ $case->case_number }}</span>
                                         </div>
                                     </td>
@@ -285,12 +285,16 @@
                             <p class="text-[11px] text-slate-500 mb-1">المحكمة</p>
                             <p class="text-sm text-slate-800">{{ $case->court_name ?? '-' }}</p>
                         </div>
-                        @if($case->last_update_text)
-                            <div class="mb-3">
-                                <p class="text-[11px] text-slate-500 mb-1">آخر تحديث</p>
-                                <p class="text-sm text-slate-800">{{ Str::limit($case->last_update_text, 50) }}</p>
+                        <div class="mb-3">
+                            <p class="text-[11px] text-slate-500 mb-1">آخر تحديث</p>
+                            <div class="case-last-update inline-flex items-center gap-2 rounded-2xl border border-white/60 bg-white/70 px-3 py-2 text-[11px] font-medium text-slate-500">
+                                <svg viewBox="0 0 24 24" class="h-4 w-4 text-primary/70" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.2"></circle>
+                                    <path d="M12 8v4.2l2.8 1.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.2"></path>
+                                </svg>
+                                <span>{{ $case->last_update_text ?? 'لا يوجد تحديث مضاف بعد' }}</span>
                             </div>
-                        @endif
+                        </div>
                         <div class="pt-4 border-t border-slate-100 mt-4" data-row-link-ignore>
                             <a href="{{ route('admin.cases.show', $case->id) }}" 
                                class="flex items-center justify-center rounded-2xl bg-gradient-to-l from-primary to-accent px-3 py-2 text-center text-xs font-semibold text-white"
@@ -333,7 +337,7 @@
                         <div class="flex justify-between items-start gap-4">
                             <div class="flex-1 min-w-0">
                                 <div class="inline-flex items-center gap-2 rounded-2xl border border-[#E5E7EB] bg-white/80 px-3 py-1.5 font-semibold text-slate-900 shadow-sm mb-2">
-                                    <span class="text-[10px] uppercase tracking-[0.35em] text-slate-400">قضية</span>
+                                    <span class="text-[10px] uppercase  text-slate-400">قضية</span>
                                     <span class="font-mono text-sm text-slate-900">{{ $inquiry->case->case_number }}</span>
                                 </div>
                                 <p class="text-sm font-semibold text-slate-900">{{ $inquiry->client->name }}</p>

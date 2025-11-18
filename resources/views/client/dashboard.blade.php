@@ -107,7 +107,7 @@
             <div class="min-w-[700px] overflow-hidden rounded-[28px] border border-slate-200/70 bg-white shadow-[0_30px_60px_rgba(15,23,42,0.08)]">
                 <table class="min-w-full text-right text-sm text-slate-600">
                     <thead class="bg-slate-50">
-                        <tr class="text-[0.72rem] font-semibold uppercase tracking-[0.25em] text-slate-500">
+                        <tr class="text-[0.72rem] font-semibold uppercase  text-slate-500">
                             <th class="px-6 py-4 text-right first:rounded-tl-[28px] last:rounded-tr-[28px]">رقم القضية</th>
                             <th class="px-6 py-4 text-right">المحكمة</th>
                             <th class="px-6 py-4 text-right">الحالة</th>
@@ -122,7 +122,7 @@
                             <tr class="js-clickable-row transition-all duration-200 hover:bg-white hover:shadow-[0_12px_35px_rgba(15,23,42,0.08)] hover:-translate-y-0.5 odd:bg-white even:bg-slate-50/60" data-row-href="{{ route('client.cases.show', $case->id) }}" tabindex="0" role="link" aria-label="عرض تفاصيل القضية رقم {{ $case->case_number }}">
                                 <td class="px-6 py-4 align-middle">
                                     <div class="inline-flex items-center gap-2 rounded-2xl border border-[#E5E7EB] bg-white/80 px-4 py-2 font-semibold text-slate-900 shadow-sm">
-                                        <span class="text-[10px] uppercase tracking-[0.4em] text-slate-400">قضية</span>
+                                        <span class="text-[10px] uppercase text-slate-400">قضية</span>
                                         <span class="font-mono text-base text-slate-900">{{ $case->case_number }}</span>
                                     </div>
                                 </td>
@@ -179,7 +179,7 @@
                     <div class="relative z-10 space-y-5">
                         <div class="flex items-start justify-between gap-4">
                             <div class="flex-1 min-w-0">
-                                <p class="mb-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-slate-400">قضية</p>
+                                <p class="mb-2 text-[11px] font-semibold uppercase text-slate-400">قضية</p>
                                 <div class="inline-flex items-center rounded-2xl border border-[#E5E7EB] bg-white/80 px-4 py-2 text-sm font-semibold text-slate-900 shadow-inner">
                                     <span class="font-mono text-base text-slate-900">{{ $case->case_number }}</span>
                                 </div>
@@ -231,7 +231,7 @@
                 <div class="min-w-[700px] overflow-hidden rounded-[28px] border border-slate-200/50 bg-slate-50/50 shadow-sm">
                     <table class="min-w-full text-right text-sm text-slate-600">
                         <thead class="bg-slate-100/50">
-                            <tr class="text-[0.72rem] font-semibold uppercase tracking-[0.25em] text-slate-400">
+                            <tr class="text-[0.72rem] font-semibold uppercase  text-slate-400">
                                 <th class="px-6 py-4 text-right first:rounded-tl-[28px] last:rounded-tr-[28px]">رقم القضية</th>
                                 <th class="px-6 py-4 text-right">المحكمة</th>
                                 <th class="px-6 py-4 text-right">الحالة</th>
@@ -242,7 +242,7 @@
                                 <tr class="opacity-75">
                                     <td class="px-6 py-4 align-middle">
                                         <div class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white/60 px-4 py-2 font-semibold text-slate-600">
-                                            <span class="text-[10px] uppercase tracking-[0.4em] text-slate-400">قضية</span>
+                                            <span class="text-[10px] uppercase text-slate-400">قضية</span>
                                             <span class="font-mono text-base text-slate-600">{{ $case->case_number }}</span>
                                         </div>
                                     </td>

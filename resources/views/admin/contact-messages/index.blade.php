@@ -27,7 +27,7 @@
             <div class="min-w-[860px] overflow-hidden rounded-[30px] border border-slate-200/70 bg-white shadow-[0_35px_70px_rgba(15,23,42,0.08)]">
                 <table class="min-w-full text-right text-sm text-slate-600">
                     <thead class="bg-slate-50">
-                        <tr class="text-[0.72rem] font-semibold uppercase tracking-[0.25em] text-slate-500">
+                        <tr class="text-[0.72rem] font-semibold uppercase  text-slate-500">
                             <th class="px-6 py-4 text-right first:rounded-tl-[30px] last:rounded-tr-[30px]">الاسم</th>
                             <th class="px-6 py-4 text-right">البريد الإلكتروني</th>
                             <th class="px-6 py-4 text-right">الموضوع</th>
