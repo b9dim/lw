@@ -56,9 +56,14 @@
                 'منتهية' => 'bg-slate-100 text-slate-600',
                 'مغلقة' => 'bg-slate-100 text-slate-600',
             ];
+            // فصل القضايا إلى نشطة ومنتهية
+            $activeCases = $cases->where('status', '!=', 'منتهية');
+            $finishedCases = $cases->where('status', 'منتهية');
         @endphp
+        
+        @if($activeCases->count() > 0)
         <!-- Desktop Table View (hidden on mobile) -->
-        <div class="hidden md:block overflow-x-auto">
+        <div class="hidden md:block overflow-x-auto mb-6">
             <div class="min-w-[700px] overflow-hidden rounded-[28px] border border-slate-200/70 bg-white shadow-[0_30px_60px_rgba(15,23,42,0.08)]">
                 <table class="min-w-full text-right text-sm text-slate-600">
                     <thead class="bg-slate-50">
@@ -70,7 +75,7 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
-                        @foreach($cases as $case)
+                        @foreach($activeCases as $case)
                             @php
                                 $badgeClass = $statusBadgePalette[$case->status] ?? 'bg-gray-100 text-gray-600';
                             @endphp
@@ -113,10 +118,12 @@
                 </table>
             </div>
         </div>
+        @endif
 
+        @if($activeCases->count() > 0)
         <!-- Mobile Card View (visible only on mobile) -->
-        <div class="md:hidden space-y-4">
-            @foreach($cases as $case)
+        <div class="md:hidden space-y-4 mb-6">
+            @foreach($activeCases as $case)
                 @php
                     $badgeClass = $statusBadgePalette[$case->status] ?? 'bg-gray-100 text-gray-600';
                 @endphp
@@ -172,6 +179,74 @@
                 </div>
             @endforeach
         </div>
+        @endif
+        
+        @if($finishedCases->count() > 0)
+        <!-- Finished Cases Section -->
+        <div class="mt-8 pt-6 border-t border-slate-200">
+            <h3 class="text-xl font-bold text-slate-600 mb-4">القضايا المنتهية</h3>
+            
+            <!-- Desktop Table View for Finished Cases -->
+            <div class="hidden md:block overflow-x-auto mb-4">
+                <div class="min-w-[700px] overflow-hidden rounded-[28px] border border-slate-200/50 bg-slate-50/50 shadow-sm">
+                    <table class="min-w-full text-right text-sm text-slate-600">
+                        <thead class="bg-slate-100/50">
+                            <tr class="text-[0.72rem] font-semibold uppercase tracking-[0.25em] text-slate-400">
+                                <th class="px-6 py-4 text-right first:rounded-tl-[28px] last:rounded-tr-[28px]">رقم القضية</th>
+                                <th class="px-6 py-4 text-right">المحكمة</th>
+                                <th class="px-6 py-4 text-right">الحالة</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            @foreach($finishedCases as $case)
+                                <tr class="opacity-75">
+                                    <td class="px-6 py-4 align-middle">
+                                        <div class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white/60 px-4 py-2 font-semibold text-slate-600">
+                                            <span class="text-[10px] uppercase tracking-[0.4em] text-slate-400">قضية</span>
+                                            <span class="font-mono text-base text-slate-600">{{ $case->case_number }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 align-middle">
+                                        <p class="text-sm font-medium text-slate-600">{{ $case->court_name ?? 'غير محدد' }}</p>
+                                    </td>
+                                    <td class="px-6 py-4 align-middle">
+                                        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold bg-slate-100 text-slate-600">
+                                            <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
+                                            {{ $case->status }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Mobile Card View for Finished Cases -->
+            <div class="md:hidden space-y-3">
+                @foreach($finishedCases as $case)
+                    <div class="rounded-2xl border border-slate-200 bg-slate-50/50 p-4 opacity-75">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex-1 min-w-0">
+                                <p class="text-[11px] text-slate-400 mb-1">قضية</p>
+                                <div class="inline-flex items-center rounded-2xl border border-slate-200 bg-white/60 px-3 py-1.5 text-sm font-semibold text-slate-600">
+                                    <span class="font-mono text-sm">{{ $case->case_number }}</span>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold bg-slate-100 text-slate-600">
+                                <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
+                                {{ $case->status }}
+                            </span>
+                        </div>
+                        <div class="mt-3">
+                            <p class="text-xs text-slate-400 mb-1">المحكمة</p>
+                            <p class="text-sm text-slate-600">{{ $case->court_name ?? 'غير محدد' }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        @endif
     @else
         <div class="text-center py-12">
             <div class="text-6xl mb-4">📂</div>
