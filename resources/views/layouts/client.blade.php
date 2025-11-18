@@ -35,7 +35,7 @@
             </div>
 
             <div class="flex items-center gap-2">
-                <a href="{{ route('client.cases.index') }}"
+                <a href="{{ route('client.dashboard') }}"
                    class="px-3 py-1.5 text-xs font-medium rounded-full bg-white/15 text-white border border-white/20 backdrop-blur-md transition hover:bg-white/25">
                    جميع قضاياي
                 </a>
