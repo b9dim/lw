@@ -32,7 +32,7 @@ class DashboardController extends Controller
 
         // تحديد الأعمدة المطلوبة فقط لتحسين الأداء
         $recentCases = Case_::with(['client:id,name', 'lawyer:id,name'])
-            ->select('id', 'case_number', 'client_id', 'lawyer_id', 'status', 'created_at')
+            ->select('id', 'case_number', 'client_id', 'lawyer_id', 'status', 'court_name', 'last_update_text', 'created_at')
             ->latest()
             ->take(5)
             ->get();
