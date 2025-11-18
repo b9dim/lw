@@ -133,6 +133,66 @@
     </footer>
 
     <script>
+        // Calculate header height dynamically and set padding
+        (function() {
+            const header = document.getElementById('clientHeader');
+            const mainContent = document.querySelector('.main-client-content');
+            
+            if (!header || !mainContent) return;
+            
+            function updatePadding() {
+                // Force reflow to get accurate height
+                header.style.display = 'block';
+                const headerHeight = header.offsetHeight;
+                // Add extra 30px for safety margin (increased for better spacing)
+                const paddingValue = Math.max(headerHeight + 30, 120); // Minimum 120px
+                mainContent.style.paddingTop = paddingValue + 'px';
+            }
+            
+            // Wait for DOM to be fully loaded
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    setTimeout(updatePadding, 100);
+                });
+            } else {
+                // DOM already loaded
+                setTimeout(updatePadding, 100);
+            }
+            
+            // Update on resize with debounce
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    updatePadding();
+                }, 150);
+            }, { passive: true });
+            
+            // Update when header visibility changes (when hidden class is toggled)
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        // Small delay to ensure height is calculated after class change
+                        setTimeout(updatePadding, 50);
+                    }
+                });
+            });
+            observer.observe(header, {
+                attributes: true,
+                attributeFilter: ['class'],
+                childList: false,
+                subtree: false
+            });
+            
+            // Update when window orientation changes (for mobile)
+            window.addEventListener('orientationchange', function() {
+                setTimeout(updatePadding, 300);
+            });
+            
+            // Update periodically to catch any dynamic changes (less frequent)
+            setInterval(updatePadding, 1000);
+        })();
+        
         // Hide header on scroll down, show on scroll up
         (function() {
             let lastScrollTop = 0;

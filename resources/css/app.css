@@ -133,10 +133,28 @@ body {
     top: 0;
     width: 100%;
     transition: transform 0.3s ease-in-out;
+    z-index: 1000;
 }
 
 .header-client.hidden {
     transform: translateY(-100%);
+}
+
+/* Ensure header has proper height calculation */
+.header-client nav {
+    min-height: auto;
+}
+
+.header-client nav > div {
+    min-height: auto;
+    padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    .header-client nav > div {
+        padding: 0.75rem 0;
+        min-height: auto;
+    }
 }
 
 /* Remove duplicate padding - we use main-client-content padding instead */
@@ -1236,26 +1254,27 @@ body:has(.header-client) {
     padding-top: 0;
 }
 
-/* Add padding to main content when client header is present */
+/* Add padding to main content when client header is present - Dynamic via JS */
 body:has(.header-client) .main-client-content {
-    padding-top: 7rem;
+    padding-top: 120px; /* Default fallback - will be overridden by JS */
+    transition: padding-top 0.3s ease;
 }
 
 @media (max-width: 768px) {
     body:has(.header-client) .main-client-content {
-        padding-top: 8rem;
+        padding-top: 140px; /* Increased for mobile */
     }
 }
 
 @media (max-width: 640px) {
     body:has(.header-client) .main-client-content {
-        padding-top: 9rem;
+        padding-top: 160px; /* Increased for small mobile */
     }
 }
 
 @media (max-width: 480px) {
     body:has(.header-client) .main-client-content {
-        padding-top: 10rem;
+        padding-top: 180px; /* Increased for very small mobile */
     }
 }
 
