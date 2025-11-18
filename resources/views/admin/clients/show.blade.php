@@ -3,17 +3,17 @@
 @section('title', 'تفاصيل العميل')
 
 @section('content')
-<div class="mb-6">
-    <a href="{{ route('admin.clients.index') }}" class="text-primary hover:underline font-semibold">
+<div class="mb-6 lg:mb-8">
+    <a href="{{ route('admin.clients.index') }}" class="text-primary hover:underline font-semibold lg:text-lg">
         ← العودة إلى قائمة العملاء
     </a>
 </div>
 
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
     <div class="lg:col-span-2">
-        <div class="card-attorney p-8 mb-6">
-            <div class="flex justify-between items-start mb-6">
-                <h1 class="text-3xl font-bold text-primary">معلومات العميل</h1>
+        <div class="card-attorney p-8 lg:p-10 mb-6 lg:mb-8">
+            <div class="flex justify-between items-start mb-6 lg:mb-8">
+                <h1 class="text-3xl lg:text-4xl font-bold text-primary">معلومات العميل</h1>
                 <a href="{{ route('admin.clients.edit', $client->id) }}" class="btn-attorney-secondary">تعديل</a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -36,8 +36,8 @@
             </div>
         </div>
 
-        <div class="card-attorney p-8">
-            <h2 class="text-2xl font-bold text-primary mb-6">قضايا العميل</h2>
+        <div class="card-attorney p-8 lg:p-10">
+            <h2 class="text-2xl lg:text-3xl font-bold text-primary mb-6 lg:mb-8">قضايا العميل</h2>
             @if($client->cases->count() > 0)
                 <div class="space-y-4">
                     @foreach($client->cases as $case)

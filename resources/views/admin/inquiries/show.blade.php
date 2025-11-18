@@ -4,15 +4,15 @@
 
 @section('content')
 <!-- Header Actions -->
-<div class="mb-8">
-    <a href="{{ route('admin.inquiries.index') }}" class="text-primary hover:text-accent font-semibold flex items-center gap-2 transition-colors duration-200 hover:underline inline-block">
-        <span class="text-xl">←</span> 
+<div class="mb-8 lg:mb-12">
+    <a href="{{ route('admin.inquiries.index') }}" class="text-primary hover:text-accent font-semibold flex items-center gap-2 transition-colors duration-200 hover:underline inline-block lg:text-lg">
+        <span class="text-xl lg:text-2xl">←</span> 
         <span>العودة إلى قائمة الاستفسارات</span>
     </a>
 </div>
 
 <!-- Case Info Card -->
-<div class="card-dashboard p-8 mb-8 relative overflow-hidden border-2 border-primary/20">
+<div class="card-dashboard p-8 lg:p-10 mb-8 lg:mb-12 relative overflow-hidden border-2 border-primary/20">
     <!-- Decorative Elements -->
     <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/15 to-accent/15 rounded-bl-full opacity-50"></div>
     <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-accent/15 to-primary/10 rounded-tr-full opacity-50"></div>
@@ -26,8 +26,8 @@
                 </svg>
             </div>
             <div class="flex-1 min-w-0">
-                <h1 class="text-2xl md:text-3xl font-bold text-primary mb-1">تفاصيل الاستفسار</h1>
-                <p class="text-gray-600 text-sm">
+                <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-1 lg:mb-2">تفاصيل الاستفسار</h1>
+                <p class="text-gray-600 text-sm lg:text-base">
                     رقم القضية: 
                     <span class="font-mono font-bold text-accent bg-accent/15 px-2 py-0.5 rounded">{{ $inquiry->case->case_number }}</span>
                 </p>
@@ -67,15 +67,15 @@
 </div>
 
 <!-- Linked Case Card -->
-<div class="card-dashboard p-8 mb-8 border border-primary/15 shadow-sm hover:shadow-md transition relative overflow-hidden">
+<div class="card-dashboard p-8 lg:p-10 mb-8 lg:mb-12 border border-primary/15 shadow-sm hover:shadow-md transition relative overflow-hidden">
     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary"></div>
-    <div class="flex items-center gap-3 mb-6">
-        <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+    <div class="flex items-center gap-3 lg:gap-4 mb-6 lg:mb-8">
+        <div class="w-1 h-8 lg:h-10 bg-gradient-to-b from-primary to-accent rounded-full"></div>
         <div>
-            <p class="text-sm text-primary font-semibold">القضية المرتبطة</p>
-            <h2 class="text-2xl font-bold text-gray-900">تفاصيل القضية</h2>
+            <p class="text-sm lg:text-base text-primary font-semibold">القضية المرتبطة</p>
+            <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">تفاصيل القضية</h2>
         </div>
-        <span class="ml-auto badge-dashboard badge-{{ str_replace(' ', '-', strtolower($inquiry->case->status)) }} text-sm px-4 py-2">
+        <span class="ml-auto badge-dashboard badge-{{ str_replace(' ', '-', strtolower($inquiry->case->status)) }} text-sm lg:text-base px-4 lg:px-5 py-2 lg:py-2.5">
             {{ $inquiry->case->status }}
         </span>
     </div>
@@ -102,12 +102,12 @@
 </div>
 
 <!-- Inquiry Section -->
-<div class="card-dashboard p-8 mb-8">
-    <div class="flex items-center gap-3 mb-6">
-        <div class="w-1 h-8 bg-gradient-to-b from-accent to-primary rounded-full"></div>
+<div class="card-dashboard p-8 lg:p-10 mb-8 lg:mb-12">
+    <div class="flex items-center gap-3 lg:gap-4 mb-6 lg:mb-8">
+        <div class="w-1 h-8 lg:h-10 bg-gradient-to-b from-accent to-primary rounded-full"></div>
         <div>
-            <h2 class="text-2xl font-bold text-primary">الاستفسار</h2>
-            <p class="text-gray-500 text-sm mt-1">استفسار العميل</p>
+            <h2 class="text-2xl lg:text-3xl font-bold text-primary">الاستفسار</h2>
+            <p class="text-gray-500 text-sm lg:text-base mt-1 lg:mt-2">استفسار العميل</p>
         </div>
     </div>
     
@@ -140,12 +140,12 @@
 
 @if($inquiry->reply)
     <!-- Reply Section -->
-    <div class="card-dashboard p-8 mb-8">
-        <div class="flex items-center gap-3 mb-6">
-            <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+    <div class="card-dashboard p-8 lg:p-10 mb-8 lg:mb-12">
+        <div class="flex items-center gap-3 lg:gap-4 mb-6 lg:mb-8">
+            <div class="w-1 h-8 lg:h-10 bg-gradient-to-b from-primary to-accent rounded-full"></div>
             <div>
-                <h2 class="text-2xl font-bold text-primary">الرد</h2>
-                <p class="text-gray-500 text-sm mt-1">رد المحامي على الاستفسار</p>
+                <h2 class="text-2xl lg:text-3xl font-bold text-primary">الرد</h2>
+                <p class="text-gray-500 text-sm lg:text-base mt-1 lg:mt-2">رد المحامي على الاستفسار</p>
             </div>
         </div>
         
@@ -179,12 +179,12 @@
     </div>
 @else
     <!-- Reply Form Section -->
-    <div class="card-dashboard p-8">
-        <div class="flex items-center gap-3 mb-6">
-            <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+    <div class="card-dashboard p-8 lg:p-10">
+        <div class="flex items-center gap-3 lg:gap-4 mb-6 lg:mb-8">
+            <div class="w-1 h-8 lg:h-10 bg-gradient-to-b from-primary to-accent rounded-full"></div>
             <div>
-                <h2 class="text-2xl font-bold text-primary">الرد على الاستفسار</h2>
-                <p class="text-gray-500 text-sm mt-1">اكتب ردك على استفسار العميل</p>
+                <h2 class="text-2xl lg:text-3xl font-bold text-primary">الرد على الاستفسار</h2>
+                <p class="text-gray-500 text-sm lg:text-base mt-1 lg:mt-2">اكتب ردك على استفسار العميل</p>
             </div>
         </div>
         <form method="POST" action="{{ force_https_route('admin.inquiries.reply', $inquiry->id) }}" class="space-y-6">

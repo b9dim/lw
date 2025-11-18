@@ -3,11 +3,11 @@
 @section('title', 'إدارة القضايا')
 
 @section('content')
-<div class="mb-8">
-    <div class="flex justify-between items-center mb-6">
+<div class="mb-8 lg:mb-12">
+    <div class="flex justify-between items-center mb-6 lg:mb-8">
         <div>
-            <h1 class="text-4xl font-bold text-primary mb-2">إدارة القضايا</h1>
-            <p class="text-gray-600 text-lg">إدارة جميع القضايا والمتابعة</p>
+            <h1 class="text-4xl lg:text-5xl font-bold text-primary mb-2 lg:mb-3">إدارة القضايا</h1>
+            <p class="text-gray-600 text-lg lg:text-xl">إدارة جميع القضايا والمتابعة</p>
         </div>
         <a href="{{ route('admin.cases.create') }}" class="btn-attorney-primary">
             إضافة قضية جديدة
@@ -15,12 +15,12 @@
     </div>
 </div>
 
-<div class="card-dashboard p-4 md:p-8">
+<div class="card-dashboard p-4 md:p-8 lg:p-10">
     @if($cases->count() > 0)
-        <div class="mb-6 flex items-center justify-between flex-wrap gap-3">
-            <div class="flex items-center gap-3">
-                <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
-                <h2 class="text-2xl font-bold text-primary">قائمة القضايا</h2>
+        <div class="mb-6 lg:mb-8 flex items-center justify-between flex-wrap gap-3 lg:gap-4">
+            <div class="flex items-center gap-3 lg:gap-4">
+                <div class="w-1 h-8 lg:h-10 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                <h2 class="text-2xl lg:text-3xl font-bold text-primary">قائمة القضايا</h2>
             </div>
             <span class="rounded-full bg-slate-100 px-4 py-1 text-sm font-semibold text-slate-600 shadow-inner">{{ $cases->total() }} قضية</span>
         </div>

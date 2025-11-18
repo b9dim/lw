@@ -4,15 +4,15 @@
 
 @section('content')
 <!-- Header Actions -->
-<div class="mb-8">
-    <a href="{{ route('admin.contact-messages.index') }}" class="text-primary hover:text-accent font-semibold flex items-center gap-2 transition-colors duration-200 hover:underline inline-block">
-        <span class="text-xl">←</span> 
+<div class="mb-8 lg:mb-12">
+    <a href="{{ route('admin.contact-messages.index') }}" class="text-primary hover:text-accent font-semibold flex items-center gap-2 transition-colors duration-200 hover:underline inline-block lg:text-lg">
+        <span class="text-xl lg:text-2xl">←</span> 
         <span>العودة إلى قائمة الرسائل</span>
     </a>
 </div>
 
 <!-- Message Details Card -->
-<div class="card-dashboard p-8 mb-8 relative overflow-hidden border-2 border-primary/20">
+<div class="card-dashboard p-8 lg:p-10 mb-8 lg:mb-12 relative overflow-hidden border-2 border-primary/20">
     <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/15 to-accent/15 rounded-bl-full opacity-50"></div>
     <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-accent/15 to-primary/10 rounded-tr-full opacity-50"></div>
     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-primary to-accent"></div>
@@ -28,8 +28,8 @@
                         </svg>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <h1 class="text-2xl md:text-3xl font-bold text-primary mb-1">تفاصيل الرسالة</h1>
-                        <p class="text-gray-600 text-sm">
+                        <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-1 lg:mb-2">تفاصيل الرسالة</h1>
+                        <p class="text-gray-600 text-sm lg:text-base">
                             {{ $contactMessage->subject }}
                         </p>
                     </div>
@@ -105,34 +105,34 @@
             </div>
         </div>
 
-        <div class="mt-8 pt-6 border-t border-gray-200">
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-1 h-6 bg-gradient-to-b from-primary to-accent rounded-full"></div>
-                <p class="text-gray-700 font-semibold text-lg">الموضوع</p>
+        <div class="mt-8 lg:mt-10 pt-6 lg:pt-8 border-t border-gray-200">
+            <div class="flex items-center gap-3 lg:gap-4 mb-4 lg:mb-6">
+                <div class="w-1 h-6 lg:h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                <p class="text-gray-700 font-semibold text-lg lg:text-xl">الموضوع</p>
             </div>
-            <div class="bg-gray-50 rounded-xl p-6 border-r-4 border-primary">
-                <p class="text-gray-700 leading-relaxed text-lg">{{ $contactMessage->subject }}</p>
+            <div class="bg-gray-50 rounded-xl p-6 lg:p-8 border-r-4 border-primary">
+                <p class="text-gray-700 leading-relaxed text-lg lg:text-xl">{{ $contactMessage->subject }}</p>
             </div>
         </div>
 
-        <div class="mt-8 pt-6 border-t border-gray-200">
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-1 h-6 bg-gradient-to-b from-primary to-accent rounded-full"></div>
-                <p class="text-gray-700 font-semibold text-lg">الرسالة</p>
+        <div class="mt-8 lg:mt-10 pt-6 lg:pt-8 border-t border-gray-200">
+            <div class="flex items-center gap-3 lg:gap-4 mb-4 lg:mb-6">
+                <div class="w-1 h-6 lg:h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                <p class="text-gray-700 font-semibold text-lg lg:text-xl">الرسالة</p>
             </div>
-            <div class="bg-gray-50 rounded-xl p-6 border-r-4 border-primary">
-                <p class="text-gray-700 leading-relaxed text-lg whitespace-pre-wrap">{{ $contactMessage->message }}</p>
+            <div class="bg-gray-50 rounded-xl p-6 lg:p-8 border-r-4 border-primary">
+                <p class="text-gray-700 leading-relaxed text-lg lg:text-xl whitespace-pre-wrap">{{ $contactMessage->message }}</p>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Actions Card -->
-<div class="card-dashboard p-8">
-    <div class="flex items-center gap-3 mb-6">
-        <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+<div class="card-dashboard p-8 lg:p-10">
+    <div class="flex items-center gap-3 lg:gap-4 mb-6 lg:mb-8">
+        <div class="w-1 h-8 lg:h-10 bg-gradient-to-b from-primary to-accent rounded-full"></div>
         <div>
-            <h2 class="text-2xl font-bold text-primary">الإجراءات</h2>
+            <h2 class="text-2xl lg:text-3xl font-bold text-primary">الإجراءات</h2>
         </div>
     </div>
     
@@ -156,7 +156,7 @@
               class="inline" onsubmit="return confirm('هل أنت متأكد من حذف هذه الرسالة؟')">
             @csrf
             @method('DELETE')
-            <button type="submit" class="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold">حذف الرسالة</button>
+            <button type="submit" class="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold shadow-sm hover:shadow-md">حذف الرسالة</button>
         </form>
     </div>
 </div>

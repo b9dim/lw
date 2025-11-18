@@ -4,15 +4,15 @@
 
 @section('content')
 <!-- Header Actions -->
-<div class="mb-8">
-    <a href="{{ route('client.dashboard') }}" class="text-primary hover:text-accent font-semibold flex items-center gap-2 transition-colors duration-200 hover:underline inline-block">
-        <span class="text-xl">←</span> 
+<div class="mb-8 lg:mb-12">
+    <a href="{{ route('client.dashboard') }}" class="text-primary hover:text-accent font-semibold flex items-center gap-2 transition-colors duration-200 hover:underline inline-block lg:text-lg">
+        <span class="text-xl lg:text-2xl">←</span> 
         <span>العودة إلى لوحة التحكم</span>
     </a>
 </div>
 
 <!-- Case Info Card - Modern Creative Design -->
-<div class="card-dashboard p-8 mb-8 relative overflow-hidden border-2 border-primary/20">
+<div class="card-dashboard p-8 lg:p-10 mb-8 lg:mb-12 relative overflow-hidden border-2 border-primary/20">
     <!-- Decorative Elements -->
     <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/15 to-accent/15 rounded-bl-full opacity-50"></div>
     <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-accent/15 to-primary/10 rounded-tr-full opacity-50"></div>
@@ -31,8 +31,8 @@
                         </svg>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <h1 class="text-2xl md:text-3xl font-bold text-primary mb-1">تفاصيل القضية</h1>
-                        <p class="text-gray-600 text-sm">
+                        <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-1 lg:mb-2">تفاصيل القضية</h1>
+                        <p class="text-gray-600 text-sm lg:text-base">
                             رقم القضية: 
                             <span class="font-mono font-bold text-accent bg-accent/15 px-2 py-0.5 rounded">{{ $case->case_number }}</span>
                         </p>
@@ -46,7 +46,7 @@
             </div>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-200">
                 <div class="flex items-center gap-3 mb-3">
                     <div class="icon-circle text-primary">
@@ -110,12 +110,12 @@
 </div>
 
 <!-- Inquiries Section -->
-<div class="card-dashboard p-8">
-    <div class="flex items-center gap-3 mb-6">
-        <div class="w-1 h-8 bg-gradient-to-b from-accent to-primary rounded-full"></div>
+<div class="card-dashboard p-8 lg:p-10">
+    <div class="flex items-center gap-3 lg:gap-4 mb-6 lg:mb-8">
+        <div class="w-1 h-8 lg:h-10 bg-gradient-to-b from-accent to-primary rounded-full"></div>
         <div>
-            <h2 class="text-2xl font-bold text-primary">الاستفسارات</h2>
-            <p class="text-gray-500 text-sm mt-1">تواصل مع المحامي بقضيتك</p>
+            <h2 class="text-2xl lg:text-3xl font-bold text-primary">الاستفسارات</h2>
+            <p class="text-gray-500 text-sm lg:text-base mt-1 lg:mt-2">تواصل مع المحامي بقضيتك</p>
         </div>
     </div>
     

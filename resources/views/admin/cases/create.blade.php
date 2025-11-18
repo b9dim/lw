@@ -3,16 +3,16 @@
 @section('title', 'إضافة قضية جديدة')
 
 @section('content')
-<div class="mb-8">
-    <a href="{{ route('admin.cases.index') }}" class="text-primary hover:underline font-semibold mb-4 inline-block">
+<div class="mb-8 lg:mb-12">
+    <a href="{{ route('admin.cases.index') }}" class="text-primary hover:underline font-semibold mb-4 lg:mb-6 inline-block lg:text-lg">
         ← العودة إلى قائمة القضايا
     </a>
 </div>
 
-<div class="card-dashboard p-8 max-w-3xl">
-    <div class="mb-6 flex items-center gap-3">
-        <div class="w-1 h-10 bg-gradient-to-b from-primary to-accent rounded-full"></div>
-        <h1 class="text-3xl font-bold text-primary">إضافة قضية جديدة</h1>
+<div class="card-dashboard p-8 lg:p-10 max-w-3xl">
+    <div class="mb-6 lg:mb-8 flex items-center gap-3 lg:gap-4">
+        <div class="w-1 h-10 lg:h-12 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+        <h1 class="text-3xl lg:text-4xl font-bold text-primary">إضافة قضية جديدة</h1>
     </div>
     
     <form method="POST" action="{{ force_https_route('admin.cases.store') }}" class="space-y-6">

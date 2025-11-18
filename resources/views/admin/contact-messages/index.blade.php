@@ -3,21 +3,21 @@
 @section('title', 'رسائل اتصل بنا')
 
 @section('content')
-<div class="mb-8">
-    <div class="flex justify-between items-center mb-6">
+<div class="mb-8 lg:mb-12">
+    <div class="flex justify-between items-center mb-6 lg:mb-8">
         <div>
-            <h1 class="text-4xl font-bold text-primary mb-2">رسائل اتصل بنا</h1>
-            <p class="text-gray-600 text-lg">إدارة رسائل الاتصال الواردة من الموقع</p>
+            <h1 class="text-4xl lg:text-5xl font-bold text-primary mb-2 lg:mb-3">رسائل اتصل بنا</h1>
+            <p class="text-gray-600 text-lg lg:text-xl">إدارة رسائل الاتصال الواردة من الموقع</p>
         </div>
     </div>
 </div>
 
-<div class="card-dashboard p-4 md:p-8">
+<div class="card-dashboard p-4 md:p-8 lg:p-10">
     @if($messages->count() > 0)
-        <div class="mb-6 flex items-center justify-between flex-wrap gap-3">
-            <div class="flex items-center gap-3">
-                <div class="w-1 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
-                <h2 class="text-2xl font-bold text-primary">قائمة الرسائل</h2>
+        <div class="mb-6 lg:mb-8 flex items-center justify-between flex-wrap gap-3 lg:gap-4">
+            <div class="flex items-center gap-3 lg:gap-4">
+                <div class="w-1 h-8 lg:h-10 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                <h2 class="text-2xl lg:text-3xl font-bold text-primary">قائمة الرسائل</h2>
             </div>
             <span class="rounded-full bg-slate-100 px-4 py-1 text-sm font-semibold text-slate-600 shadow-inner">{{ $messages->total() }} رسالة</span>
         </div>

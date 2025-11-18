@@ -3,9 +3,9 @@
 @section('title', 'إدارة التقييمات')
 
 @section('content')
-<div class="mb-8">
-    <h1 class="text-4xl font-bold text-primary mb-2">إدارة التقييمات</h1>
-    <p class="text-gray-600 text-lg">مراجعة واعتماد التقييمات من العملاء</p>
+<div class="mb-8 lg:mb-12">
+    <h1 class="text-4xl lg:text-5xl font-bold text-primary mb-2 lg:mb-3">إدارة التقييمات</h1>
+    <p class="text-gray-600 text-lg lg:text-xl">مراجعة واعتماد التقييمات من العملاء</p>
 </div>
 
 <!-- Stats Cards -->
