@@ -19,59 +19,62 @@
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
-    <header class="header-attorney header-client fixed top-0 left-0 right-0 z-50 w-full" id="clientHeader">
-        <nav class="container mx-auto">
-            <div class="flex items-center justify-between gap-4 px-6 md:px-8 lg:px-12 xl:px-16">
-                <div class="flex items-center space-x-reverse space-x-6 md:space-x-10 flex-shrink-0">
-                    <a href="{{ route('home') }}" class="logo whitespace-nowrap flex items-center gap-3 z-10">
-                        <div class="logo-gold flex-shrink-0">
-                            <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-12 w-auto">
-                        </div>
-                        <div class="flex flex-col flex-shrink-0">
-                            <span class="font-extrabold text-lg leading-tight">شركة مسفر محمد العرجاني</span>
-                            <span class="text-sm text-gold/80">للمحاماة والاستشارات القانونية</span>
-                        </div>
-                    </a>
-                    <div class="hidden md:flex items-center space-x-reverse space-x-2">
-                        <a href="{{ route('client.dashboard') }}" class="nav-link {{ request()->routeIs('client.*') ? 'active' : '' }}">لوحة العميل</a>
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#003C30]/95 backdrop-blur-xl shadow-sm">
+        <div class="flex items-center justify-between px-4 py-3">
+
+            <div class="flex items-center gap-3">
+                <img src="{{ asset('assets/logo.svg') }}" class="h-8 w-auto rounded-md">
+                <div class="leading-tight">
+                    <div class="text-white text-sm font-semibold tracking-wide">
+                        شركة مسفر محمد العرجاني
+                    </div>
+                    <div class="text-white/80 text-[11px]">
+                        للمحاماة والاستشارات القانونية
                     </div>
                 </div>
-                <div class="flex items-center gap-3 flex-shrink-0 z-10">
-                    <a href="{{ route('client.dashboard') }}" class="btn-attorney-secondary text-sm flex items-center gap-2">
-                        <span>جميع قضاياي</span>
-                    </a>
-                    <form method="POST" action="{{ force_https_route('client.logout') }}" class="inline">
-                        @csrf
-                        <button type="submit" class="btn-attorney-secondary text-sm">
-                            تسجيل الخروج
-                        </button>
-                    </form>
-                </div>
             </div>
-        </nav>
+
+            <div class="flex items-center gap-2">
+                <a href="{{ route('client.cases.index') }}"
+                   class="px-3 py-1.5 text-xs font-medium rounded-full bg-white/15 text-white border border-white/20 backdrop-blur-md transition hover:bg-white/25">
+                   جميع قضاياي
+                </a>
+
+                <form method="POST" action="{{ force_https_route('client.logout') }}">
+                    @csrf
+                    <button type="submit"
+                        class="px-3 py-1.5 text-xs font-medium rounded-full bg-white text-[#003C30] border border-transparent hover:opacity-90 transition">
+                        تسجيل الخروج
+                    </button>
+                </form>
+            </div>
+
+        </div>
     </header>
 
     <!-- Main Content -->
-    <main class="relative z-0 container mx-auto px-6 md:px-8 lg:px-12 pt-40 md:pt-32 lg:pt-28 py-8 main-client-content">
-        @if(session('success'))
-            <div class="bg-green-100 border-r-4 border-green-500 text-green-700 px-6 py-4 rounded-lg mb-6 shadow-md">
-                <div class="flex items-center gap-3">
-                    <span class="text-2xl">✅</span>
-                    <p class="font-semibold">{{ session('success') }}</p>
+    <main class="pt-24">
+        <div class="container mx-auto px-6 md:px-8 lg:px-12">
+            @if(session('success'))
+                <div class="bg-green-100 border-r-4 border-green-500 text-green-700 px-6 py-4 rounded-lg mb-6 shadow-md">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">✅</span>
+                        <p class="font-semibold">{{ session('success') }}</p>
+                    </div>
                 </div>
-            </div>
-        @endif
+            @endif
 
-        @if(session('error'))
-            <div class="bg-red-100 border-r-4 border-red-500 text-red-700 px-6 py-4 rounded-lg mb-6 shadow-md">
-                <div class="flex items-center gap-3">
-                    <span class="text-2xl">⚠️</span>
-                    <p class="font-semibold">{{ session('error') }}</p>
+            @if(session('error'))
+                <div class="bg-red-100 border-r-4 border-red-500 text-red-700 px-6 py-4 rounded-lg mb-6 shadow-md">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">⚠️</span>
+                        <p class="font-semibold">{{ session('error') }}</p>
+                    </div>
                 </div>
-            </div>
-        @endif
+            @endif
 
-        @yield('content')
+            @yield('content')
+        </div>
     </main>
 
     <!-- Footer -->
@@ -131,116 +134,6 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Calculate header height dynamically and set padding
-        (function() {
-            const header = document.getElementById('clientHeader');
-            const mainContent = document.querySelector('.main-client-content');
-            
-            if (!header || !mainContent) return;
-            
-            function getBasePadding() {
-                const previousInlinePadding = mainContent.style.paddingTop;
-                mainContent.style.paddingTop = '';
-                const basePadding = parseFloat(window.getComputedStyle(mainContent).paddingTop) || 0;
-                mainContent.style.paddingTop = previousInlinePadding;
-                return basePadding;
-            }
-
-            function updatePadding() {
-                // Force reflow to get accurate height
-                header.style.display = 'block';
-                const headerHeight = header.offsetHeight;
-                const basePadding = getBasePadding();
-                // Add extra 30px for safety margin while respecting responsive base padding
-                const paddingValue = Math.max(headerHeight + 30, basePadding);
-                mainContent.style.paddingTop = paddingValue + 'px';
-            }
-            
-            // Wait for DOM to be fully loaded
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', function() {
-                    setTimeout(updatePadding, 100);
-                });
-            } else {
-                // DOM already loaded
-                setTimeout(updatePadding, 100);
-            }
-            
-            // Update on resize with debounce
-            let resizeTimeout;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(function() {
-                    updatePadding();
-                }, 150);
-            }, { passive: true });
-            
-            // Update when header visibility changes (when hidden class is toggled)
-            const observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                        // Small delay to ensure height is calculated after class change
-                        setTimeout(updatePadding, 50);
-                    }
-                });
-            });
-            observer.observe(header, {
-                attributes: true,
-                attributeFilter: ['class'],
-                childList: false,
-                subtree: false
-            });
-            
-            // Update when window orientation changes (for mobile)
-            window.addEventListener('orientationchange', function() {
-                setTimeout(updatePadding, 300);
-            });
-            
-            // Update periodically to catch any dynamic changes (less frequent)
-            setInterval(updatePadding, 1000);
-        })();
-        
-        // Hide header on scroll down, show on scroll up
-        (function() {
-            let lastScrollTop = 0;
-            const header = document.getElementById('clientHeader');
-            if (!header) return;
-            
-            let scrollTimeout;
-            let ticking = false;
-
-            function handleScroll() {
-                if (!ticking) {
-                    window.requestAnimationFrame(function() {
-                        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                        
-                        clearTimeout(scrollTimeout);
-                        
-                        if (scrollTop > lastScrollTop && scrollTop > 100) {
-                            // Scrolling down - hide header
-                            header.classList.add('hidden');
-                        } else if (scrollTop < lastScrollTop) {
-                            // Scrolling up - show header
-                            header.classList.remove('hidden');
-                        }
-                        
-                        // At top of page - always show
-                        if (scrollTop <= 50) {
-                            header.classList.remove('hidden');
-                        }
-                        
-                        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            }
-
-            window.addEventListener('scroll', handleScroll, { passive: true });
-        })();
-    </script>
 
 </body>
 </html>
