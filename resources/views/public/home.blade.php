@@ -153,7 +153,7 @@
             <div>
                 <h2 class="text-4xl font-extrabold text-gold mb-5">من نحن</h2>
                 <p class="text-gray-300 leading-relaxed mb-6 text-lg">
-                    نحن مكتب قانوني يوفر خدمات المحاماة والاستشارات القانونية باحترافية عالية،
+                    نحن شركة قانونية توفر خدمات المحاماة والاستشارات القانونية باحترافية عالية،
                     مع فريق متخصص في الأنظمة السعودية الحديثة.
                 </p>
                 <div class="border-r-4 border-gold pr-4 text-gray-300 mb-8">

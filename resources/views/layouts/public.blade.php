@@ -35,7 +35,7 @@
                             <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-12 w-auto">
                         </div>
                         <div class="flex flex-col flex-shrink-0">
-                            <span class="font-extrabold text-lg leading-tight">مكتب مسفر محمد العرجاني</span>
+                            <span class="font-extrabold text-lg leading-tight">شركة مسفر محمد العرجاني</span>
                             <span class="text-sm text-gold/80">للمحاماة والاستشارات القانونية</span>
                         </div>
                     </a>
