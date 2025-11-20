@@ -24,85 +24,114 @@
         </defs>
     </svg>
 </head>
-<body class="bg-deep text-gray-200">
+<body class="bg-ink-900 text-ivory-200">
+    @php
+        $navLinks = [
+            ['label' => 'الرئيسية', 'route' => 'home'],
+            ['label' => 'من نحن', 'route' => 'about'],
+            ['label' => 'خدماتنا', 'route' => 'services'],
+            ['label' => 'اتصل بنا', 'route' => 'contact'],
+        ];
+    @endphp
+
     <!-- Header -->
     <header class="header-attorney">
-        <nav class="container mx-auto">
-            <div class="flex items-center justify-between gap-4 px-6 md:px-8 lg:px-12 xl:px-16">
-                <div class="flex items-center space-x-reverse space-x-6 md:space-x-10 flex-shrink-0">
-                    <a href="{{ route('home') }}" class="logo whitespace-nowrap flex items-center gap-3 z-10">
-                        <div class="logo-gold flex-shrink-0">
-                            <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-12 w-auto">
-                        </div>
-                        <div class="flex flex-col flex-shrink-0">
-                            <span class="font-extrabold text-lg leading-tight">شركة مسفر محمد العرجاني</span>
-                            <span class="text-sm text-gold/80">للمحاماة والاستشارات القانونية</span>
-                        </div>
-                    </a>
-                    <div class="hidden md:flex items-center space-x-reverse space-x-2">
-                        <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">الرئيسية</a>
-                        <a href="{{ route('about') }}" class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}">من نحن</a>
-                        <a href="{{ route('services') }}" class="nav-link {{ request()->routeIs('services') ? 'active' : '' }}">خدماتنا</a>
-                        <a href="{{ route('contact') }}" class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">اتصل بنا</a>
+        <nav class="container">
+            <div class="flex items-center justify-between gap-4">
+                <button class="mobile-menu-btn md:hidden" aria-label="فتح القائمة" data-toggle="public-nav">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+                <a href="{{ route('home') }}" class="logo whitespace-nowrap flex items-center gap-3">
+                    <div class="logo-gold flex-shrink-0">
+                        <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة">
                     </div>
+                    <div class="flex flex-col leading-tight">
+                        <span class="text-xs md:text-sm text-brass-400 tracking-[0.3em] uppercase">AL-ARGHANI LAW</span>
+                        <span class="font-extrabold text-lg md:text-2xl text-ivory-50">شركة مسفر محمد العرجاني</span>
+                        <span class="text-xs text-ivory-200/70">للمحاماة والاستشارات القانونية</span>
+                    </div>
+                </a>
+
+                <div class="hidden md:flex items-center gap-1">
+                    @foreach ($navLinks as $link)
+                        <a href="{{ route($link['route']) }}"
+                           class="nav-link {{ request()->routeIs($link['route']) ? 'active' : '' }}">
+                            {{ $link['label'] }}
+                        </a>
+                    @endforeach
                 </div>
-                <div class="flex items-center gap-3 flex-shrink-0 z-10">
-                    <a href="{{ route('client.login') }}" class="btn-attorney-secondary whitespace-nowrap flex items-center gap-2">
-                        <span>دخول العملاء</span>
+
+                <div class="flex items-center gap-2">
+                    <a href="{{ route('client.login') }}" class="btn-attorney-secondary">دخول العملاء</a>
+                    <a href="{{ route('contact') }}" class="btn-attorney-primary hidden sm:inline-flex">استشارة عاجلة</a>
+                </div>
+            </div>
+
+            <div class="md:hidden mt-4 space-y-2 hidden" id="public-nav-panel">
+                @foreach ($navLinks as $link)
+                    <a href="{{ route($link['route']) }}"
+                       class="block nav-link {{ request()->routeIs($link['route']) ? 'active' : '' }}">
+                        {{ $link['label'] }}
                     </a>
-                </div>
+                @endforeach
             </div>
         </nav>
     </header>
 
     <!-- Main Content -->
-    <main>
-        @yield('content')
+    <main class="section-shell">
+        <div class="container space-y-10">
+            @yield('content')
+        </div>
     </main>
 
     <!-- Footer -->
     <footer class="footer-attorney">
-        <div class="container mx-auto px-6 md:px-8 lg:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
-                <div>
-                    <div class="flex items-center gap-3 mb-4">
+        <div class="container">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
                         <div class="logo-gold">
                             <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-10 w-auto">
                         </div>
                         <h3>شركة مسفر محمد العرجاني</h3>
                     </div>
-                    <p>
-                        للمحاماة والاستشارات القانونية
-                    </p>
-                    <p class="mt-4">
-                        نقدم خدمات قانونية متخصصة واحترافية لعملائنا الكرام
-                    </p>
+                    <p>نقدم حلولًا قانونية متكاملة تعتمد على الخبرة والدقة والسرعة في الإنجاز.</p>
+                    <div class="glass-panel space-y-1">
+                        <p class="font-semibold text-ivory-50">خدمة الطوارئ القانونية</p>
+                        <a href="tel:+966111234567" class="text-brass-400 text-lg font-bold">+966 11 123 4567</a>
+                    </div>
                 </div>
+
                 <div>
                     <h3>روابط سريعة</h3>
                     <ul>
-                        <li><a href="{{ route('home') }}">الرئيسية</a></li>
-                        <li><a href="{{ route('about') }}">من نحن</a></li>
-                        <li><a href="{{ route('services') }}">خدماتنا</a></li>
-                        <li><a href="{{ route('contact') }}">اتصل بنا</a></li>
+                        @foreach ($navLinks as $link)
+                            <li><a href="{{ route($link['route']) }}">{{ $link['label'] }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
+
                 <div>
-                    <h3>خدماتنا</h3>
+                    <h3>مجالات التخصص</h3>
                     <ul>
-                        <li><a href="{{ route('services') }}">القضايا المدنية</a></li>
-                        <li><a href="{{ route('services') }}">الاستشارات القانونية</a></li>
-                        <li><a href="{{ route('services') }}">صياغة العقود</a></li>
-                        <li><a href="{{ route('services') }}">القضايا الجنائية</a></li>
+                        <li>القضايا التجارية</li>
+                        <li>التقاضي والتحكيم</li>
+                        <li>إدارة قضايا الشركات</li>
+                        <li>الاستشارات الشرعية والقانونية</li>
                     </ul>
                 </div>
-                <div>
+
+                <div class="space-y-3">
                     <h3>معلومات الاتصال</h3>
-                    <p class="mb-3">
+                    <p>
                         <strong>البريد الإلكتروني:</strong><br>
                         <a href="mailto:info@lawfirm.sa">info@lawfirm.sa</a>
                     </p>
-                    <p class="mb-3">
+                    <p>
                         <strong>الهاتف:</strong><br>
                         <a href="tel:+966111234567">+966 11 123 4567</a>
                     </p>
@@ -110,13 +139,25 @@
                         <strong>العنوان:</strong><br>
                         الرياض، المملكة العربية السعودية
                     </p>
+                    <a href="{{ route('contact') }}" class="btn-attorney-secondary mt-3 inline-flex">حجز موعد</a>
                 </div>
             </div>
-            <div class="border-t border-white border-opacity-20 pt-6 text-center">
+            <div class="border-t border-white/15 pt-6 text-center text-sm text-white/70">
                 <p>&copy; {{ date('Y') }} جميع الحقوق محفوظة - شركة مسفر محمد العرجاني للمحاماة والاستشارات القانونية</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.querySelector('[data-toggle="public-nav"]');
+            const panel = document.getElementById('public-nav-panel');
+            if (!toggleBtn || !panel) return;
+            toggleBtn.addEventListener('click', () => {
+                panel.classList.toggle('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
 
