@@ -17,109 +17,107 @@
         </defs>
     </svg>
 </head>
-<body class="bg-gray-50">
+<body class="bg-ink-900 text-ivory-50">
     <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#003C30]/95 backdrop-blur-xl shadow-sm">
-        <div class="flex items-center justify-between px-4 py-3">
-
-            <div class="flex items-center gap-3">
-                <img src="{{ asset('assets/logo.svg') }}" class="h-8 w-auto rounded-md">
-                <div class="leading-tight">
-                    <div class="text-white text-sm font-semibold tracking-wide">
-                        شركة مسفر محمد العرجاني
-                    </div>
-                    <div class="text-white/80 text-[11px]">
-                        للمحاماة والاستشارات القانونية
-                    </div>
+    <header class="header-client shadow-lg">
+        <nav class="container flex items-center justify-between gap-4">
+            <a href="{{ route('home') }}" class="logo flex items-center gap-3">
+                <div class="logo-gold">
+                    <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-10 w-auto">
                 </div>
-            </div>
-
+                <div class="leading-tight">
+                    <p class="text-xs uppercase tracking-[0.3em] text-brass-400">Client Portal</p>
+                    <p class="text-white text-lg font-bold">شركة مسفر محمد العرجاني</p>
+                    <p class="text-ivory-200/70 text-xs">للمحاماة والاستشارات القانونية</p>
+                </div>
+            </a>
             <div class="flex items-center gap-2">
-                <a href="{{ route('client.dashboard') }}"
-                   class="px-3 py-1.5 text-xs font-medium rounded-full bg-white/15 text-white border border-white/20 backdrop-blur-md transition hover:bg-white/25">
-                   جميع قضاياي
-                </a>
-
+                <a href="{{ route('client.dashboard') }}" class="btn-attorney-secondary">جميع قضاياي</a>
                 <form method="POST" action="{{ force_https_route('client.logout') }}">
                     @csrf
-                    <button type="submit"
-                        class="px-3 py-1.5 text-xs font-medium rounded-full bg-white text-[#003C30] border border-transparent hover:opacity-90 transition">
-                        تسجيل الخروج
-                    </button>
+                    <button type="submit" class="btn-attorney-primary">تسجيل الخروج</button>
                 </form>
             </div>
-
-        </div>
+        </nav>
     </header>
 
     <!-- Main Content -->
-    <main class="pt-24">
-        <div class="container mx-auto px-6 md:px-8 lg:px-12">
+    <main class="main-client-content section-shell">
+        <div class="container space-y-6">
             @if(session('success'))
-                <div class="bg-green-100 border-r-4 border-green-500 text-green-700 px-6 py-4 rounded-lg mb-6 shadow-md">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">✅</span>
-                        <p class="font-semibold">{{ session('success') }}</p>
+                <div id="client-success" class="notification-success animate-fade-up">
+                    <div>
+                        <p class="notification-title">{{ session('success') }}</p>
                     </div>
+                    <button onclick="closeNotification('client-success')" class="notification-close">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
             @endif
 
             @if(session('error'))
-                <div class="bg-red-100 border-r-4 border-red-500 text-red-700 px-6 py-4 rounded-lg mb-6 shadow-md">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">⚠️</span>
-                        <p class="font-semibold">{{ session('error') }}</p>
+                <div id="client-error" class="notification-error animate-fade-up">
+                    <div>
+                        <p class="notification-title">{{ session('error') }}</p>
                     </div>
+                    <button onclick="closeNotification('client-error')" class="notification-close">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
             @endif
 
-            @yield('content')
+            <div class="surface-card">
+                @yield('content')
+            </div>
         </div>
     </main>
 
     <!-- Footer -->
     <footer class="footer-attorney mt-16">
-        <div class="container mx-auto px-6 md:px-8 lg:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
-                <div>
-                    <div class="flex items-center gap-3 mb-4">
+        <div class="container">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
                         <div class="logo-gold">
                             <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-10 w-auto">
                         </div>
                         <h3>شركة مسفر محمد العرجاني</h3>
                     </div>
-                    <p>
-                        للمحاماة والاستشارات القانونية
-                    </p>
-                    <p class="mt-4">
-                        نقدم خدمات قانونية متخصصة واحترافية لعملائنا الكرام
-                    </p>
+                    <p>نرافق عملاءنا بخبرات قانونية دقيقة لضمان طمأنينتهم في كل مرحلة.</p>
+                    <div class="glass-panel space-y-1">
+                        <p class="font-semibold text-ivory-50">خدمة دعم العملاء</p>
+                        <a href="tel:+966111234567" class="text-brass-400 text-lg font-bold">+966 11 123 4567</a>
+                    </div>
                 </div>
                 <div>
-                    <h3>روابط سريعة</h3>
+                    <h3>روابط المنصة</h3>
                     <ul>
-                        <li><a href="{{ route('home') }}">الرئيسية</a></li>
-                        <li><a href="{{ route('about') }}">من نحن</a></li>
-                        <li><a href="{{ route('services') }}">خدماتنا</a></li>
-                        <li><a href="{{ route('contact') }}">اتصل بنا</a></li>
+                        <li><a href="{{ route('client.dashboard') }}">لوحة العميل</a></li>
+                        <li><a href="{{ route('home') }}">الموقع العام</a></li>
+                        <li><a href="{{ route('services') }}">الخدمات</a></li>
+                        <li><a href="{{ route('contact') }}">الدعم القانوني</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3>خدماتنا</h3>
+                    <h3>إرشادات مهمة</h3>
                     <ul>
-                        <li><a href="{{ route('services') }}">القضايا المدنية</a></li>
-                        <li><a href="{{ route('services') }}">الاستشارات القانونية</a></li>
-                        <li><a href="{{ route('services') }}">صياغة العقود</a></li>
-                        <li><a href="{{ route('services') }}">القضايا الجنائية</a></li>
+                        <li>تحديث بيانات القضية</li>
+                        <li>رفع المستندات</li>
+                        <li>مواعيد الجلسات</li>
+                        <li>التقييمات والملاحظات</li>
                     </ul>
                 </div>
-                <div>
+                <div class="space-y-3">
                     <h3>معلومات الاتصال</h3>
-                    <p class="mb-3">
+                    <p>
                         <strong>البريد الإلكتروني:</strong><br>
                         <a href="mailto:info@lawfirm.sa">info@lawfirm.sa</a>
                     </p>
-                    <p class="mb-3">
+                    <p>
                         <strong>الهاتف:</strong><br>
                         <a href="tel:+966111234567">+966 11 123 4567</a>
                     </p>
@@ -129,12 +127,21 @@
                     </p>
                 </div>
             </div>
-            <div class="border-t border-white border-opacity-20 pt-6 text-center">
+            <div class="border-t border-white/15 pt-6 text-center text-sm text-white/70">
                 <p>&copy; {{ date('Y') }} جميع الحقوق محفوظة - شركة مسفر محمد العرجاني للمحاماة والاستشارات القانونية</p>
             </div>
         </div>
     </footer>
 
+    <script>
+        function closeNotification(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(-10px)';
+            setTimeout(() => el.style.display = 'none', 250);
+        }
+    </script>
 </body>
 </html>
 

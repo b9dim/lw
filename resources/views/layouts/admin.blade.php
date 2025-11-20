@@ -17,7 +17,7 @@
         </defs>
     </svg>
 </head>
-<body class="bg-gray-50">
+<body class="bg-ink-900 text-slate-900">
     <!-- Mobile Menu Button -->
     <button id="mobileMenuBtn" class="mobile-menu-btn" onclick="toggleMobileMenu()">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -30,7 +30,7 @@
 
     <div class="flex">
         <!-- Sidebar -->
-        <aside id="sidebar" class="sidebar-admin">
+            <aside id="sidebar" class="sidebar-admin">
             <!-- Mobile Close Button -->
             <button id="mobileCloseBtn" class="mobile-close-btn" onclick="closeMobileMenu()">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -38,34 +38,20 @@
                 </svg>
             </button>
             
-            <div class="px-6 mb-8 pb-6 border-b border-gray-700">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="logo-gold">
-                        <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-10 w-auto">
+                <div class="px-6 mb-8 pb-6 border-b border-white/10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="logo-gold">
+                            <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-10 w-auto">
+                        </div>
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.3em] text-brass-400">admin</p>
+                            <h2 class="text-white text-xl font-bold">لوحة التحكم</h2>
+                        </div>
                     </div>
-                    <h2 class="text-white text-xl font-bold">لوحة التحكم</h2>
-                </div>
-                <div class="flex items-center gap-2 mb-1">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 7.5a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 20.25a8.25 8.25 0 0115 0" />
-                    </svg>
-                    <p class="text-white text-sm font-semibold">{{ auth()->user()->name }}</p>
-                </div>
-                <div class="flex items-center gap-2">
-                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 5.25v3" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 15.75v3" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 12h3" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 12h3" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 4.5l3 3" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 16.5l3 3" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l3-3" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 7.5l3-3" />
-                        <circle cx="12" cy="12" r="5.25" />
-                    </svg>
-                    <p class="text-gray-300 text-xs">{{ auth()->user()->role }}</p>
-                </div>
+                    <div class="glass-panel bg-white/5 border-white/10 text-white shadow-md">
+                        <p class="text-base font-semibold">{{ auth()->user()->name }}</p>
+                        <p class="text-xs text-white/70">{{ auth()->user()->role }}</p>
+                    </div>
             </div>
             <nav>
                 <a href="{{ route('admin.dashboard') }}" class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
@@ -125,7 +111,7 @@
                 </a>
                 @endif
             </nav>
-            <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-700">
+            <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
                 <a href="{{ route('logout') }}" class="sidebar-link block text-center">
                     <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 6h4.5a3.5 3.5 0 013.5 3.5v5a3.5 3.5 0 01-3.5 3.5H9" />
@@ -137,56 +123,38 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 mr-280">
-            <div class="container mx-auto px-6 py-8">
+        <main class="flex-1 mr-280 bg-ivory-50 min-h-screen">
+            <div class="container mx-auto px-6 py-10 space-y-6">
                 @if(session('success'))
-                    <div id="success-notification" class="notification-success mb-6 animate-slide-down">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-4">
-                                <div class="notification-icon-success">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="notification-title">{{ session('success') }}</p>
-                                    @if(str_contains(session('success'), 'الموافقة على تقييم'))
-                                        <p class="notification-subtitle">سيظهر التقييم الآن في الصفحة الرئيسية</p>
-                                    @elseif(str_contains(session('success'), 'حذف تقييم'))
-                                        <p class="notification-subtitle">تم إزالة التقييم من النظام بشكل نهائي</p>
-                                    @elseif(str_contains(session('success'), 'رفض تقييم'))
-                                        <p class="notification-subtitle">لن يظهر هذا التقييم في الصفحة الرئيسية</p>
-                                    @endif
-                                </div>
-                            </div>
-                            <button onclick="closeNotification('success-notification')" class="notification-close">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
+                    <div id="success-notification" class="notification-success animate-fade-up">
+                        <div>
+                            <p class="notification-title">{{ session('success') }}</p>
+                            @if(str_contains(session('success'), 'الموافقة على تقييم'))
+                                <p class="notification-subtitle">سيظهر التقييم الآن في الصفحة الرئيسية</p>
+                            @elseif(str_contains(session('success'), 'حذف تقييم'))
+                                <p class="notification-subtitle">تم إزالة التقييم من النظام بشكل نهائي</p>
+                            @elseif(str_contains(session('success'), 'رفض تقييم'))
+                                <p class="notification-subtitle">لن يظهر هذا التقييم في الصفحة الرئيسية</p>
+                            @endif
                         </div>
+                        <button onclick="closeNotification('success-notification')" class="notification-close">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
                     </div>
                 @endif
 
                 @if(session('error'))
-                    <div id="error-notification" class="notification-error mb-6 animate-slide-down">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-4">
-                                <div class="notification-icon-error">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="notification-title">{{ session('error') }}</p>
-                                </div>
-                            </div>
-                            <button onclick="closeNotification('error-notification')" class="notification-close">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
+                    <div id="error-notification" class="notification-error animate-fade-up">
+                        <div>
+                            <p class="notification-title">{{ session('error') }}</p>
                         </div>
+                        <button onclick="closeNotification('error-notification')" class="notification-close">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
                     </div>
                 @endif
 
@@ -276,20 +244,20 @@
             top: 20px;
             right: 20px;
             z-index: 1001;
-            background: var(--primary-color);
+            background: var(--brand-fern-500);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 12px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
         }
 
         .mobile-menu-btn:hover {
-            background: var(--primary-hover);
+            background: var(--brand-fern-400);
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow-md);
         }
 
         .mobile-menu-btn:active {
@@ -401,123 +369,7 @@
             }
         }
 
-        /* Notification Styles */
-        .notification-success {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            padding: 1.25rem 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
-            border-right: 4px solid #047857;
-            transition: all 0.3s ease;
-        }
-
-        .notification-error {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white;
-            padding: 1.25rem 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
-            border-right: 4px solid #b91c1c;
-            transition: all 0.3s ease;
-        }
-
-        .notification-icon-success {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .notification-icon-error {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .notification-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        .notification-subtitle {
-            font-size: 0.875rem;
-            opacity: 0.9;
-            margin: 0.25rem 0 0 0;
-            line-height: 1.4;
-        }
-
-        .notification-close {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            border-radius: 8px;
-            padding: 0.5rem;
-            cursor: pointer;
-            color: white;
-            transition: all 0.2s ease;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .notification-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-
-        .notification-close:active {
-            transform: scale(0.95);
-        }
-
-        /* Animation */
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-slide-down {
-            animation: slideDown 0.4s ease-out;
-        }
-
-        /* Responsive notifications */
-        @media (max-width: 640px) {
-            .notification-success,
-            .notification-error {
-                padding: 1rem;
-            }
-
-            .notification-icon-success,
-            .notification-icon-error {
-                width: 40px;
-                height: 40px;
-            }
-
-            .notification-title {
-                font-size: 1rem;
-            }
-
-            .notification-subtitle {
-                font-size: 0.8rem;
-            }
-        }
+        /* Notification styles handled globally */
     </style>
 </body>
 </html>
