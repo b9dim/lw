@@ -5,28 +5,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    --brand-ink-950: #02050b;
-    --brand-ink-900: #050d1c;
-    --brand-ink-800: #08142c;
-    --brand-ink-700: #0d1f3d;
-    --brand-ink-600: #10274c;
-    --brand-royal-500: #1b3d6b;
-    --brand-royal-400: #25507f;
-    --brand-fern-500: #1f7a5a;
-    --brand-fern-400: #2c8d6a;
-    --brand-fern-200: #9fcbb7;
-    --brand-brass-600: #d8a648;
-    --brand-brass-500: #f2c572;
-    --brand-brass-400: #f7dca1;
-    --brand-brass-200: #fff2d6;
-    --brand-ivory-50: #fdfaf3;
-    --brand-ivory-100: #f4efe5;
-    --brand-ivory-200: #e9e2d1;
-    --brand-slate-900: #101828;
-    --brand-slate-700: #1f2c45;
-    --brand-slate-500: #4b587d;
-    --brand-slate-300: #7c88a8;
-    --brand-slate-200: #b6bed4;
+    --brand-ink-950: #07152b;
+    --brand-ink-900: #0f2240;
+    --brand-ink-800: #152f53;
+    --brand-ink-700: #1b3d6b;
+    --brand-ink-600: #235283;
+    --brand-royal-500: #02567c;
+    --brand-royal-400: #0d7ca8;
+    --brand-fern-500: #0f8d86;
+    --brand-fern-400: #1fb0a0;
+    --brand-fern-200: #bfe4da;
+    --brand-brass-600: #b8872f;
+    --brand-brass-500: #c9993b;
+    --brand-brass-400: #ddb365;
+    --brand-brass-200: #f7e4c1;
+    --brand-ivory-50: #ffffff;
+    --brand-ivory-100: #fdfaf3;
+    --brand-ivory-200: #f5efe3;
+    --brand-slate-900: #111c2f;
+    --brand-slate-700: #1d2f4d;
+    --brand-slate-600: #2b3e5f;
+    --brand-slate-500: #5a647b;
+    --brand-slate-300: #8b93a7;
+    --brand-slate-200: #cfd4de;
     --brand-error: #d95c4a;
     --brand-success: #2f9b75;
     --brand-info: #3c80c3;
@@ -71,7 +72,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
-    background-color: var(--brand-ink-900);
+    background-color: var(--brand-ivory-100);
 }
 
 html[dir="rtl"] body,
@@ -84,11 +85,11 @@ body {
     font-family: 'Tajawal', 'Cairo', 'Inter', sans-serif;
     min-height: 100vh;
     margin: 0;
-    color: var(--brand-ivory-100);
+    color: var(--brand-slate-900);
     background:
-        radial-gradient(circle at 15% 20%, rgba(247, 220, 161, 0.08), transparent 45%),
-        radial-gradient(circle at 80% 0%, rgba(27, 61, 107, 0.18), transparent 50%),
-        linear-gradient(180deg, var(--brand-ink-950), var(--brand-ink-800));
+        radial-gradient(circle at 18% 22%, rgba(221, 179, 101, 0.18), transparent 45%),
+        radial-gradient(circle at 82% 8%, rgba(2, 86, 124, 0.2), transparent 55%),
+        linear-gradient(180deg, var(--brand-ivory-50), var(--brand-ivory-200));
     line-height: 1.7;
     font-weight: 400;
     overflow-x: hidden;
@@ -100,14 +101,14 @@ body::after {
     inset: 0;
     z-index: -1;
     background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent 50%),
-        radial-gradient(circle at 30% 25%, rgba(242, 197, 114, 0.2), transparent 50%);
+        linear-gradient(145deg, rgba(15, 34, 64, 0.04), transparent 50%),
+        radial-gradient(circle at 30% 25%, rgba(2, 86, 124, 0.1), transparent 50%);
     pointer-events: none;
 }
 
 ::selection {
-    background: rgba(242, 197, 114, 0.35);
-    color: var(--brand-ink-950);
+    background: rgba(201, 153, 59, 0.25);
+    color: var(--brand-ink-900);
 }
 
 img {
@@ -149,28 +150,28 @@ button {
 }
 
 .section-muted {
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.98);
     border-radius: var(--radius-xl);
     padding: clamp(2.5rem, 4vw, 4rem);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid rgba(16, 39, 76, 0.08);
-    backdrop-filter: blur(18px);
+    box-shadow: 0 20px 55px rgba(15, 34, 64, 0.08);
+    border: 1px solid rgba(17, 28, 47, 0.08);
+    backdrop-filter: blur(12px);
 }
 
 .section-gradient {
-    background: linear-gradient(135deg, rgba(3, 13, 28, 0.9), rgba(10, 26, 50, 0.7));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(234, 241, 248, 0.95));
     border-radius: var(--radius-xl);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-    backdrop-filter: var(--blur-backdrop);
+    box-shadow: inset 0 0 0 1px rgba(17, 28, 47, 0.05), 0 30px 70px rgba(17, 28, 47, 0.08);
+    backdrop-filter: blur(18px);
 }
 
 .surface-card,
 .card-attorney,
 .card-dashboard {
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 0.99);
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(16, 39, 76, 0.08);
-    box-shadow: 0 25px 45px rgba(3, 7, 18, 0.08);
+    border: 1px solid rgba(17, 28, 47, 0.08);
+    box-shadow: 0 25px 45px rgba(17, 28, 47, 0.08);
     padding: clamp(1.5rem, 3vw, 2.5rem);
     transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
@@ -184,12 +185,12 @@ button {
 }
 
 .glass-panel {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    backdrop-filter: var(--blur-backdrop);
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(17, 28, 47, 0.08);
+    backdrop-filter: blur(14px);
     border-radius: var(--radius-lg);
     padding: clamp(1.5rem, 4vw, 2.5rem);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 18px 35px rgba(17, 28, 47, 0.12);
 }
 
 h1,
@@ -198,7 +199,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: var(--brand-ivory-50);
+    color: var(--brand-ink-900);
     font-weight: 700;
     line-height: 1.3;
     margin-bottom: var(--space-sm);
@@ -206,7 +207,7 @@ h6 {
 
 p {
     margin-bottom: var(--space-md);
-    color: var(--brand-ivory-200);
+    color: var(--brand-slate-600);
 }
 
 .text-dark {
@@ -215,7 +216,7 @@ p {
 
 .section-title {
     font-size: clamp(2rem, 4vw, 3.2rem);
-    color: var(--brand-brass-400);
+    color: var(--brand-ink-900);
     text-align: center;
     margin-bottom: var(--space-sm);
     letter-spacing: -0.02em;
@@ -236,16 +237,16 @@ p {
     text-align: center;
     max-width: 640px;
     margin: 0 auto clamp(2rem, 5vw, 4rem);
-    color: rgba(255, 255, 255, 0.78);
+    color: var(--brand-slate-500);
     font-size: 1.125rem;
 }
 
 /* Top Bar */
 .topbar-attorney {
-    background: rgba(255, 255, 255, 0.04);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: #fdf6ea;
+    border-bottom: 1px solid rgba(17, 28, 47, 0.08);
     font-size: 0.92rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--brand-slate-600);
 }
 
 .topbar-attorney .topbar-inner {
@@ -274,7 +275,7 @@ p {
 .topbar-link svg {
     width: 1rem;
     height: 1rem;
-    color: var(--brand-brass-400);
+    color: var(--brand-brass-500);
 }
 
 .topbar-social {
@@ -286,11 +287,12 @@ p {
 .topbar-pill {
     padding: 0.2rem 0.85rem;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(201, 153, 59, 0.4);
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--brand-brass-400);
+    color: var(--brand-brass-500);
+    background: rgba(255, 255, 255, 0.9);
 }
 
 @media (max-width: 768px) {
@@ -305,10 +307,10 @@ p {
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(5, 13, 28, 0.9);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    box-shadow: 0 25px 60px rgba(2, 5, 11, 0.65);
-    backdrop-filter: blur(24px);
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid rgba(17, 28, 47, 0.05);
+    box-shadow: 0 18px 45px rgba(17, 28, 47, 0.12);
+    backdrop-filter: blur(16px);
     transition: transform var(--transition-base), background var(--transition-base), box-shadow var(--transition-base);
 }
 
@@ -320,7 +322,7 @@ p {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    color: var(--brand-ivory-50);
+    color: var(--brand-ink-900);
     font-weight: 800;
     font-size: 1.2rem;
     text-decoration: none;
@@ -330,18 +332,18 @@ p {
 .header-attorney .logo img {
     height: clamp(2.5rem, 4vw, 3.2rem);
     width: auto;
-    filter: drop-shadow(0 8px 12px rgba(215, 180, 106, 0.25));
+    filter: drop-shadow(0 8px 12px rgba(17, 28, 47, 0.18));
 }
 
 .header-attorney .logo:hover {
-    color: var(--brand-brass-400);
+    color: var(--brand-ink-700);
     transform: translateY(-2px);
 }
 
 .nav-link {
     font-size: 0.95rem;
     font-weight: 500;
-    color: rgba(253, 250, 243, 0.75);
+    color: var(--brand-slate-600);
     padding: 0.65rem 1.1rem;
     border-radius: var(--radius-xs);
     position: relative;
@@ -364,8 +366,8 @@ p {
 }
 
 .nav-link:hover {
-    color: var(--brand-brass-400);
-    background: rgba(255, 255, 255, 0.05);
+    color: var(--brand-ink-700);
+    background: rgba(2, 86, 124, 0.08);
 }
 
 .nav-link:hover::after,
@@ -375,7 +377,7 @@ p {
 }
 
 .nav-link.active {
-    color: var(--brand-brass-400);
+    color: var(--brand-ink-700);
     font-weight: 600;
 }
 
@@ -427,43 +429,43 @@ body:has(.header-client) .main-client-content {
 .btn-attorney-primary {
     background: linear-gradient(120deg, var(--brand-brass-400), var(--brand-brass-600));
     color: var(--brand-ink-900);
-    box-shadow: 0 18px 30px rgba(208, 152, 52, 0.35);
+    box-shadow: 0 18px 30px rgba(184, 135, 47, 0.35);
 }
 
 .btn-attorney-primary:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 20px 35px rgba(184, 135, 47, 0.35);
 }
 
 .btn-attorney-secondary {
-    background: transparent;
-    border-color: rgba(242, 197, 114, 0.55);
-    color: var(--brand-brass-400);
-    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(2, 86, 124, 0.25);
+    color: var(--brand-ink-700);
+    box-shadow: inset 0 0 0 1px rgba(2, 86, 124, 0.18);
 }
 
 .btn-attorney-secondary:hover {
-    background: rgba(242, 197, 114, 0.12);
+    background: rgba(2, 86, 124, 0.08);
 }
 
 .btn-pill {
     border-radius: 999px;
     padding: 0.5rem 1.25rem;
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--brand-ivory-50);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(2, 86, 124, 0.08);
+    color: var(--brand-ink-700);
+    border: 1px solid rgba(2, 86, 124, 0.2);
 }
 
 .btn-outline {
     border-radius: var(--radius-sm);
-    border: 1px solid rgba(4, 31, 26, 0.15);
+    border: 1px solid rgba(17, 28, 47, 0.12);
     padding: 0.75rem 1.5rem;
-    background: white;
-    color: var(--brand-slate-900);
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--brand-ink-900);
 }
 
 .btn-outline:hover {
-    border-color: var(--brand-brass-400);
+    border-color: var(--brand-ink-700);
 }
 
 button:focus-visible,
@@ -481,10 +483,10 @@ a:focus-visible,
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95), rgba(249, 246, 239, 0.8));
-    border: 1px solid rgba(31, 122, 90, 0.25);
-    color: var(--brand-fern-500);
-    box-shadow: 0 15px 22px rgba(4, 31, 26, 0.15);
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.98), rgba(245, 241, 233, 0.9));
+    border: 1px solid rgba(2, 86, 124, 0.18);
+    color: var(--brand-ink-700);
+    box-shadow: 0 15px 22px rgba(17, 28, 47, 0.12);
     transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
@@ -496,7 +498,7 @@ a:focus-visible,
 
 .icon-circle:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 20px 35px rgba(4, 31, 26, 0.18);
+    box-shadow: 0 20px 35px rgba(17, 28, 47, 0.18);
 }
 
 .icon-circle-lg {
@@ -531,7 +533,11 @@ a:focus-visible,
     align-items: center;
     padding-block: clamp(3.5rem, 8vw, 6.5rem);
     overflow: hidden;
-    color: white;
+    color: var(--brand-ink-900);
+    background: linear-gradient(135deg, #ffffff, #eff4fb);
+    border-radius: calc(var(--radius-xl) * 1.1);
+    border: 1px solid rgba(17, 28, 47, 0.08);
+    box-shadow: 0 45px 90px rgba(17, 28, 47, 0.12);
 }
 
 .hero-attorney::before,
@@ -543,13 +549,13 @@ a:focus-visible,
 }
 
 .hero-attorney::before {
-    background: linear-gradient(135deg, rgba(4, 31, 26, 0.95), rgba(15, 60, 50, 0.85), rgba(0, 0, 0, 0.9));
+    background: linear-gradient(135deg, rgba(2, 86, 124, 0.08), rgba(27, 61, 107, 0.12));
 }
 
 .hero-attorney::after {
-    background: radial-gradient(circle at 18% 25%, rgba(215, 180, 106, 0.35), transparent 50%),
-        radial-gradient(circle at 80% 0%, rgba(46, 155, 117, 0.35), transparent 55%);
-    mix-blend-mode: screen;
+    background: radial-gradient(circle at 18% 25%, rgba(221, 179, 101, 0.25), transparent 55%),
+        radial-gradient(circle at 80% 0%, rgba(2, 86, 124, 0.28), transparent 55%);
+    mix-blend-mode: normal;
 }
 
 .hero-attorney > * {
@@ -564,7 +570,7 @@ a:focus-visible,
 
 .hero-attorney p {
     font-size: clamp(1rem, 2.5vw, 1.3rem);
-    color: rgba(255, 255, 255, 0.78);
+    color: var(--brand-slate-600);
 }
 
 .hero-attorney .badge {
@@ -573,14 +579,15 @@ a:focus-visible,
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(2, 86, 124, 0.2);
+    background: rgba(2, 86, 124, 0.08);
     font-size: 0.85rem;
     margin-bottom: var(--space-sm);
 }
 
 /* Footer */
 .footer-attorney {
-    background: linear-gradient(180deg, rgba(3, 7, 18, 0.98), rgba(5, 13, 28, 0.95));
+    background: linear-gradient(180deg, rgba(7, 21, 43, 0.98), rgba(11, 31, 64, 0.95));
     color: rgba(255, 255, 255, 0.82);
     padding-top: var(--space-2xl);
     padding-bottom: var(--space-lg);
@@ -669,10 +676,10 @@ a:focus-visible,
 .service-card {
     background: rgba(255, 255, 255, 0.98);
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(16, 39, 76, 0.08);
+    border: 1px solid rgba(17, 28, 47, 0.08);
     color: var(--brand-slate-900);
     padding: clamp(1.75rem, 3vw, 2.5rem);
-    box-shadow: 0 25px 45px rgba(3, 7, 18, 0.08);
+    box-shadow: 0 25px 45px rgba(17, 28, 47, 0.08);
     position: relative;
     overflow: hidden;
 }
@@ -689,21 +696,21 @@ a:focus-visible,
 .service-card:hover {
     border-color: rgba(242, 197, 114, 0.6);
     transform: translateY(-6px);
-    box-shadow: 0 35px 55px rgba(3, 7, 18, 0.12);
+    box-shadow: 0 35px 55px rgba(17, 28, 47, 0.12);
 }
 
 .service-icon {
     width: 3.5rem;
     height: 3.5rem;
     border-radius: var(--radius-sm);
-    background: linear-gradient(135deg, rgba(242, 197, 114, 0.28), rgba(16, 39, 76, 0.9));
+    background: linear-gradient(135deg, #1b3d6b, #02567c);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     color: var(--brand-ivory-50);
     font-size: 1.75rem;
     margin-bottom: var(--space-md);
-    box-shadow: 0 15px 30px rgba(16, 39, 76, 0.35);
+    box-shadow: 0 15px 30px rgba(7, 21, 43, 0.25);
 }
 
 /* Landing Hero & Highlights */
@@ -712,11 +719,11 @@ a:focus-visible,
     padding: clamp(3rem, 7vw, 5rem);
     border-radius: calc(var(--radius-xl) * 1.1);
     background:
-        radial-gradient(circle at 20% 20%, rgba(242, 197, 114, 0.25), transparent 45%),
-        radial-gradient(circle at 85% 0%, rgba(27, 61, 107, 0.35), transparent 55%),
-        linear-gradient(135deg, #030a18, #0d1f3d 60%, #132d58);
-    color: white;
-    box-shadow: 0 45px 90px rgba(3, 7, 18, 0.65);
+        radial-gradient(circle at 20% 20%, rgba(221, 179, 101, 0.18), transparent 45%),
+        radial-gradient(circle at 85% 0%, rgba(2, 86, 124, 0.18), transparent 55%),
+        linear-gradient(135deg, #ffffff, #eff4fb 60%, #f7f1e7);
+    color: var(--brand-ink-900);
+    box-shadow: 0 45px 90px rgba(17, 28, 47, 0.12);
     overflow: hidden;
     isolation: isolate;
 }
@@ -725,8 +732,8 @@ a:focus-visible,
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 80% 0%, rgba(2, 86, 124, 0.25), transparent 50%);
-    opacity: 0.7;
+    background: radial-gradient(circle at 80% 0%, rgba(2, 86, 124, 0.15), transparent 50%);
+    opacity: 0.5;
     z-index: -1;
 }
 
@@ -748,8 +755,8 @@ a:focus-visible,
     gap: 0.45rem;
     padding: 0.4rem 1.1rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(2, 86, 124, 0.08);
+    border: 1px solid rgba(2, 86, 124, 0.2);
     font-size: 0.85rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -765,7 +772,7 @@ a:focus-visible,
 
 .hero-lead {
     font-size: clamp(1rem, 2.3vw, 1.25rem);
-    color: rgba(255, 255, 255, 0.82);
+    color: var(--brand-slate-600);
     margin-bottom: var(--space-md);
 }
 
@@ -779,15 +786,15 @@ a:focus-visible,
 .hero-highlight {
     padding: 1rem 1.5rem;
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(17, 28, 47, 0.08);
+    background: rgba(255, 255, 255, 0.95);
     font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--brand-slate-600);
 }
 
 .hero-highlight strong {
     font-size: 1.35rem;
-    color: var(--brand-brass-400);
+    color: var(--brand-brass-500);
     display: block;
 }
 
@@ -797,7 +804,7 @@ a:focus-visible,
     margin: var(--space-md) 0;
     display: grid;
     gap: 0.85rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--brand-slate-600);
 }
 
 .hero-list li {
@@ -811,8 +818,8 @@ a:focus-visible,
     width: 0.65rem;
     height: 0.65rem;
     border-radius: 50%;
-    background: var(--brand-brass-400);
-    box-shadow: 0 0 0 4px rgba(242, 197, 114, 0.18);
+    background: var(--brand-brass-500);
+    box-shadow: 0 0 0 4px rgba(201, 153, 59, 0.2);
 }
 
 .hero-metrics {
@@ -826,23 +833,23 @@ a:focus-visible,
     min-width: 140px;
     padding: 0.85rem 1.25rem;
     border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(239, 244, 251, 0.9);
+    border: 1px solid rgba(2, 86, 124, 0.08);
 }
 
 .hero-metric strong {
     display: block;
     font-size: 2rem;
-    color: var(--brand-brass-400);
+    color: var(--brand-ink-700);
     margin-bottom: 0.35rem;
 }
 
 .hero-panel {
-    background: rgba(5, 13, 28, 0.9);
+    background: rgba(255, 255, 255, 0.96);
     border-radius: var(--radius-xl);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(17, 28, 47, 0.08);
     padding: clamp(1.75rem, 3vw, 2.5rem);
-    box-shadow: 0 35px 55px rgba(2, 5, 11, 0.65);
+    box-shadow: 0 35px 55px rgba(17, 28, 47, 0.12);
     position: relative;
     overflow: hidden;
 }
@@ -851,8 +858,8 @@ a:focus-visible,
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 0 0, rgba(242, 197, 114, 0.45), transparent 55%);
-    opacity: 0.5;
+    background: radial-gradient(circle at 0 0, rgba(2, 86, 124, 0.08), transparent 55%);
+    opacity: 0.8;
     pointer-events: none;
 }
 
@@ -862,7 +869,7 @@ a:focus-visible,
 }
 
 .hero-panel h3 {
-    color: var(--brand-brass-400);
+    color: var(--brand-ink-800);
     margin-bottom: 0.35rem;
 }
 
@@ -872,7 +879,7 @@ a:focus-visible,
     margin: 1.25rem 0;
     display: grid;
     gap: 0.75rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--brand-slate-600);
 }
 
 .hero-panel li {
@@ -885,9 +892,9 @@ a:focus-visible,
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    background: rgba(242, 197, 114, 0.15);
-    border: 1px solid rgba(242, 197, 114, 0.35);
-    color: var(--brand-brass-400);
+    background: rgba(2, 86, 124, 0.08);
+    border: 1px solid rgba(2, 86, 124, 0.2);
+    color: var(--brand-ink-700);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -897,13 +904,13 @@ a:focus-visible,
     margin-top: 1.5rem;
     padding: 1rem 1.25rem;
     border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(239, 244, 251, 0.8);
+    border: 1px solid rgba(2, 86, 124, 0.12);
 }
 
 .hero-panel .contact-pill strong {
     display: block;
-    color: white;
+    color: var(--brand-ink-900);
     font-size: 1.2rem;
 }
 
@@ -914,12 +921,12 @@ a:focus-visible,
 }
 
 .trust-card {
-    border: 1px solid rgba(16, 39, 76, 0.08);
+    border: 1px solid rgba(17, 28, 47, 0.08);
     background: white;
     border-radius: var(--radius-lg);
     padding: 1.25rem;
     text-align: center;
-    box-shadow: 0 20px 35px rgba(3, 7, 18, 0.08);
+    box-shadow: 0 20px 35px rgba(17, 28, 47, 0.08);
     font-weight: 600;
     color: var(--brand-slate-700);
 }
@@ -934,14 +941,14 @@ a:focus-visible,
 .cta-panel {
     border-radius: var(--radius-xl);
     padding: clamp(2rem, 4vw, 3rem);
-    background: linear-gradient(120deg, rgba(3, 10, 24, 0.95), rgba(16, 39, 76, 0.85));
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: white;
+    background: linear-gradient(120deg, #1b3d6b, #02567c);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--brand-ivory-50);
     display: flex;
     flex-direction: column;
     gap: 1rem;
     text-align: center;
-    box-shadow: 0 35px 55px rgba(2, 5, 11, 0.65);
+    box-shadow: 0 35px 65px rgba(7, 21, 43, 0.35);
 }
 
 .cta-panel h3 {
@@ -969,7 +976,7 @@ a:focus-visible,
     overflow-y: visible;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: var(--brand-fern-500) rgba(4, 31, 26, 0.08);
+    scrollbar-color: var(--brand-royal-500) rgba(17, 28, 47, 0.08);
 }
 
 .overflow-x-auto::-webkit-scrollbar {
@@ -977,12 +984,12 @@ a:focus-visible,
 }
 
 .overflow-x-auto::-webkit-scrollbar-track {
-    background: rgba(4, 31, 26, 0.05);
+    background: rgba(17, 28, 47, 0.05);
     border-radius: 999px;
 }
 
 .overflow-x-auto::-webkit-scrollbar-thumb {
-    background: var(--brand-fern-500);
+    background: var(--brand-royal-500);
     border-radius: 999px;
 }
 
@@ -994,13 +1001,13 @@ a:focus-visible,
     background: white;
     border-radius: var(--radius-md);
     overflow: hidden;
-    border: 1px solid rgba(4, 31, 26, 0.08);
+    border: 1px solid rgba(17, 28, 47, 0.08);
     box-shadow: var(--shadow-xs);
 }
 
 .table-attorney thead,
 .table-dashboard thead {
-    background: linear-gradient(120deg, var(--brand-fern-500), var(--brand-ink-600));
+    background: linear-gradient(120deg, var(--brand-ink-700), var(--brand-royal-500));
     color: white;
 }
 
@@ -1016,12 +1023,12 @@ a:focus-visible,
 .table-dashboard td {
     padding: 1rem 1.5rem;
     color: var(--brand-slate-700);
-    border-bottom: 1px solid rgba(4, 31, 26, 0.05);
+    border-bottom: 1px solid rgba(17, 28, 47, 0.05);
 }
 
 .table-attorney tbody tr:hover,
 .table-dashboard tbody tr:hover {
-    background: rgba(31, 122, 90, 0.05);
+    background: rgba(2, 86, 124, 0.08);
 }
 
 .js-clickable-row {
@@ -1031,7 +1038,7 @@ a:focus-visible,
 
 .js-clickable-row:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(4, 31, 26, 0.08);
+    box-shadow: 0 10px 25px rgba(17, 28, 47, 0.08);
 }
 
 .case-number-pill {
@@ -1040,10 +1047,10 @@ a:focus-visible,
     gap: 0.5rem;
     border-radius: 999px;
     padding: 0.45rem 1rem;
-    background: linear-gradient(120deg, rgba(31, 122, 90, 0.1), rgba(215, 180, 106, 0.2));
-    border: 1px solid rgba(31, 122, 90, 0.25);
+    background: linear-gradient(120deg, rgba(2, 86, 124, 0.12), rgba(201, 153, 59, 0.2));
+    border: 1px solid rgba(2, 86, 124, 0.25);
     font-weight: 700;
-    color: var(--brand-ink-600);
+    color: var(--brand-ink-700);
 }
 
 .case-number-pill-icon {
@@ -1063,9 +1070,9 @@ a:focus-visible,
     gap: 0.65rem;
     padding: 0.6rem 1rem;
     border-radius: 999px;
-    border: 1px solid rgba(31, 122, 90, 0.25);
-    background: rgba(31, 122, 90, 0.06);
-    color: var(--brand-ink-600);
+    border: 1px solid rgba(2, 86, 124, 0.25);
+    background: rgba(2, 86, 124, 0.08);
+    color: var(--brand-ink-700);
 }
 
 .case-last-update-label {
@@ -1139,7 +1146,7 @@ a:focus-visible,
 .form-input-moj {
     width: 100%;
     border-radius: var(--radius-sm);
-    border: 1px solid rgba(4, 31, 26, 0.1);
+    border: 1px solid rgba(17, 28, 47, 0.12);
     padding: 0.85rem 1rem;
     background: white;
     color: var(--brand-slate-700);
@@ -1215,7 +1222,7 @@ textarea.form-input-moj {
 .inquiry-card {
     background: white;
     border-radius: var(--radius-md);
-    border: 1px solid rgba(4, 31, 26, 0.08);
+    border: 1px solid rgba(17, 28, 47, 0.08);
     padding: 1.5rem;
     box-shadow: var(--shadow-xs);
 }
@@ -1227,8 +1234,8 @@ textarea.form-input-moj {
 .reply-card {
     margin-top: 1rem;
     padding: 1rem 1.25rem;
-    border-right: 4px solid var(--brand-fern-500);
-    background: rgba(31, 122, 90, 0.08);
+    border-right: 4px solid var(--brand-royal-500);
+    background: rgba(2, 86, 124, 0.08);
     border-radius: var(--radius-sm);
 }
 
@@ -1274,9 +1281,9 @@ textarea.form-input-moj {
 .sidebar-admin {
     width: 280px;
     min-height: 100vh;
-    background: linear-gradient(180deg, #081b16, #0f2b22);
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.35);
+    background: rgba(255, 255, 255, 0.98);
+    border-left: 1px solid rgba(17, 28, 47, 0.08);
+    box-shadow: -20px 0 45px rgba(17, 28, 47, 0.08);
     position: fixed;
     inset-block: 0;
     inset-inline-end: 0;
@@ -1297,7 +1304,7 @@ textarea.form-input-moj {
     align-items: center;
     gap: 0.65rem;
     padding: 0.9rem 1.5rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--brand-slate-600);
     border-right: 3px solid transparent;
     transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
 }
@@ -1308,17 +1315,17 @@ textarea.form-input-moj {
 }
 
 .sidebar-link:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(215, 180, 106, 0.6);
+    background: rgba(2, 86, 124, 0.08);
+    border-color: rgba(2, 86, 124, 0.4);
     transform: translateX(-4px);
 }
 
 .sidebar-link.active {
-    background: rgba(215, 180, 106, 0.12);
-    border-color: var(--brand-brass-400);
-    color: white;
+    background: rgba(2, 86, 124, 0.12);
+    border-color: var(--brand-royal-500);
+    color: var(--brand-ink-900);
     font-weight: 600;
-    box-shadow: inset -4px 0 10px rgba(215, 180, 106, 0.15);
+    box-shadow: inset -4px 0 10px rgba(2, 86, 124, 0.12);
 }
 
 .mobile-menu-btn,
@@ -1457,7 +1464,7 @@ textarea.form-input-moj {
         position: fixed;
         top: 1.25rem;
         right: 1.25rem;
-        background: var(--brand-fern-500);
+        background: var(--brand-royal-500);
         color: white;
         border-radius: var(--radius-sm);
         padding: 0.6rem;
@@ -1470,8 +1477,8 @@ textarea.form-input-moj {
         position: absolute;
         top: 1rem;
         left: 1rem;
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
+        background: rgba(255, 255, 255, 0.85);
+        color: var(--brand-ink-900);
         border-radius: var(--radius-xs);
         padding: 0.4rem;
     }
