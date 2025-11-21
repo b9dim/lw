@@ -4,8 +4,8 @@
 
 @section('content')
 <!-- Hero Section - Matching almo.html design -->
-<section class="elementor-section elementor-top-section elementor-section-height-full elementor-section-stretched elementor-section-full_width elementor-section-height-default elementor-section-items-middle" style="background: linear-gradient(135deg, #0B2F24 0%, #072017 50%, #000000 100%); min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden;">
-    <div class="elementor-background-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg width=\"100\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\"><defs><pattern id=\"grid\" width=\"100\" height=\"100\" patternUnits=\"userSpaceOnUse\"><path d=\"M 100 0 L 0 0 0 100\" fill=\"none\" stroke=\"rgba(26,71,42,0.03)\" stroke-width=\"1\"/></pattern></defs><rect width=\"100%\" height=\"100%\" fill=\"url(%23grid)\"/></svg>'); opacity: 0.5;"></div>
+<section class="elementor-section elementor-top-section elementor-section-height-full elementor-section-stretched elementor-section-full_width elementor-section-height-default elementor-section-items-middle" style="background: linear-gradient(135deg, #1b3d6b 0%, #0d2440 50%, #0a1a2e 100%); min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden;">
+    <div class="elementor-background-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg width=\"100\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\"><defs><pattern id=\"grid\" width=\"100\" height=\"100\" patternUnits=\"userSpaceOnUse\"><path d=\"M 100 0 L 0 0 0 100\" fill=\"none\" stroke=\"rgba(27,61,107,0.03)\" stroke-width=\"1\"/></pattern></defs><rect width=\"100%\" height=\"100%\" fill=\"url(%23grid)\"/></svg>'); opacity: 0.5;"></div>
     
     <div class="elementor-container elementor-column-gap-default" style="position: relative; z-index: 1; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
         <div class="elementor-column elementor-col-100 elementor-top-column">
@@ -22,7 +22,7 @@
                 
                 <!-- WhatsApp Button -->
                 <div class="ct-button-wrapper" style="margin-top: 2rem;">
-                    <a href="https://wa.me/966549801099" class="btn btn-default" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 16px 32px; background: #25D366; color: white; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 18px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);">
+                    <a href="https://wa.me/966509579993" class="btn btn-default" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 16px 32px; background: #25D366; color: white; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 18px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);">
                         <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
                         <span>تواصل معنا</span>
                     </a>
@@ -39,7 +39,7 @@
             <div class="elementor-widget-wrap elementor-element-populated">
                 <!-- Inner Section -->
                 <section class="elementor-section elementor-inner-section elementor-section-content-middle" style="display: flex; align-items: center;">
-                    <div class="elementor-container elementor-column-gap-extended" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                    <div class="elementor-container elementor-column-gap-extended" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; @media (max-width: 768px) { grid-template-columns: 1fr; gap: 30px; }">
                         <!-- Text Column -->
                         <div class="elementor-column elementor-col-50">
                             <div class="elementor-widget-wrap">
@@ -374,6 +374,42 @@
         grid-template-columns: 1fr !important;
         gap: 30px !important;
     }
+    
+    .ct-grid.ct-service-grid2 {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .elementor-widget-wrap[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Fix grid item hover overlay positioning */
+.grid-item .item--holder {
+    pointer-events: none;
+}
+
+.grid-item:hover .item--holder {
+    pointer-events: auto;
+}
+
+/* Improve text readability */
+.item--description {
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* Better spacing for team cards */
+.ct-fancy-box {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ct-fancy-box .item--holder {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 </style>
 @endsection

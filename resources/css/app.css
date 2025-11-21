@@ -15,16 +15,16 @@ body {
     color: #e5e7eb;
     line-height: 1.7;
     font-weight: 400;
-    background-color: #072017;
+    background-color: #0a1a2e;
 }
 
 /* Dark Professional Design - Inspired by law.html */
 :root {
-    --primary-color: #115E3B;
-    --primary-dark: #0B2F24;
-    --primary-light: #2d5a3d;
-    --primary-hover: #256340;
-    --deep: #072017;
+    --primary-color: #1b3d6b;
+    --primary-dark: #0d2440;
+    --primary-light: #2d4a7c;
+    --primary-hover: #2d4a7c;
+    --deep: #0a1a2e;
     --accent-color: #C8A848;
     --accent-dark: #A0842F;
     --accent-light: #f4e8c1;
@@ -34,8 +34,8 @@ body {
     --text-white: #ffffff;
     --bg-light: #f7fafc;
     --bg-white: #ffffff;
-    --bg-section: #0B2F24;
-    --bg-deep: #072017;
+    --bg-section: #0d2440;
+    --bg-deep: #0a1a2e;
     --border-color: rgba(200, 168, 72, 0.3);
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
@@ -52,7 +52,7 @@ body {
     align-items: center;
     justify-content: center;
     background: radial-gradient(circle at 30% 30%, #ffffff 0%, #f5f8f2 100%);
-    border: 1px solid rgba(26, 71, 42, 0.08);
+    border: 1px solid rgba(27, 61, 107, 0.08);
     color: var(--primary-color);
     box-shadow: 0 18px 30px -22px rgba(9, 30, 66, 0.45);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -80,7 +80,7 @@ body {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
     color: #ffffff;
     border-color: transparent;
-    box-shadow: 0 12px 25px rgba(26, 71, 42, 0.35);
+    box-shadow: 0 12px 25px rgba(27, 61, 107, 0.35);
 }
 
 .icon-circle svg {
@@ -100,10 +100,10 @@ body {
 
 /* Header Styles - Dark Professional Design */
 .header-attorney {
-    background: rgba(11, 47, 36, 0.7);
+    background: rgba(13, 36, 64, 0.7);
     backdrop-filter: blur(12px);
     box-shadow: var(--shadow-xl);
-    border-bottom: 1px solid rgba(17, 94, 59, 0.3);
+    border-bottom: 1px solid rgba(27, 61, 107, 0.3);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -358,7 +358,7 @@ body {
 
 /* Hero Section - Dark Professional Design */
 .hero-attorney {
-    background: linear-gradient(135deg, #0B2F24 0%, #072017 50%, #000000 100%);
+    background: linear-gradient(135deg, #1b3d6b 0%, #0d2440 50%, #0a1a2e 100%);
     padding: 120px 0 100px;
     min-height: 650px;
     display: flex;
@@ -412,7 +412,7 @@ body {
 
 /* Service Card - Dark Professional Design */
 .service-card {
-    background: rgba(11, 47, 36, 0.6);
+    background: rgba(13, 36, 64, 0.6);
     backdrop-filter: blur(12px);
     border-radius: 16px;
     padding: 45px 35px;
@@ -789,7 +789,7 @@ textarea.form-input-moj {
 }
 
 .reply-card {
-    background: linear-gradient(135deg, rgba(26, 71, 42, 0.05) 0%, rgba(26, 71, 42, 0.02) 100%);
+    background: linear-gradient(135deg, rgba(27, 61, 107, 0.05) 0%, rgba(27, 61, 107, 0.02) 100%);
     border-right: 4px solid var(--primary-color);
     border-radius: 8px;
     padding: 20px;
@@ -866,7 +866,7 @@ textarea.form-input-moj {
 
 /* Additional Dark Styles */
 .bg-section-light {
-    background: rgba(11, 47, 36, 0.3);
+    background: rgba(13, 36, 64, 0.3);
     backdrop-filter: blur(8px);
 }
 
@@ -1023,14 +1023,14 @@ textarea.form-input-moj {
     gap: clamp(0.35rem, 1vw, 0.6rem);
     padding: clamp(0.32rem, 1vw, 0.45rem) clamp(0.55rem, 1.6vw, 0.9rem);
     border-radius: 999px;
-    background: linear-gradient(135deg, rgba(17, 94, 59, 0.12) 0%, rgba(200, 168, 72, 0.18) 100%);
-    border: 1px solid rgba(17, 94, 59, 0.25);
+    background: linear-gradient(135deg, rgba(27, 61, 107, 0.12) 0%, rgba(200, 168, 72, 0.18) 100%);
+    border: 1px solid rgba(27, 61, 107, 0.25);
     color: var(--primary-color);
     font-weight: 700;
     font-size: clamp(0.78rem, 1.8vw, 0.95rem);
     letter-spacing: clamp(0.02em, 0.3vw, 0.08em);
     text-transform: uppercase;
-    box-shadow: 0 8px 16px rgba(17, 94, 59, 0.08);
+    box-shadow: 0 8px 16px rgba(27, 61, 107, 0.08);
     max-width: 100%;
     line-height: 1.2;
 }
@@ -1046,7 +1046,7 @@ textarea.form-input-moj {
     justify-content: center;
     color: var(--primary-color);
     flex-shrink: 0;
-    box-shadow: 0 6px 12px rgba(7, 32, 23, 0.12);
+    box-shadow: 0 6px 12px rgba(10, 26, 46, 0.12);
 }
 
 .case-number-pill-icon svg {
@@ -1204,9 +1204,9 @@ textarea.form-input-moj {
     gap: 0.75rem;
     padding: 0.55rem 0.95rem;
     border-radius: 18px;
-    background: linear-gradient(135deg, rgba(17, 94, 59, 0.07) 0%, rgba(200, 168, 72, 0.12) 100%);
-    border: 1px solid rgba(17, 94, 59, 0.18);
-    box-shadow: 0 5px 18px rgba(7, 32, 23, 0.08);
+    background: linear-gradient(135deg, rgba(27, 61, 107, 0.07) 0%, rgba(200, 168, 72, 0.12) 100%);
+    border: 1px solid rgba(27, 61, 107, 0.18);
+    box-shadow: 0 5px 18px rgba(10, 26, 46, 0.08);
     color: var(--primary-dark);
     max-width: 100%;
 }
@@ -1317,11 +1317,11 @@ textarea.form-input-moj {
 
 .action-link-edit {
     color: var(--primary-color);
-    background: rgba(26, 71, 42, 0.1);
+    background: rgba(27, 61, 107, 0.1);
 }
 
 .action-link-edit:hover {
-    background: rgba(26, 71, 42, 0.2);
+    background: rgba(27, 61, 107, 0.2);
     color: var(--primary-dark);
 }
 
