@@ -12,12 +12,12 @@
             <div class="elementor-widget-wrap elementor-element-populated" style="text-align: center; color: white;">
                 <!-- Logo -->
                 <div class="mb-8" style="margin-bottom: 2rem;">
-                    <img src="{{ asset('images/logo.svg') }}" alt="مكتب المختار للمحاماة" style="max-width: 200px; height: auto; margin: 0 auto; display: block;" />
+                    <img src="{{ asset('images/logo.svg') }}" alt="شركة مسفر محمد العرجاني" style="max-width: 200px; height: auto; margin: 0 auto; display: block;" />
                 </div>
                 
                 <!-- Heading -->
                 <h1 class="elementor-heading-title" style="font-size: 3.5rem; font-weight: 800; color: white; margin-bottom: 2rem; line-height: 1.2;">
-                    مكتب المختار للمحاماة
+                    شركة مسفر محمد العرجاني
                 </h1>
                 
                 <!-- WhatsApp Button -->
@@ -56,13 +56,13 @@
                                 <!-- Text Content -->
                                 <div class="elementor-widget-text-editor" style="text-align: right; color: #333; line-height: 1.9; font-size: 18px;">
                                     <p style="margin-bottom: 1.5rem;">
-                                        <strong>نحن مكتب المختار للمحاماة نضم نخبة من المحامين والمستشارين الأكفاء، تتجاوز خبراتنا مدة <span style="color: #000080;">(10) أعوام</span> في المملكة العربية السعودية.</strong>
+                                        <strong>نحن شركة مسفر محمد العرجاني نضم نخبة من المحامين والمستشارين الأكفاء، تتجاوز خبراتنا مدة <span style="color: #000080;">(10) أعوام</span> في المملكة العربية السعودية.</strong>
                                     </p>
                                     <p style="margin-bottom: 1.5rem;">
                                         باشرنا خلال هذه المــدة عــدد ضــخــم مـــن القضــايــا، فــي كــافة أنــواع المنازعــات سواء: (تجــارية، حقــوقيــة، عماليــة، مصرفيــة وتمويليــة جزائيــة، أحــوال شخصــية، إداريــة)، كــما قمــنا بصيــاغــة ومراجعــة جميــع أنواع العقود اللازمة لتسيير الأعمــال التجاريــة والمهنيــة سواء: (عقــود بيع، إجــارة، شراكة مضــاربة أو عنــان، شــركات نظاميــة، امتيــاز تجــاري، عقــود عمل، تقبيل، مقاولة، توريد، أشغال عامة، وغيرها..).
                                     </p>
                                     <p>
-                                        في مكتب المختار للمحاماة نمتلــك فريــق عمل متــكامل مكــون من أفضــل الكــوادر المختــارون بعناية شديدة، لتحقيق الغرض المبتغى المتمثل في تقديم خدمة قانونية مميزة وسريعة.
+                                        في شركة مسفر محمد العرجاني نمتلــك فريــق عمل متــكامل مكــون من أفضــل الكــوادر المختــارون بعناية شديدة، لتحقيق الغرض المبتغى المتمثل في تقديم خدمة قانونية مميزة وسريعة.
                                     </p>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                             <div class="elementor-widget-wrap">
                                 <div class="ct-banner1" style="position: relative;">
                                     <div class="ct-banner-imge" style="position: relative;">
-                                        <img src="https://via.placeholder.com/272x408/1b3d6b/ffffff?text=مكتب+المختار+للمحاماة" alt="مكتب المختار للمحاماة" style="width: 100%; max-width: 272px; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);" />
+                                        <img src="https://via.placeholder.com/272x408/1b3d6b/ffffff?text=شركة+مسفر+محمد+العرجاني" alt="شركة مسفر محمد العرجاني" style="width: 100%; max-width: 272px; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);" />
                                         <h3 class="ct-banner-title" style="position: absolute; bottom: 20px; right: 20px; background: rgba(27, 61, 107, 0.95); color: white; padding: 12px 24px; border-radius: 8px; font-size: 1.2rem; font-weight: 600; margin: 0;">
                                             أكثر من 10 أعوام خبرة
                                         </h3>
