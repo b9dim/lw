@@ -26,19 +26,19 @@
         </defs>
     </svg>
 </head>
-<body class="bg-deep text-gray-200">
+<body class="bg-[#f5f7fb] text-[#0f172a]">
     <!-- Header -->
     <header class="header-attorney">
         <nav class="container mx-auto">
-            <div class="flex items-center justify-between gap-4 px-6 md:px-8 lg:px-12 xl:px-16">
+            <div class="flex items-center justify-between gap-6 px-6 md:px-8 lg:px-12 xl:px-16">
                 <div class="flex items-center space-x-reverse space-x-6 md:space-x-10 flex-shrink-0">
-                    <a href="{{ route('home') }}" class="logo whitespace-nowrap flex items-center gap-3 z-10">
-                        <div class="logo-gold flex-shrink-0">
-                            <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-12 w-auto">
+                    <a href="{{ route('home') }}" class="logo whitespace-nowrap flex items-center gap-4 z-10">
+                        <div class="logo-gold flex-shrink-0 bg-white rounded-2xl px-3 py-2 shadow-md border border-slate-100">
+                            <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-12 w-auto md:h-14">
                         </div>
-                        <div class="flex flex-col flex-shrink-0">
-                            <span class="font-extrabold text-lg leading-tight">شركة مسفر محمد العرجاني</span>
-                            <span class="text-sm text-gold/80">للمحاماة والاستشارات القانونية</span>
+                        <div class="flex flex-col flex-shrink-0 leading-tight">
+                            <span class="font-extrabold text-lg md:text-xl text-[#022b6d]">شركة مسفر محمد العرجاني</span>
+                            <span class="text-sm text-[#5f6c82]">للمحاماة والاستشارات القانونية</span>
                         </div>
                     </a>
                     <div class="hidden md:flex items-center space-x-reverse space-x-2">
@@ -49,6 +49,7 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-3 flex-shrink-0 z-10">
+                    <a href="{{ route('contact') }}" class="btn-attorney-primary hidden md:inline-flex">احجز استشارة</a>
                     <a href="{{ route('client.login') }}" class="btn-attorney-secondary whitespace-nowrap flex items-center gap-2">
                         <span>دخول العملاء</span>
                     </a>
