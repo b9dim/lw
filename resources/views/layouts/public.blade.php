@@ -30,15 +30,15 @@
     <!-- Header -->
     <header class="header-attorney">
         <nav class="container mx-auto">
-            <div class="flex flex-col gap-4 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 md:flex-row md:items-center md:justify-between">
+            <div class="flex flex-wrap items-center gap-3 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 md:flex-nowrap md:items-center md:justify-between">
                 <div class="flex items-center justify-between gap-4 md:gap-6">
                     <a href="{{ route('home') }}" class="logo whitespace-nowrap flex items-center gap-4 z-10">
                         <div class="logo-gold flex-shrink-0 bg-white rounded-2xl px-3 py-2 shadow-md border border-slate-100">
                             <img src="{{ asset('images/logo.svg') }}" alt="شعار الشركة" class="h-12 w-auto md:h-14">
                         </div>
-                        <div class="flex flex-col flex-shrink-0 leading-tight">
-                            <span class="font-extrabold text-lg md:text-xl text-[#022b6d]">شركة مسفر محمد العرجاني</span>
-                            <span class="text-sm text-[#5f6c82]">للمحاماة والاستشارات القانونية</span>
+                        <div class="flex flex-col flex-shrink-0 leading-tight logo-text">
+                            <span class="font-extrabold text-lg md:text-xl text-[#022b6d] logo-title">شركة مسفر محمد العرجاني</span>
+                            <span class="text-sm text-[#5f6c82] logo-subtitle">للمحاماة والاستشارات القانونية</span>
                         </div>
                     </a>
                     <div class="flex items-center gap-2 md:hidden mobile-header-controls">

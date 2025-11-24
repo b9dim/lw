@@ -149,27 +149,46 @@
                     [
                         'icon' => 'fa-users-gear',
                         'title' => 'القسم الإداري',
-                        'body' => 'يتولى التواصل المباشر مع الشركات واستقبال الأعمال القانونية واستكمال بياناتها قبل تحويلها إلى الأقسام المختصة.'
+                        'body' => 'يتولى التواصل المباشر مع الشركات واستقبال الأعمال القانونية واستكمال بياناتها قبل تحويلها إلى الأقسام المختصة.',
+                        'tag' => 'تنسيق العمليات',
+                        'metrics' => ['متابعة لحظية للطلبات', 'تسليم المتطلبات خلال 24 ساعة']
                     ],
                     [
                         'icon' => 'fa-scale-balanced',
                         'title' => 'القسم الفني',
-                        'body' => 'يتكون من مستشارين قانونيين بخبرة 5-10 سنوات لصياغة العقود وكتابة المذكرات وتقديم الاستشارات المكتوبة.'
+                        'body' => 'يتكون من مستشارين قانونيين بخبرة 5-10 سنوات لصياغة العقود وكتابة المذكرات وتقديم الاستشارات المكتوبة.',
+                        'tag' => 'خبرة قانونية',
+                        'metrics' => ['مخرجات مدققة لغوياً', 'اعتماد جودة داخلي']
                     ],
                     [
                         'icon' => 'fa-gavel',
                         'title' => 'القسم الإجرائي',
-                        'body' => 'شبكة محامين في الرياض وجدة والمدينة لتولي المرافعات والتحقيقات وتمثيل العملاء أمام المحاكم والجهات الرسمية.'
+                        'body' => 'شبكة محامين في الرياض وجدة والمدينة لتولي المرافعات والتحقيقات وتمثيل العملاء أمام المحاكم والجهات الرسمية.',
+                        'tag' => 'تمثيل ميداني',
+                        'metrics' => ['تغطية 3 مدن رئيسية', 'تقارير جلسات فورية']
                     ],
                 ];
             @endphp
             @foreach($teams as $team)
-                <div class="service-card">
+                <div class="service-card card-highlight">
+                    <span class="card-chip">
+                        <i class="fa-solid fa-circle-dot"></i>
+                        {{ $team['tag'] }}
+                    </span>
                     <div class="service-icon text-2xl">
                         <i class="fa-solid {{ $team['icon'] }}"></i>
                     </div>
                     <h3>{{ $team['title'] }}</h3>
                     <p>{{ $team['body'] }}</p>
+                    <div class="card-divider"></div>
+                    <ul class="card-point-list">
+                        @foreach($team['metrics'] as $metric)
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                <span>{{ $metric }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             @endforeach
         </div>
@@ -208,19 +227,32 @@
                 ];
             @endphp
             @foreach($homeServices as $service)
-                <div class="bg-white rounded-3xl border border-blue-100 p-8 flex flex-col gap-4 shadow-lg hover:-translate-y-2 transition">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-xl font-bold text-[#022b6d]">{{ $service['title'] }}</h3>
-                        <span class="text-3xl">⚖️</span>
+                @php
+                    $progress = min(100, 38 + ($loop->iteration * 14));
+                @endphp
+                <div class="home-feature-card bg-white rounded-3xl border border-blue-100 p-8 flex flex-col gap-5 shadow-lg hover:-translate-y-2 transition">
+                    <div class="home-feature-card__header">
+                        <div>
+                            <span class="card-chip card-chip--light">خدمة رقم {{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                            <h3 class="text-xl font-bold text-[#022b6d] mt-2">{{ $service['title'] }}</h3>
+                        </div>
+                        <span class="home-feature-card__emoji" aria-hidden="true">⚖️</span>
                     </div>
                     <p class="text-[#5f6c82] leading-relaxed">{{ $service['desc'] }}</p>
-                    <ul class="space-y-2 text-sm text-[#1f2a37] font-semibold">
+                    <ul class="card-point-list card-point-list--inline">
                         @foreach($service['points'] as $point)
-                            <li class="flex items-center gap-2"><span class="text-[#00bff3]">▸</span>{{ $point }}</li>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>{{ $point }}</span>
+                            </li>
                         @endforeach
                     </ul>
-                    <div class="pt-4">
-                        <a href="{{ route('services') }}" class="text-[#0056d6] font-bold hover:underline">استكشف الخدمة</a>
+                    <div class="card-progress" style="--progress: {{ $progress }}%;"></div>
+                    <div class="pt-2">
+                        <a href="{{ route('services') }}" class="text-[#0056d6] font-bold hover:underline inline-flex items-center gap-2">
+                            استكشف الخدمة
+                            <i class="fa-solid fa-arrow-left-long text-sm"></i>
+                        </a>
                     </div>
                 </div>
             @endforeach
