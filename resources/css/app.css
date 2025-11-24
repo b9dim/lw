@@ -125,6 +125,181 @@ body {
     align-items: center;
 }
 
+/* Mobile Header Controls */
+.mobile-header-controls {
+    width: auto;
+}
+
+.mobile-login-button {
+    border-radius: 9999px;
+    border: 1px solid rgba(0, 86, 214, 0.18);
+    background: #ffffff;
+    padding: 0.4rem 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--primary-dark);
+    box-shadow: 0 12px 24px rgba(2, 43, 109, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    text-decoration: none;
+}
+
+.mobile-login-button i {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.mobile-login-button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(0, 86, 214, 0.35);
+    box-shadow: 0 16px 28px rgba(2, 43, 109, 0.16);
+}
+
+@media (max-width: 400px) {
+    .mobile-login-button {
+        padding-inline: 0.65rem;
+    }
+    
+    .mobile-login-button span {
+        display: none;
+    }
+}
+
+.mobile-menu-toggle {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(2, 43, 109, 0.15);
+    background: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 24px rgba(2, 43, 109, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.mobile-menu-toggle:hover,
+.mobile-menu-toggle[aria-expanded="true"] {
+    border-color: rgba(0, 86, 214, 0.35);
+    transform: translateY(-1px);
+    box-shadow: 0 18px 32px rgba(2, 43, 109, 0.15);
+}
+
+.mobile-menu-toggle:focus-visible {
+    outline: 2px solid rgba(0, 86, 214, 0.35);
+    outline-offset: 2px;
+}
+
+.mobile-menu-bars {
+    width: 20px;
+    height: 14px;
+    position: relative;
+    display: inline-block;
+}
+
+.mobile-menu-bars span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-dark);
+    border-radius: 9999px;
+    transition: transform 0.2s ease, top 0.2s ease, opacity 0.2s ease;
+}
+
+.mobile-menu-bars span:nth-child(1) {
+    top: 0;
+}
+
+.mobile-menu-bars span:nth-child(2) {
+    top: 6px;
+}
+
+.mobile-menu-bars span:nth-child(3) {
+    top: 12px;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .mobile-menu-bars span:nth-child(1) {
+    top: 6px;
+    transform: rotate(-45deg);
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .mobile-menu-bars span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .mobile-menu-bars span:nth-child(3) {
+    top: 6px;
+    transform: rotate(45deg);
+}
+
+.mobile-menu-panel {
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 86, 214, 0.08);
+    margin: 0 1rem 1.5rem;
+    box-shadow: 0 25px 55px rgba(1, 20, 53, 0.18);
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.35s ease, opacity 0.35s ease;
+}
+
+.mobile-menu-panel.open {
+    max-height: 520px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-menu-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0.75rem 1.25rem 1.25rem;
+}
+
+.mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 0.25rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--primary-dark);
+    border-bottom: 1px solid rgba(2, 43, 109, 0.06);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.mobile-nav-link:last-of-type {
+    border-bottom: none;
+}
+
+.mobile-nav-link.active {
+    color: var(--primary-color);
+}
+
+.mobile-menu-cta {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(2, 43, 109, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.mobile-menu-cta .btn-attorney-primary,
+.mobile-menu-cta .btn-attorney-secondary {
+    width: 100%;
+}
+
+body.mobile-nav-open {
+    overflow: hidden;
+}
+
 /* Client Header - Solid Background, Fixed, Hide on Scroll */
 .header-client {
     background: var(--primary-dark) !important;
